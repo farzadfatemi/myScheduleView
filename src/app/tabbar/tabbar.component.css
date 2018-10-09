@@ -1,0 +1,115 @@
+.mat-tab-labels {
+  justify-content: center; /* align items in Main Axis */
+
+  background-color: #F2F2F3;
+  /*background-color: green;*/
+}
+
+.mat-tab-label {
+  justify-content: center;
+  /*min-width: 25px !important;*/
+  padding: 5px;
+  /*background-color: transparent;*/
+  /*color: #74CFEC;*/
+  font-weight: 700;
+  background-color: #F2F2F3;
+}
+
+.mat-tab-group {
+  /*justify-content: center;*/
+  /*direction:rtl; */
+}
+.mat-ink-bar {
+  background-color: green;
+}
+
+.mat-toolbar{
+z-index: 998;
+position: fixed
+}
+.mat-tab-header {
+z-index: 999;
+width: 100vw;
+position: fixed !important;
+background-color: #F2F2F3 !important;
+
+}
+
+/*!*!* Styles for the active tab label *!*!*/
+/*.mat-tab-label.mat-tab-label-active {*/
+/*min-width: 25px !important;*/
+/*padding: 5px;*/
+/*background-color: transparent;*/
+/*color: red;*/
+/*font-weight: 700;*/
+/*}*/
+
+/*!* Styles for the ink bar *!*/
+
+
+/*::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {*/
+  /*!*color:red;*!*/
+  /*!*background-color: green;*!*/
+/*}*/
+
+/*::ng-deep .tab1 .mat-tab-label-active {*/
+  /*background-color: #c1e1ee;*/
+/*}*/
+
+/*::ng-deep .mat-ink-bar {*/
+  /*background-color: #00ADEE !important;*/
+/*}*/
+
+/*::ng-deep .mat-toolbar{*/
+/*z-index: 998;*/
+/*position: fixed*/
+/*}*/
+/*::ng-deep .mat-tab-group{*/
+/*direction:rtl;*/
+/*}*/
+/*::ng-deep .mat-tab-labels {*/
+  /*justify-content: center; !* align items in Main Axis *!*/
+
+  /*!*background-color: green;*!*/
+/*}*/
+
+/*::ng-deep .mat-tab-header {*/
+  /*z-index: 999;*/
+  /*width: 100vw;*/
+  /*position: fixed !important;*/
+  /*background-color: #F2F2F3 !important;*/
+
+/*}*/
+
+/*::ng-deep .mat-tab-body-wrapper {*/
+  /*position: relative !important;*/
+  /*margin-top: 55px;*/
+/*}*/
+
+.example-small-box, .example-large-box {
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.example-small-box {
+  height: 100px;
+  width: 100px;
+}
+
+.example-large-box {
+  height: 300px;
+  width: 300px;
+}
+
+.content {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
