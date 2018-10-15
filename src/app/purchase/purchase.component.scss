@@ -1,0 +1,131 @@
+// setup:
+
+$black: #191919;
+$white: #FFF;
+$pear: #D6D35D;
+$buttonWidth: 185px;
+$buttonHeight: 60px;
+$font: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+
+body {
+  min-height: 100vh;
+  position: relative;
+  font-family: $font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+// helper cleasses:
+
+.centered {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.full {
+  width: 100%;
+  height: 100%;
+}
+
+// button style:
+
+.button {
+  width: $buttonWidth + 20px;
+  height: $buttonHeight + 20px;
+  perspective: 1800px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .qube {
+    position: relative;
+    height: $buttonHeight;
+    width: $buttonWidth;
+    perspective: 1800px;
+
+    .front, .back {
+      @extend .full;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      transform: rotateX(-90deg);
+      transition: transform 0.3s ease;
+      position: absolute;
+      color: $white;
+      line-height: $buttonHeight;
+      text-align: center;
+    }
+
+    .front {
+      background-color: $black;
+
+      &::before {
+        @extend .centered;
+        @extend .full;
+        content: '';
+        display: block;
+        z-index: -1;
+      }
+
+      &::after {
+        background: $white;
+        content: '';
+        height: 155px;
+        left: -75px;
+        opacity: .4;
+        position: absolute;
+        top: -50px;
+        transform: rotate(35deg);
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        width: $buttonHeight - 10px;
+        z-index: 1;
+      }
+    }
+
+    .back {
+      background-color: $pear;
+      color: $black;
+      transform: rotateX(0deg) translateZ($buttonHeight);
+    }
+
+    &:hover {
+
+      .front {
+        transform: rotateX(0deg) translateZ( $buttonHeight / 2 );
+      }
+
+      .back {
+        transform: rotateX(90deg) translateZ( $buttonHeight / 2 );
+      }
+    }
+  }
+
+  &:active {
+
+    .front {
+      border-radius: 0;
+      background-color: transparent;
+      color: $black;
+
+      &::before {
+        background-color: $pear;
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      &::after {
+        left: 120%;
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    }
+  }
+}
