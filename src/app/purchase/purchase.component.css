@@ -51,28 +51,63 @@ button:hover {
   display: none;
 }
 
-/*CSS for BounceIn button */
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
 
-@keyframes bounceIn{
-  0%{
-    opacity: 0;
-    transform: scale(0.3) translate3d(0,0,0);
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
   }
-  30%{
-    opacity: 0.9;
-    transform: scale(1.1);
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
   }
-  60%{
-    opacity: 1;
-    transform: scale(0.89);
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
   }
-  80%{
-    opacity: 0.5;
-    transform: scale(0.89);
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
   }
-  100%{
-    display: none;
-    opacity: 0;
-    transform: scale(0.5) translate3d(0,0,0);
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
   }
 }
+
+.rubberBand {
+  animation-name: rubberBand;
+}
+
+
+/*!*CSS for BounceIn button *!*/
+
+/*@keyframes bounceIn{*/
+  /*0%{*/
+    /*opacity: 0;*/
+    /*transform: scale(0.3) translate3d(0,0,0);*/
+  /*}*/
+  /*30%{*/
+    /*opacity: 0.9;*/
+    /*transform: scale(1.1);*/
+  /*}*/
+  /*60%{*/
+    /*opacity: 1;*/
+    /*transform: scale(0.89);*/
+  /*}*/
+  /*80%{*/
+    /*opacity: 0.5;*/
+    /*transform: scale(0.89);*/
+  /*}*/
+  /*100%{*/
+    /*display: none;*/
+    /*opacity: 0;*/
+    /*transform: scale(0.5) translate3d(0,0,0);*/
+  /*}*/
+/*}*/
