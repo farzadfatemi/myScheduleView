@@ -51,7 +51,7 @@ button:hover {
   display: none;
 }
 
-@keyframes rubberBand {
+/*@keyframes my-rubber-band {
   from {
     transform: scale3d(1, 1, 1);
   }
@@ -81,33 +81,34 @@ button:hover {
   }
 }
 
-.rubberBand {
-  animation-name: rubberBand;
+.my-rubber-band {
+  animation-name: my-rubber-band;
 }
 
 
-/*!*CSS for BounceIn button *!*/
+!*CSS for BounceIn button *!
 
-/*@keyframes bounceIn{*/
-  /*0%{*/
-    /*opacity: 0;*/
-    /*transform: scale(0.3) translate3d(0,0,0);*/
-  /*}*/
-  /*30%{*/
-    /*opacity: 0.9;*/
-    /*transform: scale(1.1);*/
-  /*}*/
-  /*60%{*/
-    /*opacity: 1;*/
-    /*transform: scale(0.89);*/
-  /*}*/
-  /*80%{*/
-    /*opacity: 0.5;*/
-    /*transform: scale(0.89);*/
-  /*}*/
-  /*100%{*/
-    /*display: none;*/
-    /*opacity: 0;*/
-    /*transform: scale(0.5) translate3d(0,0,0);*/
-  /*}*/
-/*}*/
+@keyframes bounceIn{
+  0%{
+    opacity: 0;
+    transform: scale(0.3) translate3d(0,0,0);
+  }
+  30%{
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  60%{
+    opacity: 1;
+    transform: scale(0.89);
+  }
+  80%{
+    opacity: 0.5;
+    transform: scale(0.89);
+  }
+  100%{
+    display: none;
+    opacity: 0;
+    transform: scale(0.5) translate3d(0,0,0);
+  }
+}
+*/
