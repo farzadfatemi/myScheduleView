@@ -4,11 +4,13 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
-  styleUrls: ['./purchase.component.css','./purchase.component.scss']
+  styleUrls: ['./purchase.component.css', './purchase.component.scss']
 })
 export class PurchaseComponent implements OnInit {
   title = 'myScheduleView';
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
     // $(document).ready(function(){
@@ -18,46 +20,90 @@ export class PurchaseComponent implements OnInit {
     //     div.animate({fontSize: '5em'}, "slow");
     //   });
     // });
-    $(document).ready(function(){
-      var animationEnd = (function(el) {
-        var animations = {
-          "animation": "animationend",
-          "OAnimation": "oAnimationEnd",
-          "MozAnimation": "mozAnimationEnd",
-          "WebkitAnimation": "webkitAnimationEnd"
+    $(document).ready(function () {
+      const animationEnd = (function (el) {
+        const animations = {
+          'animation': 'animationend',
+          'OAnimation': 'oAnimationEnd',
+          'MozAnimation': 'mozAnimationEnd',
+          'WebkitAnimation': 'webkitAnimationEnd'
         };
 
-        for(var t in animations) {
-          if(el.style[t] !== undefined) {
+        for (const t in animations) {
+          if (el.style[t] !== undefined) {
             return animations[t];
           }
         }
-      })(document.createElement("div"));
-      $("#bunnings").click(function(){
-        $('#bunnings').addClass('animated rubberBand faster').animate( { "opacity": "hide", top:"100"} , 500 ).one(animationEnd, function() {
-          $('#bunnings').removeClass('animated rubberBand faster');
+      })(document.createElement('div'));
+
+
+      // $('#bunnings').click(function () {
+      //   $('#bunnings').addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
+      //     $('#bunnings').removeClass('animated rubberBand faster');
+      //   });
+      //   $('#bunnings-in-list').removeClass('flipOutX').addClass('animated bounceIn').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
+      //     $('#bunnings-in-list').removeClass('animated bounceIn');
+      //   });
+      // });
+      // $('#bunnings-in-list').click(function () {
+      //   $('#bunnings').addClass('animated bounceInRight').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
+      //     $('#bunnings').removeClass('animated bounceInRight');
+      //   });
+      //   $('#bunnings-in-list').addClass('animated flipOutX faster').animate({
+      //     'opacity': 'hide'
+      //   }, 500).one(animationEnd, function () {
+      //     $('#bunnings-in-list').removeClass('animated flipOutX faster');
+      //   });
+      // });
+
+      $('[id^=outOfList]').click(function () {
+        // alert($(this).attr('id'));
+        $('#' + $(this).attr('id')).addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
+          $('#' + $(this).attr('id')).removeClass('animated rubberBand faster');
         });
-        $('#bunnings-in-list').addClass('animated bounceIn').animate( { "opacity": "show", top:"100"} , 500 ).one(animationEnd, function() {
-          $('#bunnings-in-list').removeClass('animated bounceIn');
+        $('#' + $(this).attr('id').replace('outOfList','intoList')).removeClass('flipOutX').addClass('animated bounceIn').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
+          $('#' + $(this).attr('id').replace('outOfList','intoList')).removeClass('animated bounceIn');
         });
-        // $('#bunnings').animate( { "opacity": "hide", top:"100"} , 500 );
-        // $("#bunnings-in-list").animate( { "opacity": "show", top:"100"} , 500 );
+
       });
-      $("#bunnings-in-list").click(function(){
-        // $('#bunnings').removeClass('animated rubberBand faster').addClass('animated bounceInRight').animate( { "opacity": "show", top:"100"} , 500 );
-        // $('#bunnings-in-list').removeClass('animated bounceIn').addClass('animated bounceOut faster').animate( { "opacity": "hide", top:"100"} , 500 );
-        $('#bunnings').addClass('animated bounceInRight').animate( { "opacity": "show", top:"100"} , 500 ).one(animationEnd, function() {
-          $('#bunnings').removeClass('animated bounceInRight');
+
+      $('[id^=intoList]').click(function () {
+        $('#' + $(this).attr('id').replace('intoList', 'outOfList')).addClass('animated bounceInRight').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
+          $('#' + $(this).attr('id').replace('intoList', 'outOfList')).removeClass('animated bounceInRight');
         });
-        $('#bunnings-in-list').addClass('animated bounceOut faster').animate( { "opacity": "hide", top:"100"} , 500 ).one(animationEnd, function() {
-        // $('#bunnings-in-list').addClass('animated bounceOut faster').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
-          $('#bunnings-in-list').removeClass('animated bounceOut faster');
-        })
-       // $('#bunnings').animate( { "opacity": "show", top:"100"} , 500 );
-       //  $('#bunnings-in-list').animate( { "opacity": "hide", top:"100"} , 500 );
+        $('#' + $(this).attr('id')).addClass('animated flipOutX faster').animate({
+          'opacity': 'hide'
+        }, 500).one(animationEnd, function () {
+          $('#' + $(this).attr('id')).removeClass('animated flipOutX faster');
+        });
+
       });
+
+
+      // $('#bunnings').click(function () {
+      //   $('#bunnings').addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
+      //     $('#bunnings').removeClass('animated rubberBand faster');
+      //   });
+      //   $('#bunnings-in-list').removeClass('flipOutX').addClass('animated bounceIn').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
+      //     $('#bunnings-in-list').removeClass('animated bounceIn');
+      //   });
+      // });
+      // $('#bunnings-in-list').click(function () {
+      //   $('#bunnings').addClass('animated bounceInRight').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
+      //     $('#bunnings').removeClass('animated bounceInRight');
+      //   });
+      //   $('#bunnings-in-list').addClass('animated flipOutX faster').animate({
+      //     'opacity': 'hide'
+      //   }, 500).one(animationEnd, function () {
+      //     $('#bunnings-in-list').removeClass('animated flipOutX faster');
+      //   });
+      // });
+
+
     });
 
   }
 
 }
+
+//.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {

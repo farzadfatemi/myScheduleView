@@ -1,13 +1,17 @@
 
 .purchase-body{
-  margin-top: 50px;
-  padding : 30px;
+  margin: 50px  ;
+  /*padding : 30px;*/
   direction: rtl;
-  text-align: left;
-}
-.labelStyle{
+  /*!*text-align: left;*!*/
+  /*!*float: right;*!*/
+  /*display: -webkit-flex;*/
+  /*display: flex;*/
+  /*-webkit-flex-direction: column;*/
+  /*flex-direction: column;*/
 
 }
+
 .purple-button{
   background-color: #9176ec;
 }
@@ -18,12 +22,24 @@
 
 button:hover {
   transition: transform 0.3s;
-  background-color: #FFFFFF;
+  /*background-color: #FFFFFF;*/
   transform: translate(2px, 2px);
 
 }
+.centered {
+  /*padding: 5px;*/
+  /*right: 5px;*/
+  text-align: center;
+  /*border: #B0B0B0 solid 1px;*/
 
-/*Button CSS*/
+
+}
+
+
+.in-list{
+   display: none;
+ }
+/*!*Button CSS*!
 .btn-6d {
   color: #FFFFFF;
   background-color: #05bb65;
@@ -47,11 +63,7 @@ button:hover {
 
 }
 
-.in-list{
-  display: none;
-}
-
-/*@keyframes my-rubber-band {
+@keyframes my-rubber-band {
   from {
     transform: scale3d(1, 1, 1);
   }

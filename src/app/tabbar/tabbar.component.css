@@ -8,7 +8,7 @@
 .mat-tab-label {
   justify-content: center;
   /*min-width: 25px !important;*/
-  padding: 5px;
+  /*padding: 5px;*/
   /*background-color: transparent;*/
   /*color: #74CFEC;*/
   font-weight: 700;
@@ -24,8 +24,8 @@
 }
 
 .mat-toolbar{
-z-index: 998;
-position: fixed
+/*z-index: 998;*/
+/*position: fixed*/
 }
 .mat-tab-header {
 z-index: 999;
