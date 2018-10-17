@@ -18,6 +18,11 @@
 .margin-small{
   margin: 5px;
 }
+.store-group{
+  margin-top: 10px;
+  border: #74CFEC solid 1px;
+
+}
 
 
 button:hover {
@@ -29,6 +34,8 @@ button:hover {
 .centered {
   /*padding: 5px;*/
   /*right: 5px;*/
+  margin: 0 auto;
+  width: max-content;
   text-align: center;
   /*border: #B0B0B0 solid 1px;*/
 
