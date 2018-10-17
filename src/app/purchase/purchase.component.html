@@ -1,5 +1,5 @@
 <div class="container  purchase-body">
-  <div class="card text-center">
+  <div class="card text-center store-group">
     <div class="card-header">
       Select the store
     </div>
@@ -20,7 +20,8 @@
     <div class="card-footer text-muted">
 
       <div class="btn-group-sm col-12">
-        Selected : <button type="button" class="btn margin-small  in-list" id="intoList1">Bunnings</button>
+        <span class="align-baseline float-sm-right">Selected : </span>
+        <button type="button" class="btn margin-small float-sm-right  in-list" id="intoList1">Bunnings</button>
         <button type="button" class="btn btn-primary margin-small  in-list" id="intoList2">Dominos</button>
         <button type="button" class="btn btn-secondary margin-small  in-list" id="intoList3">Briscos</button>
         <button type="button" class="btn btn-success margin-small  in-list" id="intoList4">Countdown</button>
@@ -34,20 +35,20 @@
       </div>
     </div>
   </div>
-  <div class="form-group row centered">
-    <!--<div class="btn-group-sm col-12  store-group">-->
-      <!--<button type="button" class="btn margin-small" id="outOfList1">Bunnings</button>-->
-      <!--<button type="button" class="btn btn-primary margin-small  " id="outOfList2">Dominos</button>-->
-      <!--<button type="button" class="btn btn-secondary margin-small  " id="outOfList3">Briscos</button>-->
-      <!--<button type="button" class="btn btn-success margin-small  " id="outOfList4">Countdown</button>-->
-      <!--<button type="button" class="btn btn-info margin-small  " id="outOfList5">VegiMarket</button>-->
-      <!--<button type="button" class="btn btn-warning margin-small  " id="outOfList6">Pak n Save</button>-->
-      <!--<button type="button" class="btn btn-danger margin-small  " id="outOfList7">Warehouse</button>-->
-      <!--<button type="button" class="btn purple-button margin-small  " id="outOfList8">Farmers</button>-->
-      <!--&lt;!&ndash;<button type="button" class="btn  btn-6 btn-6d">btn-6 btn-6d</button>&ndash;&gt;-->
+  <!--<div class="form-group row centered">
+    <div class="btn-group-sm col-12  store-group">
+      <button type="button" class="btn margin-small" id="outOfList1">Bunnings</button>
+      <button type="button" class="btn btn-primary margin-small  " id="outOfList2">Dominos</button>
+      <button type="button" class="btn btn-secondary margin-small  " id="outOfList3">Briscos</button>
+      <button type="button" class="btn btn-success margin-small  " id="outOfList4">Countdown</button>
+      <button type="button" class="btn btn-info margin-small  " id="outOfList5">VegiMarket</button>
+      <button type="button" class="btn btn-warning margin-small  " id="outOfList6">Pak n Save</button>
+      <button type="button" class="btn btn-danger margin-small  " id="outOfList7">Warehouse</button>
+      <button type="button" class="btn purple-button margin-small  " id="outOfList8">Farmers</button>
+      &lt;!&ndash;<button type="button" class="btn  btn-6 btn-6d">btn-6 btn-6d</button>&ndash;&gt;
 
-    <!--</div>-->
-  </div>
+    </div>
+  </div>-->
   <!--  <div class="form-group row ">
       <div class="col-12">
         <a href="#" class="button">
@@ -59,31 +60,68 @@
 
       </div>
     </div>-->
-  <div class="form-group row  ">
-    <div class="col-1">
-      <label for="example-text-input" class="col-1 col-form-label float-right">Selected:</label>
+  <!-- <div class="form-group row  ">
+     <div class="col-1">
+       <label for="example-text-input" class="col-1 col-form-label float-right">Selected:</label>
+     </div>
+     <div class="btn-group-sm col-11">
+       <button type="button" class="btn margin-small  in-list" id="intoList1">Bunnings</button>
+       <button type="button" class="btn btn-primary margin-small  in-list" id="intoList2">Dominos</button>
+       <button type="button" class="btn btn-secondary margin-small  in-list" id="intoList3">Briscos</button>
+       <button type="button" class="btn btn-success margin-small  in-list" id="intoList4">Countdown</button>
+       <button type="button" class="btn btn-info margin-small  in-list" id="intoList5">VegiMarket</button>
+       <button type="button" class="btn btn-warning margin-small  in-list" id="intoList6">Pak n Save</button>
+       <button type="button" class="btn btn-danger margin-small  in-list" id="intoList7">Warehouse</button>
+       <button type="button" class="btn purple-button margin-small  in-list" id="intoList8">Farmers</button>
+
+       &lt;!&ndash;<button type="button" class="btn  btn-6 btn-6d in-list">btn-6 btn-6d</button>&ndash;&gt;
+
+     </div>
+   </div>-->
+
+  <div class="card "  >
+    <div class="card-body">
+    <div class="row text-right  ">
+        <div class="col-sm-6">
+          <div class="card " style="border: 0">
+            <div class="card-body">
+              <span class="card-title">Item Name :</span>
+              <input class="form-control" type="text" value="" id="item-name">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="card" style="border: 0">
+            <div class="card-body">
+              <span class="card-title">Price</span>
+              <input class="form-control" type="text" value=" " id="item-price">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card" style="border: 0">
+            <div class="card-body">
+              <span class="card-title">Category</span>
+              <select class="form-control" id="itemCategory">
+                <option>Fruit</option>
+                <option>Oil</option>
+                <option>Diary</option>
+                <option>Bread</option>
+                <option>Vegetables</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!--<div class="btn-group-sm col-11">-->
-      <!--<button type="button" class="btn margin-small  in-list" id="intoList1">Bunnings</button>-->
-      <!--<button type="button" class="btn btn-primary margin-small  in-list" id="intoList2">Dominos</button>-->
-      <!--<button type="button" class="btn btn-secondary margin-small  in-list" id="intoList3">Briscos</button>-->
-      <!--<button type="button" class="btn btn-success margin-small  in-list" id="intoList4">Countdown</button>-->
-      <!--<button type="button" class="btn btn-info margin-small  in-list" id="intoList5">VegiMarket</button>-->
-      <!--<button type="button" class="btn btn-warning margin-small  in-list" id="intoList6">Pak n Save</button>-->
-      <!--<button type="button" class="btn btn-danger margin-small  in-list" id="intoList7">Warehouse</button>-->
-      <!--<button type="button" class="btn purple-button margin-small  in-list" id="intoList8">Farmers</button>-->
-
-      <!--&lt;!&ndash;<button type="button" class="btn  btn-6 btn-6d in-list">btn-6 btn-6d</button>&ndash;&gt;-->
-
-    <!--</div>-->
   </div>
 
-
+<!--
   <div class="form-group row">
 
     <label for="example-text-input" class="col-1 col-form-label labelStyle">Item name : </label>
     <div class="col-5">
-      <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+      &lt;!&ndash;<input class="form-control" type="text" value="Artisanal kale" id="example-text-input">&ndash;&gt;
     </div>
 
     <label for="example-search-input" class="col-1 col-form-label">Search : </label>
@@ -158,6 +196,6 @@
     <div class="col-10">
       <input class="form-control" type="color" value="#563d7c" id="example-color-input">
     </div>
-  </div>
+  </div>-->
 </div>
 
