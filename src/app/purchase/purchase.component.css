@@ -60,6 +60,9 @@ button:hover {
 .in-list{
    display: none;
  }
+.zero-border {
+  border: 0;
+}
 /*!*Button CSS*!
 .btn-6d {
   color: #FFFFFF;
