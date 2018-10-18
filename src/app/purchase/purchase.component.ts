@@ -21,7 +21,11 @@ export class PurchaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.purchaseService.getAllPurchases().then(purchaseList => this.purchaseList = purchaseList);
+    this.purchaseService.getAllPurchases().then(purchaseList => {
+      // alert("---PLL--"+JSON.stringify(purchaseList));
+      this.purchaseList = purchaseList
+    });
+    // alert(this.purchaseList);
     $(document).ready(function () {
       const animationEnd = (function (el) {
         const animations = {

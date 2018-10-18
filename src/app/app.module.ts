@@ -10,7 +10,7 @@ import {PurchaseComponent} from './purchase/purchase.component';
 import {TabbarComponent} from './tabbar/tabbar.component';
 import {SharedModule} from 'primeng/shared';
 import {TableModule} from 'primeng/table';
-import {PurchaseService} from './service/purchaseService';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import {PurchaseService} from './service/purchaseService';
     BrowserAnimationsModule,
     MatTabsModule,
     SharedModule,
+    FormsModule,
     TableModule
   ],
   providers: [],
