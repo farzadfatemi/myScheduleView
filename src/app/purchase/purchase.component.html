@@ -49,11 +49,19 @@
       </div>
     </div>
   </div>
+
+
+
   <div class="card store-group">
     <div class="card-body" style="text-align: center">
-      <h3>Scrollable with Variable Width</h3>
-      <p-table [columns]="cols" [value]="purchaseList" [scrollable]="true" scrollHeight="200px" [resizableColumns]="true">
-        <ng-template pTemplate="colgroup" let-columns>
+       <p-table [columns]="selectedColumns" [value]="purchaseList" [paginator]="true" [rows]="10"  [resizableColumns]="true">
+         <ng-template pTemplate="caption">
+           <div style="text-align:left">
+             <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                            selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" defaultLabel="Choose Columns"></p-multiSelect>
+           </div>
+         </ng-template>
+         <ng-template pTemplate="colgroup" let-columns>
           <colgroup>
             <col *ngFor="let col of columns" [style.width]="col.width">
           </colgroup>
@@ -84,75 +92,6 @@
   </div>
   <div class="card store-group">
     <div class="card-body" style="text-align: center">
-      <p-table [value]="purchaseList" >
-        <ng-template pTemplate="header">
-          <tr>
-            <th>id</th>
-            <th>catId</th>
-            <th>price</th>
-            <th>Date</th>
-            <th>Comment</th>
-          </tr>
-          <!--<tr *ngFor="let purchase of purchaseList">-->
-            <!--<td>{{purchase.amount}}</td>-->
-          <!--</tr>-->
-        </ng-template>
-
-        <ng-template pTemplate="body" let-purchase>
-          <tr>
-            <td pEditableColumn>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input type="text" [(ngModel)]="purchase.purchaseId">
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{purchase.purchaseId}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td pEditableColumn>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input type="text" [(ngModel)]="purchase.categoryId" required>
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{purchase.categoryId}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td pEditableColumn>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input type="text" [(ngModel)]="purchase.price">
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{purchase.price}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td pEditableColumn>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input type="text" [(ngModel)]="purchase.date">
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{purchase.date}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-            <td pEditableColumn>
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input type="text" [(ngModel)]="purchase.comment">
-                </ng-template>
-                <ng-template pTemplate="output">
-                  {{purchase.comment}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
 
     </div>
   </div>

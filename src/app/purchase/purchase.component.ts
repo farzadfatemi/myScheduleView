@@ -15,6 +15,7 @@ export class PurchaseComponent implements OnInit {
   title = 'myScheduleView';
   respFinal: String = '';
   cols: any[];
+  selectedColumns: any[];
   purchaseList: Purchase[];
   constructor(
     private purchaseService: PurchaseService,
@@ -34,7 +35,7 @@ export class PurchaseComponent implements OnInit {
       { field: 'comment', header: 'Comment', width: '25%' },
       { field: 'date', header: 'Date', width: '25%' }
     ];
-
+    this.selectedColumns = this.cols;
     this.purchaseService.getAllPurchases().then(purchaseList => {
       // alert("---PLL--"+JSON.stringify(purchaseList));
       this.purchaseList = purchaseList
