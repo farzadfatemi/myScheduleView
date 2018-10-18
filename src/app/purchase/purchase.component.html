@@ -22,13 +22,13 @@
       <div class="btn-group-sm col-12">
         <span class="align-baseline float-sm-right">Selected : </span>
         <button type="button" class="btn pur-btns margin-small float-sm-right  in-list" id="intoList1">Bunnings</button>
-        <button type="button" class="btn pur-btns btn-primary margin-small  in-list" id="intoList2">Dominos</button>
-        <button type="button" class="btn pur-btns btn-secondary margin-small  in-list" id="intoList3">Briscos</button>
-        <button type="button" class="btn pur-btns btn-success margin-small  in-list" id="intoList4">Countdown</button>
-        <button type="button" class="btn pur-btns btn-info margin-small  in-list" id="intoList5">VegiMarket</button>
-        <button type="button" class="btn pur-btns btn-warning margin-small  in-list" id="intoList6">Pak n Save</button>
-        <button type="button" class="btn pur-btns btn-danger margin-small  in-list" id="intoList7">Warehouse</button>
-        <button type="button" class="btn pur-btns purple-button margin-small  in-list" id="intoList8">Farmers</button>
+        <button type="button" class="btn pur-btns btn-primary margin-small float-sm-right in-list" id="intoList2">Dominos</button>
+        <button type="button" class="btn pur-btns btn-secondary margin-small float-sm-right in-list" id="intoList3">Briscos</button>
+        <button type="button" class="btn pur-btns btn-success margin-small float-sm-right in-list" id="intoList4">Countdown</button>
+        <button type="button" class="btn pur-btns btn-info margin-small float-sm-right in-list" id="intoList5">VegiMarket</button>
+        <button type="button" class="btn pur-btns btn-warning margin-small float-sm-right in-list" id="intoList6">Pak n Save</button>
+        <button type="button" class="btn pur-btns btn-danger margin-small float-sm-right in-list" id="intoList7">Warehouse</button>
+        <button type="button" class="btn pur-btns purple-button margin-small float-sm-right in-list" id="intoList8">Farmers</button>
 
         <!--<button type="button" class="btn pur-btns  btn-6 btn-6d in-list">btn-6 btn-6d</button>-->
 
@@ -37,6 +37,65 @@
   </div>
 
   <div class="card store-group">
+    <div class="card-body">
+      <p-table [value]="purchaseList">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Vin</th>
+            <th>Year</th>
+            <th>Brand</th>
+            <th>Color</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-purchase>
+          <tr>
+            <td pEditableColumn>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <!--<input type="text" [(ngModel)]="purchase.">-->
+                </ng-template>
+                <ng-template pTemplate="output">
+                  <!--{{purchase.vin}}-->
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td pEditableColumn>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <!--<input type="text" [(ngModel)]="rowData.year" required>-->
+                </ng-template>
+                <ng-template pTemplate="output">
+                  <!--{{rowData.year}}-->
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td pEditableColumn>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <!--<input type="text" [(ngModel)]="rowData.brand">-->
+                </ng-template>
+                <ng-template pTemplate="output">
+                  <!--{{rowData.brand}}-->
+                </ng-template>
+              </p-cellEditor>
+            </td>
+            <td pEditableColumn>
+              <p-cellEditor>
+                <ng-template pTemplate="input">
+                  <!--<input type="text" [(ngModel)]="rowData.color">-->
+                </ng-template>
+                <ng-template pTemplate="output">
+                  <!--{{rowData.color}}-->
+                </ng-template>
+              </p-cellEditor>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+
+      </div>
+  </div>
+ <!-- <div class="card store-group">
     <div class="card-body">
       <div class="row text-right  ">
         <div class="col-sm-6">
@@ -56,7 +115,7 @@
           <div class="card zero-border" >
             <div class="card-body">
               <div class="form-group row">
-                <label for="item-price" class="col-6 col-form-label">Price</label>
+                <label for="item-price" class="col-6 col-form-label" style="min-width:50%;">Price</label>
                 <div class="col-6">
                 <input class="form-control" type="text" value=" " id="item-price">
                 </div>
@@ -105,7 +164,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
 
   <div class="card store-group">
@@ -115,7 +174,7 @@
           <div class="card zero-border" >
             <div class="card-body">
               <div class="form-group row">
-                <label for="example-date-input" class="col-5 col-form-label">Purchased Items : </label>
+                <label  class="col-5 col-form-label">Purchased Items : </label>
                 <div class="col-9">
                 </div>
               </div>
