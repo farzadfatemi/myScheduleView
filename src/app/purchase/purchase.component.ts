@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Purchase} from '../domain/purchase';
 import {PurchaseService} from './purchase.service';
+import {SortEvent} from 'primeng/api';
 
 
 const URL = 'http://localhost:8080/';
@@ -40,6 +41,7 @@ export class PurchaseComponent implements OnInit {
       // alert("---PLL--"+JSON.stringify(purchaseList));
       this.purchaseList = purchaseList
     });
+
     // alert(this.purchaseList);
     $(document).ready(function () {
       const animationEnd = (function (el) {
@@ -105,7 +107,26 @@ export class PurchaseComponent implements OnInit {
 
 
   }
+  customSort(event: SortEvent) {
+    event.data.sort((data1, data2) => {
+      let value1 = data1[event.field];
+      let value2 = data2[event.field];
+      let result = null;
 
+      if (value1 == null && value2 != null)
+        result = -1;
+      else if (value1 != null && value2 == null)
+        result = 1;
+      else if (value1 == null && value2 == null)
+        result = 0;
+      else if (typeof value1 === 'string' && typeof value2 === 'string')
+        result = value1.localeCompare(value2);
+      else
+        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+
+      return (event.order * result);
+    });
+  }
  /* fileToUpload: File = null;
   materialFlowId: String = '0';
 
