@@ -14,6 +14,7 @@ const URL = 'http://localhost:8080/';
 export class PurchaseComponent implements OnInit {
   title = 'myScheduleView';
   respFinal: String = '';
+  cols: any[];
   purchaseList: Purchase[];
   constructor(
     private purchaseService: PurchaseService,
@@ -21,6 +22,19 @@ export class PurchaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cols = [
+      { field: 'purchaseId', header: 'Purchase Id', width: '25%'},
+      { field: 'productId', header: 'product Id', width: '15%' },
+      { field: 'sellerId', header: 'Seller Id', width: '35%' },
+      { field: 'categoryId', header: 'Category Id', width: '25%' },
+      { field: 'manufacturerId', header: 'Manufacturer Id', width: '25%' },
+      { field: 'price', header: 'Price', width: '25%' },
+      { field: 'amount', header: 'Amount', width: '25%' },
+      { field: 'todo', header: 'Todo', width: '25%' },
+      { field: 'comment', header: 'Comment', width: '25%' },
+      { field: 'date', header: 'Date', width: '25%' }
+    ];
+
     this.purchaseService.getAllPurchases().then(purchaseList => {
       // alert("---PLL--"+JSON.stringify(purchaseList));
       this.purchaseList = purchaseList
@@ -86,73 +100,7 @@ export class PurchaseComponent implements OnInit {
       });
 
 
-      // $('#bunnings').click(function () {
-      //   $('#bunnings').addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
-      //     $('#bunnings').removeClass('animated rubberBand faster');
-      //   });
-      //   $('#bunnings-in-list').removeClass('flipOutX').addClass('animated bounceIn').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
-      //     $('#bunnings-in-list').removeClass('animated bounceIn');
-      //   });
-      // });
-      // $('#bunnings-in-list').click(function () {
-      //   $('#bunnings').addClass('animated bounceInRight').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
-      //     $('#bunnings').removeClass('animated bounceInRight');
-      //   });
-      //   $('#bunnings-in-list').addClass('animated flipOutX faster').animate({
-      //     'opacity': 'hide'
-      //   }, 500).one(animationEnd, function () {
-      //     $('#bunnings-in-list').removeClass('animated flipOutX faster');
-      //   });
-      // });
-
-
     });
-
-
-
-/*    $(document).ready(function () {
-      var counter = 0;
-
-      $("#addrow").on("click", function () {
-        var newRow = $("<tr>");
-        var cols = "";
-
-        cols += '<td><input type="text" class="form-control" name="name' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="mail' + counter + '"/></td>';
-        cols += '<td><input type="text" class="form-control" name="phone' + counter + '"/></td>';
-
-        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
-        newRow.append(cols);
-        $("table.order-list").append(newRow);
-        counter++;
-      });
-
-
-
-      $("table.order-list").on("click", ".ibtnDel", function (event) {
-        $(this).closest("tr").remove();
-        counter -= 1
-      });
-
-
-    });
-
-
-
-    function calculateRow(row) {
-      var price = +row.find('input[name^="price"]').val();
-
-    }
-
-    function calculateGrandTotal() {
-      var grandTotal = 0;
-      $("table.order-list").find('input[name^="price"]').each(function () {
-        grandTotal += +$(this).val();
-      });
-      $("#grandtotal").text(grandTotal.toFixed(2));
-    }*/
-
-
 
 
   }

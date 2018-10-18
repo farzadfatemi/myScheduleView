@@ -15,4 +15,10 @@ export class PurchaseService {
       .then(res => <Purchase[]>res)
       .then(data => { return data; });
   }
+  addPurchases(id) {
+    return this.http.get<any>('http://localhost:8080/allPurchases')
+      .toPromise()
+      .then(res => <Purchase[]>res)
+      .then(data => { return data; });
+  }
 }
