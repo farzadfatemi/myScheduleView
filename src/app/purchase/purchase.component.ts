@@ -7,6 +7,7 @@ import {SortEvent} from 'primeng/api';
 
 
 const URL = 'http://localhost:8080/';
+
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -18,6 +19,7 @@ export class PurchaseComponent implements OnInit {
   cols: any[];
   selectedColumns: any[];
   purchaseList: Purchase[];
+
   constructor(
     private purchaseService: PurchaseService,
     private spinner: NgxSpinnerService) {
@@ -25,21 +27,22 @@ export class PurchaseComponent implements OnInit {
 
   ngOnInit() {
     this.cols = [
-      { field: 'purchaseId', header: 'Purchase Id', width: '25%'},
-      { field: 'productId', header: 'product Id', width: '15%' },
-      { field: 'sellerId', header: 'Seller Id', width: '35%' },
-      { field: 'categoryId', header: 'Category Id', width: '25%' },
-      { field: 'manufacturerId', header: 'Manufacturer Id', width: '25%' },
-      { field: 'price', header: 'Price', width: '25%' },
-      { field: 'amount', header: 'Amount', width: '25%' },
-      { field: 'todo', header: 'Todo', width: '25%' },
-      { field: 'comment', header: 'Comment', width: '25%' },
-      { field: 'date', header: 'Date', width: '25%' }
+      {field: 'purchaseId', header: 'Purchase Id', width: '25%'},
+      {field: 'productId', header: 'product Id', width: '15%'},
+      {field: 'sellerId', header: 'Seller Id', width: '35%'},
+      {field: 'categoryId', header: 'Category Id', width: '25%'},
+      {field: 'manufacturerId', header: 'Manufacturer Id', width: '25%'},
+      {field: 'price', header: 'Price', width: '25%'},
+      {field: 'amount', header: 'Amount', width: '25%'},
+      {field: 'todo', header: 'Todo', width: '25%'},
+      {field: 'comment', header: 'Comment', width: '25%'},
+      {field: 'date', header: 'Date', width: '25%'}
     ];
     this.selectedColumns = this.cols;
     this.purchaseService.getAllPurchases().then(purchaseList => {
-      // alert("---PLL--"+JSON.stringify(purchaseList));
-      this.purchaseList = purchaseList
+      this.purchaseList = purchaseList;
+      // this.purchaseList.sort((val1, val2)=> {return <any>new Date(val2.date) - <any>new Date(val1.date)});
+      this.purchaseList.sort((val1, val2)=> {return  (val2.purchaseId) - (val1.purchaseId)});
     });
 
     // alert(this.purchaseList);
@@ -84,8 +87,8 @@ export class PurchaseComponent implements OnInit {
         $('#' + $(this).attr('id')).addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
           $('#' + $(this).attr('id')).removeClass('animated rubberBand faster');
         });
-        $('#' + $(this).attr('id').replace('outOfList','intoList')).removeClass('flipOutX').addClass('animated bounceIn').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
-          $('#' + $(this).attr('id').replace('outOfList','intoList')).removeClass('animated bounceIn');
+        $('#' + $(this).attr('id').replace('outOfList', 'intoList')).removeClass('flipOutX').addClass('animated bounceIn').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
+          $('#' + $(this).attr('id').replace('outOfList', 'intoList')).removeClass('animated bounceIn');
         });
 
       });
@@ -107,6 +110,7 @@ export class PurchaseComponent implements OnInit {
 
 
   }
+
   customSort(event: SortEvent) {
     event.data.sort((data1, data2) => {
       let value1 = data1[event.field];
@@ -127,64 +131,99 @@ export class PurchaseComponent implements OnInit {
       return (event.order * result);
     });
   }
- /* fileToUpload: File = null;
-  materialFlowId: String = '0';
 
-  inputId(event) {
-    this.materialFlowId = event.target.value;
-    console.log('id is -- > ' + event.target.value);
+  handleClose(e) {
+    if (true)
+      e.close();
   }
 
-  inputFile(event) {
-    this.fileToUpload = event.target.files[0];
-    console.log('File path -- > ' + event.target.files[0].name);
+  addRow() {
+    const newPurchase = {
+      purchaseId: '18',
+      productId: '1',
+      sellerId: '31',
+      categoryId: '15',
+      manufacturerId: '61',
+      price: '55',
+      amount: '33',
+      todo: '1',
+      comment: 'adding New Purchase',
+      date: '2018-10-19'
+    };
+    let newP = [...this.purchaseList];
+    newP.push(newPurchase);
+
+    this.purchaseList = (newP);
+     this.sortFunc(this.purchaseList,'purchaseId');
   }
 
-  // onSubmit(id: string, file: File) {
-  onSubmit() {
-
-    console.log('POST');
-    this.spinner.show();
-    const frmData = new FormData();
-    // @ts-ignore
-    frmData.append('materialFlowId', this.materialFlowId);
-    frmData.append('inputPackage', this.fileToUpload);
-    console.log('id --> ' + this.materialFlowId);
-    if(this.fileToUpload !=null){
-      console.log('File name --> ' + this.fileToUpload.name);
-    }
-    if (this.fileToUpload != null && this.materialFlowId !== '0') {
-      this.http.post(URL, frmData).subscribe(res => {
-        const resp = JSON.parse(JSON.stringify(res));
-        if (resp != null) {
-          if (resp['ser:deposit_result'] != null) {
-            if (resp['ser:deposit_result']['ser:is_error'] === false) {
-              this.spinner.hide();
-              console.log('--==>> ' + JSON.stringify(res));
-              console.log('--ww==>> ' + resp['ser:deposit_result']['ser:sip_id']);
-              this.respFinal = 'Successful !! Your Sip ID is : ' + resp['ser:deposit_result']['ser:sip_id'];
-            } else {
-              this.spinner.hide();
-              this.respFinal = ' Error occurred!! : ' + resp['ser:deposit_result']['ser:message_desc'];
-            }
-          } else {
-            this.spinner.hide();
-            this.respFinal = ' Error occurred!! : ' + resp['error-message'];
-          }
-        }else {
-          this.spinner.hide();
-          this.respFinal = 'Sorry!! No result for id : '+ this.materialFlowId +' and file : '+ this.fileToUpload.name;
+    sortFunc (data, id) {
+      return  data.sort((a, b) => {
+        if(id==='date') {
+          return <any>new Date(b[id]) - <any>new Date(a[id]);
+        } else{
+          return (b[id]) - (a[id]);
         }
-        this.materialFlowId = '';
-      }, error => {
-        this.spinner.hide();
-        this.respFinal = 'Error occurred!! : Server Not Responded!!!';
       });
-    } else {
-      this.spinner.hide();
-      this.respFinal = 'Error occurred!! : ID and Zip file are compulsory!!!';
-    }
-  }*/
+  }
+  /* fileToUpload: File = null;
+   materialFlowId: String = '0';
+
+   inputId(event) {
+     this.materialFlowId = event.target.value;
+     console.log('id is -- > ' + event.target.value);
+   }
+
+   inputFile(event) {
+     this.fileToUpload = event.target.files[0];
+     console.log('File path -- > ' + event.target.files[0].name);
+   }
+
+   // onSubmit(id: string, file: File) {
+   onSubmit() {
+
+     console.log('POST');
+     this.spinner.show();
+     const frmData = new FormData();
+     // @ts-ignore
+     frmData.append('materialFlowId', this.materialFlowId);
+     frmData.append('inputPackage', this.fileToUpload);
+     console.log('id --> ' + this.materialFlowId);
+     if(this.fileToUpload !=null){
+       console.log('File name --> ' + this.fileToUpload.name);
+     }
+     if (this.fileToUpload != null && this.materialFlowId !== '0') {
+       this.http.post(URL, frmData).subscribe(res => {
+         const resp = JSON.parse(JSON.stringify(res));
+         if (resp != null) {
+           if (resp['ser:deposit_result'] != null) {
+             if (resp['ser:deposit_result']['ser:is_error'] === false) {
+               this.spinner.hide();
+               console.log('--==>> ' + JSON.stringify(res));
+               console.log('--ww==>> ' + resp['ser:deposit_result']['ser:sip_id']);
+               this.respFinal = 'Successful !! Your Sip ID is : ' + resp['ser:deposit_result']['ser:sip_id'];
+             } else {
+               this.spinner.hide();
+               this.respFinal = ' Error occurred!! : ' + resp['ser:deposit_result']['ser:message_desc'];
+             }
+           } else {
+             this.spinner.hide();
+             this.respFinal = ' Error occurred!! : ' + resp['error-message'];
+           }
+         }else {
+           this.spinner.hide();
+           this.respFinal = 'Sorry!! No result for id : '+ this.materialFlowId +' and file : '+ this.fileToUpload.name;
+         }
+         this.materialFlowId = '';
+       }, error => {
+         this.spinner.hide();
+         this.respFinal = 'Error occurred!! : Server Not Responded!!!';
+       });
+     } else {
+       this.spinner.hide();
+       this.respFinal = 'Error occurred!! : ID and Zip file are compulsory!!!';
+     }
+   }*/
 
 }
 

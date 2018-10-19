@@ -11,7 +11,7 @@ import {TabbarComponent} from './tabbar/tabbar.component';
 import {SharedModule} from 'primeng/shared';
 import {TableModule} from 'primeng/table';
 import {FormsModule} from '@angular/forms';
-import {MultiSelectModule} from 'primeng/primeng';
+import {MultiSelectModule, TabViewModule} from 'primeng/primeng';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import {MultiSelectModule} from 'primeng/primeng';
     SharedModule,
     FormsModule,
     TableModule,
-    MultiSelectModule
+    MultiSelectModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

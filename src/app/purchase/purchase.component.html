@@ -51,51 +51,105 @@
   </div>
 
 
-
   <div class="card store-group">
     <div class="card-body" style="text-align: center">
-       <p-table [columns]="selectedColumns" [value]="purchaseList" [paginator]="true" [rows]="10"  [resizableColumns]="true">
-        <ng-template pTemplate="colgroup" let-columns>
-          <colgroup>
-            <col *ngFor="let col of columns" [style.width]="col.width">
-          </colgroup>
-        </ng-template>
-         <ng-template pTemplate="header" let-columns>
-           <tr>
-             <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
-               {{col.header}}
-               <p-sortIcon [field]="col.field" ariaLabel="Activate to sort" ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
-             </th>
-           </tr>
-         </ng-template>
+      <p-tabView [controlClose]="true" (onClose)="handleClose($event)">
+        <p-tabPanel header="Purchase List" [selected]="true" [closable]="true">
+          <p-table [columns]="selectedColumns" [value]="purchaseList" [paginator]="true" [rows]="10"
+                   [resizableColumns]="true">
+            <ng-template pTemplate="colgroup" let-columns>
+              <colgroup>
+                <col *ngFor="let col of columns" [style.width]="col.width">
+              </colgroup>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns" pResizableColumn [pSortableColumn]="col.field">
+                  {{col.header}}
+                  <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+                              ariaLabelDesc="Activate to sort in descending order"
+                              ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-purchase let-columns="columns">
+              <tr>
+                <td pEditableColumn *ngFor="let col of columns" class="ui-resizable-column">
+                  <p-cellEditor>
+                    <ng-template pTemplate="input">
+                      <input type="text" [(ngModel)]="purchase[col.field]" required>
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                      {{purchase[col.field]}}
+                    </ng-template>
+                  </p-cellEditor>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="caption">
+              <div style="text-align:right">
+                <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                               selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}"
+                               defaultLabel="Choose Columns"></p-multiSelect>
+              </div>
+            </ng-template>
 
-        <ng-template pTemplate="body" let-purchase let-columns="columns">
-          <tr>
-            <td pEditableColumn *ngFor="let col of columns" class="ui-resizable-column">
-              <p-cellEditor>
-                <ng-template pTemplate="input">
-                  <input type="text" [(ngModel)]="purchase[col.field]" required>
-                </ng-template>
-                <ng-template pTemplate="output">
-                   {{purchase[col.field]}}
-                </ng-template>
-              </p-cellEditor>
-            </td>
-          </tr>
-        </ng-template>
-         <ng-template pTemplate="caption">
-           <div style="text-align:right">
-             <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
-                            selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" defaultLabel="Choose Columns"></p-multiSelect>
-           </div>
-         </ng-template>
-
-       </p-table>
+          </p-table>
+        </p-tabPanel>
+        <p-tabPanel header="Sample Table" [closable]="true">
+          <table class="table table-hover">
+            <thead>
+            <tr class="table-danger">
+              <th>Name</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row" class="table-primary">Olive Oil Select Virgin</th>
+              <th scope="row" class="table-primary">1</th>
+              <td>2018-11-25 12:13:00</td>
+              <td>$11</td>
+            </tr>
+            <tr>
+              <th scope="row" class="table-secondary">Milk 3L Home Brand</th>
+              <th scope="row">1</th>
+              <td class="table-secondary">2018-11-25 12:15:00</td>
+              <td>$10</td>
+            </tr>
+            <tr>
+              <th scope="row">Mashrom</th>
+              <th scope="row"> 1kg</th>
+              <td class="table-success">2018-11-25 12:16:00</td>
+              <td>$21</td>
+            </tr>
+            <tr>
+              <th scope="row">Wholemeal Bread HomeBrand</th>
+              <th scope="row">3</th>
+              <td> 2018-11-25 12:26:00</td>
+              <td class="table-warning">$3</td>
+            </tr>
+            <tr>
+              <th scope="row" class="table-info">Tomato Sliced</th>
+              <th scope="row">1</th>
+              <td> 2018-11-25 12:36:00</td>
+              <td>$2</td>
+            </tr>
+            <tr>
+              <th colspan="3" scope="row" class="table-dark"> Total</th>
+              <td class="table-dark">$47</td>
+            </tr>
+            </tbody>
+          </table>
+        </p-tabPanel>
+      </p-tabView>
     </div>
   </div>
   <div class="card store-group">
     <div class="card-body" style="text-align: center">
-
+      <button type="button" class="btn pur-btns margin-small" (click)="addRow()" id="hichi">Add New</button>
     </div>
   </div>
   <!-- <div class="card store-group">
@@ -192,94 +246,6 @@
     <div class="card-body">
       <div class="row ">
         <div class="container">
-          <table class="table table-hover">
-
-            <thead>
-
-            <tr class="table-danger">
-
-              <th>Name</th>
-
-              <th>Amount</th>
-
-              <th>Date</th>
-              <th>Price</th>
-
-            </tr>
-
-            </thead>
-
-            <tbody>
-
-            <tr>
-
-              <th scope="row" class="table-primary">Olive Oil Select Virgin</th>
-              <th scope="row" class="table-primary">1</th>
-
-              <td>2018-11-25 12:13:00</td>
-
-              <td>$11</td>
-
-            </tr>
-
-            <tr>
-
-              <th scope="row" class="table-secondary">Milk 3L Home Brand</th>
-              <th scope="row">1</th>
-
-              <td class="table-secondary">2018-11-25 12:15:00</td>
-
-              <td>$10</td>
-
-            </tr>
-
-            <tr>
-              <th scope="row">Mashrom</th>
-              <th scope="row"> 1kg</th>
-
-              <td class="table-success">2018-11-25 12:16:00</td>
-
-              <td>$21</td>
-
-
-            </tr>
-
-            <tr>
-              <th scope="row">Wholemeal Bread HomeBrand</th>
-              <th scope="row">3</th>
-
-              <td> 2018-11-25 12:26:00</td>
-
-              <td class="table-warning">$3</td>
-
-
-            </tr>
-
-            <tr>
-              <th scope="row" class="table-info">Tomato Sliced</th>
-              <th scope="row">1</th>
-
-              <td> 2018-11-25 12:36:00</td>
-
-              <td>$2</td>
-
-
-            </tr>
-
-
-            <tr>
-
-              <th colspan="3" scope="row" class="table-dark"> Total</th>
-
-
-              <td class="table-dark">$47</td>
-
-            </tr>
-
-
-            </tbody>
-
-          </table>
 
 
         </div>
