@@ -5,14 +5,21 @@
     </div>
     <div class="card-body">
       <div class="btn-group-sm col-12   ">
-        <button type="button" class="btn pur-btns margin-small" id="outOfList1">Bunnings</button>
-        <button type="button" class="btn pur-btns btn-primary margin-small  " id="outOfList2">Dominos</button>
-        <button type="button" class="btn pur-btns btn-secondary margin-small  " id="outOfList3">Briscos</button>
-        <button type="button" class="btn pur-btns btn-success margin-small  " id="outOfList4">Countdown</button>
-        <button type="button" class="btn pur-btns btn-info margin-small  " id="outOfList5">VegiMarket</button>
-        <button type="button" class="btn pur-btns btn-warning margin-small  " id="outOfList6">Pak n Save</button>
-        <button type="button" class="btn pur-btns btn-danger margin-small  " id="outOfList7">Warehouse</button>
-        <button type="button" class="btn pur-btns purple-button margin-small  " id="outOfList8">Farmers</button>
+        <button type="button" class="btn pur-btns shop-button margin-small" id="outOfList1">Bunnings</button>
+        <button type="button" class="btn pur-btns shop-button btn-primary margin-small  " id="outOfList2">Dominos
+        </button>
+        <button type="button" class="btn pur-btns shop-button btn-secondary margin-small  " id="outOfList3">Briscos
+        </button>
+        <button type="button" class="btn pur-btns shop-button btn-success margin-small  " id="outOfList4">Countdown
+        </button>
+        <button type="button" class="btn pur-btns shop-button btn-info margin-small  " id="outOfList5">VegiMarket
+        </button>
+        <button type="button" class="btn pur-btns shop-button btn-warning margin-small  " id="outOfList6">Pak n Save
+        </button>
+        <button type="button" class="btn pur-btns shop-button btn-danger margin-small  " id="outOfList7">Warehouse
+        </button>
+        <button type="button" class="btn pur-btns shop-button purple-button margin-small  " id="outOfList8">Farmers
+        </button>
         <!--<button type="button" class="btn pur-btns  btn-6 btn-6d">btn-6 btn-6d</button>-->
 
       </div>
@@ -21,26 +28,35 @@
 
       <div class="btn-group-sm col-12">
         <span class="align-baseline float-sm-right">Selected : </span>
-        <button type="button" class="btn pur-btns margin-small float-sm-right  in-list" id="intoList1">Bunnings</button>
-        <button type="button" class="btn pur-btns btn-primary margin-small float-sm-right in-list" id="intoList2">
+        <button type="button" class="btn pur-btns shop-button margin-small float-sm-right  in-list" id="intoList1">
+          Bunnings
+        </button>
+        <button type="button" class="btn pur-btns shop-button btn-primary margin-small float-sm-right in-list"
+                id="intoList2">
           Dominos
         </button>
-        <button type="button" class="btn pur-btns btn-secondary margin-small float-sm-right in-list" id="intoList3">
+        <button type="button" class="btn pur-btns shop-button btn-secondary margin-small float-sm-right in-list"
+                id="intoList3">
           Briscos
         </button>
-        <button type="button" class="btn pur-btns btn-success margin-small float-sm-right in-list" id="intoList4">
+        <button type="button" class="btn pur-btns shop-button btn-success margin-small float-sm-right in-list"
+                id="intoList4">
           Countdown
         </button>
-        <button type="button" class="btn pur-btns btn-info margin-small float-sm-right in-list" id="intoList5">
+        <button type="button" class="btn pur-btns shop-button btn-info margin-small float-sm-right in-list"
+                id="intoList5">
           VegiMarket
         </button>
-        <button type="button" class="btn pur-btns btn-warning margin-small float-sm-right in-list" id="intoList6">Pak n
+        <button type="button" class="btn pur-btns shop-button btn-warning margin-small float-sm-right in-list"
+                id="intoList6">Pak n
           Save
         </button>
-        <button type="button" class="btn pur-btns btn-danger margin-small float-sm-right in-list" id="intoList7">
+        <button type="button" class="btn pur-btns shop-button btn-danger margin-small float-sm-right in-list"
+                id="intoList7">
           Warehouse
         </button>
-        <button type="button" class="btn pur-btns purple-button margin-small float-sm-right in-list" id="intoList8">
+        <button type="button" class="btn pur-btns shop-button purple-button margin-small float-sm-right in-list"
+                id="intoList8">
           Farmers
         </button>
 
@@ -59,11 +75,11 @@
           <td>
             <form class="form">
               <div class="input-group input-group-sm mb-3">
-                <input type="text" placeholder="Name of purchase" class="form-control" aria-label="Small"
-                       aria-describedby="purchaseName">
+                <input type="text" placeholder="Name of product" class="form-control" aria-label="Small"
+                       aria-describedby="productName">
                 <div class="input-group-prepend">
-                  <span class="input-group-text  " id="purchaseName"><img src="../../assets/images/box.svg"
-                                                                          class="box-image"/> </span>
+                  <span class="input-group-text  " id="productName"><img src="../../assets/images/box.svg"
+                                                                         class="box-image"/> </span>
                 </div>
               </div>
               <div class="input-group input-group-sm mb-3  ">
@@ -81,152 +97,90 @@
                                                                             class="box-image"/> </span>
                 </div>
                 <div class="input-group-prepend">
-                  <!--<select >-->
-                    <!--<optgroup label="units" style="">-->
-                      <!--<option>Kg</option>-->
-                      <!--<option>Cm</option>-->
-                    <!--</optgroup>-->
-                  <!--<optgroup label="units" style="">-->
-                      <!--<option>Number</option>-->
-                    <!--</optgroup>-->
-                  <!--</select>-->
-
                   <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                           aria-haspopup="true" aria-expanded="false">Unit
                   </button>
-                  <span class="input-group-text  " id="pUnit"><img src="../../assets/images/weight-tool.svg"
-                                                                   class="box-image"/> </span>
+                  <span class="input-group-text  " id="pUnit"> <img src="../../assets/images/ruler.svg"
+                                                                    class="box-image"/></span>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Kg</a>
+                    <a class="dropdown-item" href="#">Number<img src="../../assets/images/Numbers.svg"
+                                                                 class="box-image"/></a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><img src="../../assets/images/weight-tool.svg"
+                                                           class="box-image"/> Kg</a>
                     <a class="dropdown-item" href="#">Num</a>
                     <a class="dropdown-item" href="#">Meter</a>
-                    <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Number</a>
                   </div>
                 </div>
                 <span style="width: 10px">  </span>
-                <input type="text" placeholder="Price" class="form-control" aria-label="Small"
-                       aria-describedby="purchasePrice">
                 <div class="input-group-prepend">
-                  <span class="input-group-text  " id="purchasePrice"><img src="../../assets/images/coins.svg"
-                                                                           class="box-image"/> </span>
+                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">Store Name
+                  </button>
+                  <span class="input-group-text  " id="pStore"> <img src="../../assets/images/shop.svg"
+                                                                     class="box-image"/></span>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Countdown<img src="../../assets/images/Numbers.svg"
+                                                                    class="box-image"/></a>
+                    <div role="separator" class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><img src="../../assets/images/weight-tool.svg"
+                                                           class="box-image"/> Warehouse</a>
+                    <a class="dropdown-item" href="#">Briscose</a>
+                    <a class="dropdown-item" href="#">Bunnings</a>
+                    <a class="dropdown-item" href="#">Farmers</a>
+                    <a class="dropdown-item" href="#">Pak n Save</a>
+                    <a class="dropdown-item" href="#">Dominos</a>
+                    <a class="dropdown-item" href="#">Pizza Hut</a>
+                    <a class="dropdown-item" href="#">KFC</a>
+                    <a class="dropdown-item" href="#">BurgerKing</a>
+                  </div>
                 </div>
               </div>
-              <div class="input-group input-group-sm mb-3">
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">name</span>
-                </div>
-              </div>
-        <tr>
+              <button type="button" class="btn pur-btns margin-small" (click)="addRow()" id="addNewPurchase">Add New</button>
+            </form>
+          </td>
           <td>
-            <div class="input-group input-group-sm mb-3">
-              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">name</span>
-              </div>
-            </div>
-            <div class="input-group input-group-sm mb-3">
-              <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">name</span>
-              </div>
+            <div>
+              <form class="form">
+
+                <!-- List group -->
+                <div class="list-group" id="myList" role="tablist">
+                  <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home"
+                     role="tab">Home</a>
+                  <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile"
+                     role="tab">Profile</a>
+                  <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
+                  <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
+                </div>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div class="tab-pane active" id="home" role="tabpanel">xxxxxxxxxx</div>
+                  <div class="tab-pane" id="profile" role="tabpanel">aaaaaaaaaaaaaaa</div>
+                  <div class="tab-pane" id="messages" role="tabpanel">bbbbbbbbbbbbbbb</div>
+                  <div class="tab-pane" id="settings" role="tabpanel">ccccccccccccccccccccccc</div>
+                </div>
+                <input type="email" placeholder=" " class="form-control mb-2 mr-sm-2" id="email">
+                <span class="form-placeholder">Email address</span>
+                <label for="pwd" class="mr-sm-2">Password:</label>
+                <input type="password" class="form-control mb-2 mr-sm-2" id="pwd">
+                <div class="form-check mb-2 mr-sm-2">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox"> Remember me
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+
+              </form>
+              <!--<span class="anchor" id="formUserEdit"></span>-->
+              <!--// Spliter
+              <hr class="my-3">-->
+
+              <!-- form user info -->
+
+              <!-- /form user info -->
             </div>
           </td>
-        </tr>
-        <div class="input-group input-group-sm mb-3">
-          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm3">Quantity</span>
-          </div>
-        </div>
-        <!-- List group -->
-        <div class="list-group" id="myList" role="tablist">
-          <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
-          <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
-        </div>
-
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div class="tab-pane active" id="home" role="tabpanel">xxxxxxxxxx</div>
-          <div class="tab-pane" id="profile" role="tabpanel">aaaaaaaaaaaaaaa</div>
-          <div class="tab-pane" id="messages" role="tabpanel">bbbbbbbbbbbbbbb</div>
-          <div class="tab-pane" id="settings" role="tabpanel">ccccccccccccccccccccccc</div>
-        </div>
-        <input type="email" placeholder=" " class="form-control mb-2 mr-sm-2" id="email">
-        <span class="form-placeholder">Email address</span>
-        <label for="pwd" class="mr-sm-2">Password:</label>
-        <input type="password" class="form-control mb-2 mr-sm-2" id="pwd">
-        <div class="form-check mb-2 mr-sm-2">
-          <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Remember me
-          </label>
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-
-        </form>
-        </td>
-        <td>
-          <div>
-            <form class="form">
-              <div class="input-group input-group-sm mb-3">
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm">name</span>
-                </div>
-              </div>
-              <div class="input-group input-group-sm mb-3">
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm2">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm2">price</span>
-                </div>
-              </div>
-              <div class="input-group input-group-sm mb-3">
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-sm3">Quantity</span>
-                </div>
-              </div>
-              <!-- List group -->
-              <div class="list-group" id="myList" role="tablist">
-                <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home"
-                   role="tab">Home</a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile"
-                   role="tab">Profile</a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
-              </div>
-
-              <!-- Tab panes -->
-              <div class="tab-content">
-                <div class="tab-pane active" id="home" role="tabpanel">xxxxxxxxxx</div>
-                <div class="tab-pane" id="profile" role="tabpanel">aaaaaaaaaaaaaaa</div>
-                <div class="tab-pane" id="messages" role="tabpanel">bbbbbbbbbbbbbbb</div>
-                <div class="tab-pane" id="settings" role="tabpanel">ccccccccccccccccccccccc</div>
-              </div>
-              <input type="email" placeholder=" " class="form-control mb-2 mr-sm-2" id="email">
-              <span class="form-placeholder">Email address</span>
-              <label for="pwd" class="mr-sm-2">Password:</label>
-              <input type="password" class="form-control mb-2 mr-sm-2" id="pwd">
-              <div class="form-check mb-2 mr-sm-2">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox"> Remember me
-                </label>
-              </div>
-              <button type="submit" class="btn btn-primary mb-2">Submit</button>
-
-            </form>
-            <!--<span class="anchor" id="formUserEdit"></span>-->
-            <!--// Spliter
-            <hr class="my-3">-->
-
-            <!-- form user info -->
-
-            <!-- /form user info -->
-          </div>
-        </td>
         </tr>
         </tbody>
       </table>
@@ -234,7 +188,8 @@
 
     </div>
   </div>
-  <div class="card card-outline-secondary">
+
+  <!--<div class="card card-outline-secondary">
     <div class="card-header">
       <h3 class="mb-0">User Information</h3>
     </div>
@@ -317,8 +272,8 @@
         </div>
       </form>
     </div>
-  </div>
-  <button type="button" class="btn pur-btns margin-small" (click)="addRow()" id="hichi">Add New</button>
+  </div>-->
+
 
   <div class="card store-group">
     <div class="card-body" style="text-align: center">
