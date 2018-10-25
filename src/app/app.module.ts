@@ -12,13 +12,15 @@ import {SharedModule} from 'primeng/shared';
 import {TableModule} from 'primeng/table';
 import {FormsModule} from '@angular/forms';
 import {MultiSelectModule, TabViewModule} from 'primeng/primeng';
+import {SellerComponent} from './seller/seller.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     PurchaseComponent,
-    TabbarComponent
+    TabbarComponent,
+    SellerComponent
   ],
   imports: [
     BrowserModule,

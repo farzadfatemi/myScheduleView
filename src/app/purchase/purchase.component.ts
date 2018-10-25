@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Purchase} from '../domain/purchase';
@@ -19,7 +19,7 @@ export class PurchaseComponent implements OnInit {
   cols: any[];
   selectedColumns: any[];
   purchaseList: Purchase[];
-
+  @Input() testVar: String='33';
   constructor(
     private purchaseService: PurchaseService,
     private spinner: NgxSpinnerService) {
@@ -132,10 +132,6 @@ export class PurchaseComponent implements OnInit {
     });
   }
 
-  handleClose(e) {
-    if (true)
-      e.close();
-  }
 
   addRow() {
     const newPurchase = {
@@ -225,6 +221,10 @@ export class PurchaseComponent implements OnInit {
      }
    }*/
 
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    // console.warn(this.purchaseForm.value);
+  }
 }
 
 //.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
