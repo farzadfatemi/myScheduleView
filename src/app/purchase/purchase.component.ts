@@ -1,9 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {Purchase} from '../domain/purchase';
 import {PurchaseService} from './purchase.service';
-import {SortEvent} from 'primeng/api';
+import {SellerService} from '../seller/seller.service';
+import {Seller} from '../domain/seller';
+import {UnitService} from '../unit/unit.service';
+import {Unit} from '../domain/unit';
 
 
 const URL = 'http://localhost:8080/';
@@ -14,18 +17,22 @@ const URL = 'http://localhost:8080/';
   styleUrls: ['./purchase.component.css', './purchase.component.scss']
 })
 export class PurchaseComponent implements OnInit {
-  title = 'myScheduleView';
-  respFinal: String = '';
   cols: any[];
   selectedColumns: any[];
   purchaseList: Purchase[];
-  @Input() testVar: String='33';
+  sellerList: Seller[];
+  unitList: Unit[];
+  model: any = {};
+  // @Input() testVar: String='33';
   constructor(
     private purchaseService: PurchaseService,
+    private sellerServices: SellerService,
+    private unitServices: UnitService,
     private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
+
     this.cols = [
       {field: 'purchaseId', header: 'Purchase Id', width: '25%'},
       {field: 'productId', header: 'product Id', width: '15%'},
@@ -34,6 +41,7 @@ export class PurchaseComponent implements OnInit {
       {field: 'manufacturerId', header: 'Manufacturer Id', width: '25%'},
       {field: 'price', header: 'Price', width: '25%'},
       {field: 'amount', header: 'Amount', width: '25%'},
+      {field: 'unitId', header: 'Unit Id', width: '25%'},
       {field: 'todo', header: 'Todo', width: '25%'},
       {field: 'comment', header: 'Comment', width: '25%'},
       {field: 'date', header: 'Date', width: '25%'}
@@ -43,6 +51,12 @@ export class PurchaseComponent implements OnInit {
       this.purchaseList = purchaseList;
       // this.purchaseList.sort((val1, val2)=> {return <any>new Date(val2.date) - <any>new Date(val1.date)});
       this.purchaseList.sort((val1, val2)=> {return  (val2.purchaseId) - (val1.purchaseId)});
+    });
+    this.unitServices.getAllUnits().then(unitsList => {
+      this.unitList = unitsList;
+    });
+    this.sellerServices.getAllSellers().then(sellerList => {
+      this.sellerList = sellerList;
     });
 
     // alert(this.purchaseList);
@@ -63,24 +77,6 @@ export class PurchaseComponent implements OnInit {
       })(document.createElement('div'));
 
 
-      // $('#bunnings').click(function () {
-      //   $('#bunnings').addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
-      //     $('#bunnings').removeClass('animated rubberBand faster');
-      //   });
-      //   $('#bunnings-in-list').removeClass('flipOutX').addClass('animated bounceIn').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
-      //     $('#bunnings-in-list').removeClass('animated bounceIn');
-      //   });
-      // });
-      // $('#bunnings-in-list').click(function () {
-      //   $('#bunnings').addClass('animated bounceInRight').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
-      //     $('#bunnings').removeClass('animated bounceInRight');
-      //   });
-      //   $('#bunnings-in-list').addClass('animated flipOutX faster').animate({
-      //     'opacity': 'hide'
-      //   }, 500).one(animationEnd, function () {
-      //     $('#bunnings-in-list').removeClass('animated flipOutX faster');
-      //   });
-      // });
 
       $('[id^=outOfList]').click(function () {
         // alert($(this).attr('id'));
@@ -111,26 +107,26 @@ export class PurchaseComponent implements OnInit {
 
   }
 
-  customSort(event: SortEvent) {
-    event.data.sort((data1, data2) => {
-      let value1 = data1[event.field];
-      let value2 = data2[event.field];
-      let result = null;
-
-      if (value1 == null && value2 != null)
-        result = -1;
-      else if (value1 != null && value2 == null)
-        result = 1;
-      else if (value1 == null && value2 == null)
-        result = 0;
-      else if (typeof value1 === 'string' && typeof value2 === 'string')
-        result = value1.localeCompare(value2);
-      else
-        result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
-
-      return (event.order * result);
-    });
-  }
+  // customSort(event: SortEvent) {
+  //   event.data.sort((data1, data2) => {
+  //     let value1 = data1[event.field];
+  //     let value2 = data2[event.field];
+  //     let result = null;
+  //
+  //     if (value1 == null && value2 != null)
+  //       result = -1;
+  //     else if (value1 != null && value2 == null)
+  //       result = 1;
+  //     else if (value1 == null && value2 == null)
+  //       result = 0;
+  //     else if (typeof value1 === 'string' && typeof value2 === 'string')
+  //       result = value1.localeCompare(value2);
+  //     else
+  //       result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+  //
+  //     return (event.order * result);
+  //   });
+  // }
 
 
   addRow() {
@@ -142,6 +138,7 @@ export class PurchaseComponent implements OnInit {
       manufacturerId: '61',
       price: '55',
       amount: '33',
+      unitId: '33',
       todo: '1',
       comment: 'adding New Purchase',
       date: '2018-10-19'
@@ -221,9 +218,15 @@ export class PurchaseComponent implements OnInit {
      }
    }*/
 
+  handleClose(e) {
+    if (true)
+      e.close();
+  }
+
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    // console.warn(this.purchaseForm.value);
+    this.purchaseService.addPurchases(this.model);
+    // alert('SUCCESS!! :-)\n\n'  )
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
   }
 }
 

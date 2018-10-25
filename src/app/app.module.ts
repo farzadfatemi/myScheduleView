@@ -13,6 +13,7 @@ import {TableModule} from 'primeng/table';
 import {FormsModule} from '@angular/forms';
 import {MultiSelectModule, TabViewModule} from 'primeng/primeng';
 import {SellerComponent} from './seller/seller.component';
+import {UnitComponent} from './unit/unit.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {SellerComponent} from './seller/seller.component';
     HeaderComponent,
     PurchaseComponent,
     TabbarComponent,
-    SellerComponent
+    SellerComponent,
+    UnitComponent
   ],
   imports: [
     BrowserModule,

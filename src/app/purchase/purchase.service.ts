@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Purchase} from '../domain/purchase';
 
 const URL = 'http://localhost:8080/';
@@ -17,9 +17,10 @@ export class PurchaseService {
       .then(data => { return data; });
   }
   addPurchases(file) {
-    return this.http.post((URL+'addPurchase'),file)
-      .toPromise()
-      .then(res => <Purchase[]>res)
-      .then(data => { return data; });
+    // alert( JSON.stringify(file));
+
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/form-data');
+    return this.http.post((URL+'addPurchase'),file, {headers: headers }).subscribe(res => <Purchase[]>res);
   }
 }

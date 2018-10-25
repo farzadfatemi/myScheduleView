@@ -73,55 +73,60 @@
         <tbody>
         <tr>
           <td>
-            <form class="form" (ngSubmit)="onSubmit()">
+            <form class="form" (ngSubmit)="onSubmit()" >
               <div class="input-group input-group-sm mb-3">
-                <input type="text" placeholder="Name of product" class="form-control" aria-label="Small"
+                <input type="text" placeholder="Name of product" name="name" [(ngModel)]="model.name" class="form-control" id="pName" aria-label="Small"
                        aria-describedby="productName">
                 <div class="input-group-prepend">
-                  <span class="input-group-text  " id="productName"><img src="../../assets/images/box.svg"
-                                                                         class="box-image"/> </span>
+                  <span class="input-group-text" id="productName"><img src="../../assets/images/box.svg" class="box-image"/> </span>
                 </div>
-              </div>
-              <div class="input-group input-group-sm mb-3  ">
-                <input type="text" placeholder="Price" class="form-control" aria-label="Small"
-                       aria-describedby="purchasePrice">
-                <div class="input-group-prepend">
+                <span style="width: 10px">  </span>
+                <input type="text" placeholder="Price" name="price" [(ngModel)]="model.price"  class="form-control" aria-label="Small" aria-describedby="purchasePrice">
+                <div class="input-group-prepend" >
                   <span class="input-group-text  " id="purchasePrice"><img src="../../assets/images/coins.svg"
                                                                            class="box-image"/> </span>
                 </div>
                 <span style="width: 10px">  </span>
-                <input type="text" placeholder="Amount" class="form-control" aria-label="Small"
+                <input type="text" placeholder="Amount" name="amount" [(ngModel)]="model.amount" class="form-control" aria-label="Small"
                        aria-describedby="purchaseAmount">
                 <div class="input-group-prepend">
                   <span class="input-group-text  " id="purchaseAmount"><img src="../../assets/images/plank.svg"
                                                                             class="box-image"/> </span>
                 </div>
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                  <select class="dropdown-style" id="units" required [(ngModel)]="model.unitId" name="unit" >
+                    <option  [ngValue]="undefined" disabled hidden selected> Unit </option>
+                    <option class="ui dropdown" *ngFor="let unit of unitList" [ngValue]="unit.unitId">{{ unit.name }}</option>
+                  </select>
+                 <!-- <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                           aria-haspopup="true" aria-expanded="false">Unit
-                  </button>
+                  </button>-->
                   <span class="input-group-text  " id="pUnit"> <img src="../../assets/images/ruler.svg"
                                                                     class="box-image"/></span>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Number<img src="../../assets/images/Numbers.svg"
+                 <!-- <div class="dropdown-menu dropdown-style" >
+                    <a class="dropdown-item dropdown-style" href="#">Number<img src="../../assets/images/Numbers.svg"
                                                                  class="box-image"/></a>
                     <div role="separator" class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><img src="../../assets/images/weight-tool.svg"
+                    <a class="dropdown-item dropdown-style" href="#"><img src="../../assets/images/weight-tool.svg"
                                                            class="box-image"/> Kg</a>
-                    <a class="dropdown-item" href="#">Num</a>
-                    <a class="dropdown-item" href="#">Meter</a>
-                  </div>
+                    <a class="dropdown-item dropdown-style" href="#">Num</a>
+                    <a class="dropdown-item dropdown-style" href="#">Meter</a>
+                  </div>-->
                 </div>
                 <span style="width: 10px">  </span>
                 <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">Store Name
-                  </button>
+                    <select class="dropdown-style" id="shopList" required [(ngModel)]="model.sellerId" name="sellectSeller" >
+                      <option  [ngValue]="undefined" disabled hidden selected> Shop </option>
+                      <option class="ui dropdown" *ngFor="let seller of sellerList" [ngValue]="seller.sellerId">{{ seller.name }}</option>
+                    </select>
                   <span class="input-group-text  " id="pStore"> <img src="../../assets/images/shop.svg"
                                                                      class="box-image"/></span>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Countdown<img src="../../assets/images/Numbers.svg"
+             <!--     <div class="dropdown-menu">
+                    <a *ngFor="let seller of sellerList"  class="dropdown-item" href="#">{{seller.name }} <img src="../../assets/images/Numbers.svg"
                                                                     class="box-image"/></a>
+
+
+
                     <div role="separator" class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#"><img src="../../assets/images/weight-tool.svg"
                                                            class="box-image"/> Warehouse</a>
@@ -133,10 +138,10 @@
                     <a class="dropdown-item" href="#">Pizza Hut</a>
                     <a class="dropdown-item" href="#">KFC</a>
                     <a class="dropdown-item" href="#">BurgerKing</a>
-                  </div>
+                  </div>-->
                 </div>
               </div>
-              <button type="button" class="btn pur-btns margin-small" (click)="addRow()" id="addNewPurchase">Add New
+              <button type="submit" class="btn pur-btns margin-small"   id="addNewPurchase">Add New
               </button>
             </form>
           </td>

@@ -6,6 +6,7 @@ export interface Purchase {
   manufacturerId;
   price;
   amount;
+  unitId;
   todo;
   comment;
   date;
