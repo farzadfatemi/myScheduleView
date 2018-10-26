@@ -7,6 +7,8 @@ import {SellerService} from '../seller/seller.service';
 import {Seller} from '../domain/seller';
 import {UnitService} from '../unit/unit.service';
 import {Unit} from '../domain/unit';
+import {CategoryService} from '../category/category.service';
+import {Category} from '../domain/category';
 
 
 const URL = 'http://localhost:8080/';
@@ -22,12 +24,14 @@ export class PurchaseComponent implements OnInit {
   purchaseList: Purchase[];
   sellerList: Seller[];
   unitList: Unit[];
+  categoryList: Category[];
   model: any = {};
   // @Input() testVar: String='33';
   constructor(
     private purchaseService: PurchaseService,
     private sellerServices: SellerService,
     private unitServices: UnitService,
+    private categoryServices: CategoryService,
     private spinner: NgxSpinnerService) {
   }
 
@@ -57,6 +61,9 @@ export class PurchaseComponent implements OnInit {
     });
     this.sellerServices.getAllSellers().then(sellerList => {
       this.sellerList = sellerList;
+    });
+    this.categoryServices.getAllCategories().then(categoryList => {
+      this.categoryList = categoryList;
     });
 
     // alert(this.purchaseList);

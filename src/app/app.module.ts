@@ -14,6 +14,7 @@ import {FormsModule} from '@angular/forms';
 import {MultiSelectModule, TabViewModule} from 'primeng/primeng';
 import {SellerComponent} from './seller/seller.component';
 import {UnitComponent} from './unit/unit.component';
+import {CategoryComponent} from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {UnitComponent} from './unit/unit.component';
     PurchaseComponent,
     TabbarComponent,
     SellerComponent,
-    UnitComponent
+    UnitComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

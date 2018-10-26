@@ -115,11 +115,11 @@
                 </div>
                 <span style="width: 10px">  </span>
                 <div class="input-group-prepend">
-                    <select class="dropdown-style" id="shopList" required [(ngModel)]="model.sellerId" name="sellectSeller" >
-                      <option  [ngValue]="undefined" disabled hidden selected> Shop </option>
-                      <option class="ui dropdown" *ngFor="let seller of sellerList" [ngValue]="seller.sellerId">{{ seller.name }}</option>
+                    <select class="dropdown-style" id="categoryList" required [(ngModel)]="model.categoryId" name="category" >
+                      <option  [ngValue]="undefined" disabled hidden selected> Category </option>
+                      <option class="ui dropdown" *ngFor="let category of categoryList" [ngValue]="category.categoryId">{{ category.name }}</option>
                     </select>
-                  <span class="input-group-text  " id="pStore"> <img src="../../assets/images/shop.svg"
+                  <span class="input-group-text  " id="pCategory"> <img src="../../assets/images/shop.svg"
                                                                      class="box-image"/></span>
              <!--     <div class="dropdown-menu">
                     <a *ngFor="let seller of sellerList"  class="dropdown-item" href="#">{{seller.name }} <img src="../../assets/images/Numbers.svg"
@@ -136,6 +136,15 @@
                     <a class="dropdown-item" href="#">KFC</a>
                     <a class="dropdown-item" href="#">BurgerKing</a>
                   </div>-->
+                </div>
+                <div class="input-group-prepend">
+                    <select class="dropdown-style" id="shopList" required [(ngModel)]="model.sellerId" name="seller" >
+                      <option  [ngValue]="undefined" disabled hidden selected> Shop </option>
+                      <option class="ui dropdown" *ngFor="let seller of sellerList" [ngValue]="seller.sellerId">{{ seller.name }}</option>
+                    </select>
+                  <span class="input-group-text  " id="pStore"> <img src="../../assets/images/shop.svg"
+                                                                     class="box-image"/></span>
+
                 </div>
               </div>
               <button type="submit" class="btn pur-btns margin-small"   id="addNewPurchase">Add New
