@@ -9,6 +9,8 @@ import {UnitService} from '../unit/unit.service';
 import {Unit} from '../domain/unit';
 import {CategoryService} from '../category/category.service';
 import {Category} from '../domain/category';
+import {Product} from '../domain/product';
+import {ProductService} from '../product/product.service';
 
 
 const URL = 'http://localhost:8080/';
@@ -25,6 +27,7 @@ export class PurchaseComponent implements OnInit {
   sellerList: Seller[];
   unitList: Unit[];
   categoryList: Category[];
+  productList: Product[];
   model: any = {};
   // @Input() testVar: String='33';
   constructor(
@@ -32,6 +35,7 @@ export class PurchaseComponent implements OnInit {
     private sellerServices: SellerService,
     private unitServices: UnitService,
     private categoryServices: CategoryService,
+    private productServices: ProductService,
     private spinner: NgxSpinnerService) {
   }
 
@@ -64,6 +68,9 @@ export class PurchaseComponent implements OnInit {
     });
     this.categoryServices.getAllCategories().then(categoryList => {
       this.categoryList = categoryList;
+    });
+    this.productServices.getAllProducts().then(productList => {
+      this.productList = productList;
     });
 
     // alert(this.purchaseList);
@@ -106,6 +113,14 @@ export class PurchaseComponent implements OnInit {
           $('#' + $(this).attr('id')).removeClass('animated flipOutX faster');
         });
 
+      });
+
+
+      $(function() {
+        $('.dropdown-menu a').click(function() {
+          console.log($(this).attr('data-value'));
+          $('input[name=product]').val($(this).attr('data-value'))
+        });
       });
 
 

@@ -75,11 +75,26 @@
           <td>
             <form class="form" (ngSubmit)="onSubmit()" >
               <div class="input-group input-group-sm mb-3">
-                <input type="text" placeholder="Name of product" name="name" [(ngModel)]="model.name" class="form-control" id="pName" aria-label="Small"
-                       aria-describedby="productName">
+
+
+                <!--<input type="text" placeholder="Name of product" name="name" [(ngModel)]="model.name" class="form-control" id="pName" aria-label="Small"-->
+                       <!--aria-describedby="productName">-->
+
+
+
+                  <input type="text" placeholder="Name of product" [(ngModel)]="model.product" class="form-control" name="product">
+                  <ul class="dropdown-menu">
+                    <li><a href="#" class="ui dropdown" [attr.data-value]="product.name" *ngFor="let product of productList" >{{product.name}}</a></li>
+                  </ul>
+                  <span role="button" class="input-group-addon dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></span>
+
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="productName"><img src="../../assets/images/box.svg" class="box-image"/> </span>
                 </div>
+
+
+
+
                 <span style="width: 10px">  </span>
                 <input type="text" placeholder="Price" name="price" [(ngModel)]="model.price"  class="form-control" aria-label="Small" aria-describedby="purchasePrice">
                 <div class="input-group-prepend" >
@@ -119,7 +134,7 @@
                       <option  [ngValue]="undefined" disabled hidden selected> Category </option>
                       <option class="ui dropdown" *ngFor="let category of categoryList" [ngValue]="category.categoryId">{{ category.name }}</option>
                     </select>
-                  <span class="input-group-text  " id="pCategory"> <img src="../../assets/images/shop.svg"
+                  <span class="input-group-text  " id="pCategory"> <img src="../../assets/images/archive.svg"
                                                                      class="box-image"/></span>
              <!--     <div class="dropdown-menu">
                     <a *ngFor="let seller of sellerList"  class="dropdown-item" href="#">{{seller.name }} <img src="../../assets/images/Numbers.svg"

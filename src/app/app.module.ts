@@ -15,6 +15,7 @@ import {MultiSelectModule, TabViewModule} from 'primeng/primeng';
 import {SellerComponent} from './seller/seller.component';
 import {UnitComponent} from './unit/unit.component';
 import {CategoryComponent} from './category/category.component';
+import {ProductComponent} from './product/product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {CategoryComponent} from './category/category.component';
     TabbarComponent,
     SellerComponent,
     UnitComponent,
-    CategoryComponent
+    CategoryComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
