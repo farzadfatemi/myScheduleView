@@ -23,12 +23,15 @@ const URL = 'http://localhost:8080/';
 export class PurchaseComponent implements OnInit {
   cols: any[];
   selectedColumns: any[];
+  isNewProduct: boolean = false;
   purchaseList: Purchase[];
   sellerList: Seller[];
   unitList: Unit[];
   categoryList: Category[];
   productList: Product[];
+  selectedProduct: Product;
   model: any = {};
+
   // @Input() testVar: String='33';
   constructor(
     private purchaseService: PurchaseService,
@@ -58,7 +61,9 @@ export class PurchaseComponent implements OnInit {
     this.purchaseService.getAllPurchases().then(purchaseList => {
       this.purchaseList = purchaseList;
       // this.purchaseList.sort((val1, val2)=> {return <any>new Date(val2.date) - <any>new Date(val1.date)});
-      this.purchaseList.sort((val1, val2)=> {return  (val2.purchaseId) - (val1.purchaseId)});
+      this.purchaseList.sort((val1, val2) => {
+        return (val2.purchaseId) - (val1.purchaseId);
+      });
     });
     this.unitServices.getAllUnits().then(unitsList => {
       this.unitList = unitsList;
@@ -91,7 +96,6 @@ export class PurchaseComponent implements OnInit {
       })(document.createElement('div'));
 
 
-
       $('[id^=outOfList]').click(function () {
         // alert($(this).attr('id'));
         $('#' + $(this).attr('id')).addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
@@ -116,10 +120,10 @@ export class PurchaseComponent implements OnInit {
       });
 
 
-      $(function() {
-        $('.dropdown-menu a').click(function() {
+      $(function () {
+        $('.dropdown-menu a').click(function () {
           console.log($(this).attr('data-value'));
-          $('input[name=product]').val($(this).attr('data-value'))
+          $('input[name=product]').val($(this).attr('data-value'));
         });
       });
 
@@ -169,76 +173,18 @@ export class PurchaseComponent implements OnInit {
     newP.push(newPurchase);
 
     this.purchaseList = (newP);
-     this.sortFunc(this.purchaseList,'purchaseId');
+    this.sortFunc(this.purchaseList, 'purchaseId');
   }
 
-    sortFunc (data, id) {
-      return  data.sort((a, b) => {
-        if(id==='date') {
-          return <any>new Date(b[id]) - <any>new Date(a[id]);
-        } else{
-          return (b[id]) - (a[id]);
-        }
-      });
+  sortFunc(data, id) {
+    return data.sort((a, b) => {
+      if (id === 'date') {
+        return <any>new Date(b[id]) - <any>new Date(a[id]);
+      } else {
+        return (b[id]) - (a[id]);
+      }
+    });
   }
-  /* fileToUpload: File = null;
-   materialFlowId: String = '0';
-
-   inputId(event) {
-     this.materialFlowId = event.target.value;
-     console.log('id is -- > ' + event.target.value);
-   }
-
-   inputFile(event) {
-     this.fileToUpload = event.target.files[0];
-     console.log('File path -- > ' + event.target.files[0].name);
-   }
-
-   // onSubmit(id: string, file: File) {
-   onSubmit() {
-
-     console.log('POST');
-     this.spinner.show();
-     const frmData = new FormData();
-     // @ts-ignore
-     frmData.append('materialFlowId', this.materialFlowId);
-     frmData.append('inputPackage', this.fileToUpload);
-     console.log('id --> ' + this.materialFlowId);
-     if(this.fileToUpload !=null){
-       console.log('File name --> ' + this.fileToUpload.name);
-     }
-     if (this.fileToUpload != null && this.materialFlowId !== '0') {
-       this.http.post(URL, frmData).subscribe(res => {
-         const resp = JSON.parse(JSON.stringify(res));
-         if (resp != null) {
-           if (resp['ser:deposit_result'] != null) {
-             if (resp['ser:deposit_result']['ser:is_error'] === false) {
-               this.spinner.hide();
-               console.log('--==>> ' + JSON.stringify(res));
-               console.log('--ww==>> ' + resp['ser:deposit_result']['ser:sip_id']);
-               this.respFinal = 'Successful !! Your Sip ID is : ' + resp['ser:deposit_result']['ser:sip_id'];
-             } else {
-               this.spinner.hide();
-               this.respFinal = ' Error occurred!! : ' + resp['ser:deposit_result']['ser:message_desc'];
-             }
-           } else {
-             this.spinner.hide();
-             this.respFinal = ' Error occurred!! : ' + resp['error-message'];
-           }
-         }else {
-           this.spinner.hide();
-           this.respFinal = 'Sorry!! No result for id : '+ this.materialFlowId +' and file : '+ this.fileToUpload.name;
-         }
-         this.materialFlowId = '';
-       }, error => {
-         this.spinner.hide();
-         this.respFinal = 'Error occurred!! : Server Not Responded!!!';
-       });
-     } else {
-       this.spinner.hide();
-       this.respFinal = 'Error occurred!! : ID and Zip file are compulsory!!!';
-     }
-   }*/
 
   handleClose(e) {
     if (true)
@@ -248,8 +194,27 @@ export class PurchaseComponent implements OnInit {
   onSubmit() {
     this.purchaseService.addPurchases(this.model);
     // alert('SUCCESS!! :-)\n\n'  )
-    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
+
+  productChangeEv(value) {
+    this.selectedProduct = value;
+    if (value != null && value === '-1') {
+      $('#newProduct').show(500);
+      $('#productItem').hide(500);
+    }
+    console.log('selectedProduct is -- > ' + value);
+  }
+
+  productChangeImg() {
+
+    $('#newProduct').toggle(500);
+    $('#productItem').toggle(500);
+    this.isNewProduct = !this.isNewProduct;
+    console.log('isNewProduct  -- > ' + this.isNewProduct);
+  }
+
+
 }
 
 //.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {

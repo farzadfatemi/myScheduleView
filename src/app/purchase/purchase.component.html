@@ -81,15 +81,16 @@
                        <!--aria-describedby="productName">-->
 
 
-
-                  <input type="text" placeholder="Name of product" [(ngModel)]="model.product" class="form-control" name="product">
-                  <ul class="dropdown-menu">
-                    <li><a href="#" class="ui dropdown" [attr.data-value]="product.name" *ngFor="let product of productList" >{{product.name}}</a></li>
-                  </ul>
-                  <span role="button" class="input-group-addon dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></span>
-
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="productName"><img src="../../assets/images/box.svg" class="box-image"/> </span>
+                   <select class="dropdown-style"  #productItem (change)="productChangeEv(productItem.value)" id="productItem" required [(ngModel)]="model.productId" name="category" >
+                    <option  [ngValue]="undefined" disabled hidden selected> Product </option>
+                    <option  value="-1" name="product" > New Product ... </option>
+                    <option class="ui dropdown" *ngFor="let product of productList" [(ngValue)]="product.productId">{{ product.name }}</option>
+                  </select>
+                  <input type="text" placeholder="New Product" id="newProduct" name="newProduct" [(ngModel)]="model.newProduct"  style="display:none" class="form-control" aria-label="Small"  aria-describedby="newProductName">
+                  <div class="input-group-prepend">
+                  <span class="input-group-text" id="newProductName">
+                    <a (click)="productChangeImg()" ><img src="../../assets/images/box.svg" class="box-image"/></a>
+                  </span>
                 </div>
 
 
