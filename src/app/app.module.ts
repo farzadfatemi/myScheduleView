@@ -16,6 +16,7 @@ import {SellerComponent} from './seller/seller.component';
 import {UnitComponent} from './unit/unit.component';
 import {CategoryComponent} from './category/category.component';
 import {ProductComponent} from './product/product.component';
+import {ManufacturerComponent} from './manufacturer/manufacturer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ProductComponent} from './product/product.component';
     SellerComponent,
     UnitComponent,
     CategoryComponent,
-    ProductComponent
+    ProductComponent,
+    ManufacturerComponent
   ],
   imports: [
     BrowserModule,

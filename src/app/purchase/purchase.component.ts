@@ -11,6 +11,8 @@ import {CategoryService} from '../category/category.service';
 import {Category} from '../domain/category';
 import {Product} from '../domain/product';
 import {ProductService} from '../product/product.service';
+import {Manufacturer} from '../domain/manufacturer';
+import {ManufacturerService} from '../manufacturer/manufacturer.service';
 
 
 const URL = 'http://localhost:8080/';
@@ -29,6 +31,7 @@ export class PurchaseComponent implements OnInit {
   unitList: Unit[];
   categoryList: Category[];
   productList: Product[];
+  manufacturerList: Manufacturer[];
   selectedProduct: Product;
   model: any = {};
 
@@ -39,6 +42,7 @@ export class PurchaseComponent implements OnInit {
     private unitServices: UnitService,
     private categoryServices: CategoryService,
     private productServices: ProductService,
+    private manufacturerServices: ManufacturerService,
     private spinner: NgxSpinnerService) {
   }
 
@@ -76,6 +80,9 @@ export class PurchaseComponent implements OnInit {
     });
     this.productServices.getAllProducts().then(productList => {
       this.productList = productList;
+    });
+   this.manufacturerServices.getAllManufacturers().then(manufacturerList => {
+      this.manufacturerList = manufacturerList;
     });
 
     // alert(this.purchaseList);
@@ -199,9 +206,10 @@ export class PurchaseComponent implements OnInit {
 
   productChangeEv(value) {
     this.selectedProduct = value;
-    if (value != null && value === '-1') {
+    if (value === '') {
       $('#newProduct').show(500);
       $('#productItem').hide(500);
+      this.isNewProduct = true;
     }
     console.log('selectedProduct is -- > ' + value);
   }
@@ -217,4 +225,3 @@ export class PurchaseComponent implements OnInit {
 
 }
 
-//.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
