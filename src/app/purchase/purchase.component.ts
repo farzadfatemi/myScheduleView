@@ -204,6 +204,15 @@ export class PurchaseComponent implements OnInit {
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
 
+  addProduct() {
+    this.productServices.addPruduct(this.model);
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
+  }
+  addCategory() {
+    this.categoryServices.addCategory(this.model);
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
+  }
+
   productChangeEv(value) {
     this.selectedProduct = value;
     if (value === '') {

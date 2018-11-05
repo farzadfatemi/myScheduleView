@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Category} from '../domain/category';
 
 const URL = 'http://localhost:8080/';
@@ -16,5 +16,11 @@ export class CategoryService {
       .then(res => <Category[]>res)
       .then(data => { return data; });
   }
+  addCategory(file) {
+    // alert( JSON.stringify(file));
 
+    var headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/form-data');
+    return this.http.post((URL+'addCategory'),file, {headers: headers }).subscribe(res => <Category[]>res);
+  }
 }
