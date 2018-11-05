@@ -17,10 +17,11 @@ export class ProductService {
       .then(data => { return data; });
   }
   addPruduct(file) {
-    // alert( JSON.stringify(file));
+    // console.log( JSON.stringify(file));
 
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/form-data');
-    return this.http.post((URL+'addProduct'),file, {headers: headers }).subscribe(res => <Product[]>res);
+    // return this.http.post((URL+'addProduct'),file, {headers: headers }).subscribe(res => <Product[]>res);
+    return null;
   }
 }
