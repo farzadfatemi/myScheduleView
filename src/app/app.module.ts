@@ -17,6 +17,11 @@ import {UnitComponent} from './unit/unit.component';
 import {CategoryComponent} from './category/category.component';
 import {ProductComponent} from './product/product.component';
 import {ManufacturerComponent} from './manufacturer/manufacturer.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,11 @@ import {ManufacturerComponent} from './manufacturer/manufacturer.component';
     FormsModule,
     TableModule,
     MultiSelectModule,
-    TabViewModule
+    TabViewModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

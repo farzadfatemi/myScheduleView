@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import * as $ from 'jquery';
 import {ProductService} from './product.service';
 import {Product} from '../domain/product';
 import {Manufacturer} from '../domain/manufacturer';
@@ -14,15 +15,26 @@ export class ProductComponent implements OnInit {
   @Input() manufacturerList: Manufacturer[];
   productList: Product[];
   model: any = {};
+
+
   constructor(
-    private productServices: ProductService) { }
+    private productServices: ProductService) {
+  }
 
   ngOnInit() {
     this.productServices.getAllProducts().then(productList => {
       this.productList = productList;
     });
-    this.model.prodDate =  new Date().toISOString().split('T')[0];
-    this.model.expDate =  new Date().toISOString().split('T')[0];
+    let d = new Date();
+    let formatedDate = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+    this.model.prodDate = formatedDate;
+    console.log('now  ' + formatedDate);
+    this.model.expDate = formatedDate;
+
+    $(document).ready(function () {
+
+    });
+
   }
 
   addProduct() {
