@@ -21,7 +21,7 @@ export class ProductService {
 
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/form-data');
-    // return this.http.post((URL+'addProduct'),file, {headers: headers }).subscribe(res => <Product[]>res);
-    return null;
+    return this.http.post((URL+'addProduct'),file, {headers: headers }).subscribe(res => <Product[]>res);
+    // return null;
   }
 }

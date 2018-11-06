@@ -21,13 +21,13 @@
     </mat-form-field>
     <span style="width: 10px">  </span>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" [value]="model.prodDate"  placeholder="Choose a produce date">
+      <input matInput [matDatepicker]="picker" [value]="model.prodDate" (dateChange)="setProdDate('change', $event)" placeholder="Choose a produce date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker  #picker></mat-datepicker>
     </mat-form-field>
     <span style="width: 10px">  </span>
     <mat-form-field>
-      <input matInput [matDatepicker]="expPicker" [value]="model.expDate"  placeholder="Choose a expiration date">
+      <input matInput [matDatepicker]="expPicker" [value]="model.expDate" (dateChange)="setExpDate('change', $event)"  placeholder="Choose a expiration date">
       <mat-datepicker-toggle matSuffix [for]="expPicker"></mat-datepicker-toggle>
       <mat-datepicker  #expPicker></mat-datepicker>
     </mat-form-field>
@@ -36,33 +36,34 @@
       <input matInput placeholder="Height" id="height" name="Height" [(ngModel)]="model.height">
     </mat-form-field>
     <span style="width: 10px">  </span>
-    <!--<input class="form-control" type="date" name="produceDate" id="prodDate">-->
-    <!--<input class="form-control" type="date" [(ngModel)]="model.expDate" name="expirationDate" id="expDate">-->
-    <!--<input type="text" placeholder="Height" id="height" name="Height" [(ngModel)]="model.height" class="form-control"-->
-           <!--aria-label="Small" aria-describedby="height">-->
+    <mat-form-field>
+      <input matInput placeholder="Length" id="length" name="Length" [(ngModel)]="model.length">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput placeholder="Width" id="width" name="Width" [(ngModel)]="model.width">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput placeholder="Color" id="color" name="Color" [(ngModel)]="model.color">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput placeholder="Warranty" id="warranty" name="Warranty" [(ngModel)]="model.warranty">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput placeholder="Weight" id="weight" name="Weight" [(ngModel)]="model.weight">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
 
   </div>
-
   <div class="input-group input-group-sm mb-3">
-    <input type="text" placeholder="Length" id="length" name="Length" [(ngModel)]="model.length" class="form-control"
-           aria-label="Small" aria-describedby="length">
-
-    <input type="text" placeholder="Width" id="width" name="Width" [(ngModel)]="model.width" class="form-control"
-           aria-label="Small" aria-describedby="width">
-
-    <input type="text" placeholder="Color" id="color" name="Color" [(ngModel)]="model.color" class="form-control"
-           aria-label="Small" aria-describedby="color">
-
-    <input type="text" placeholder="Warranty" id="warranty" name="Warranty" [(ngModel)]="model.warranty"
-           class="form-control" aria-label="Small" aria-describedby="warranty">
-
-    <input type="text" placeholder="Weight" id="weight" name="Weight" [(ngModel)]="model.weight" class="form-control"
-           aria-label="Small" aria-describedby="weight">
-
-    <textarea type="text" placeholder="Description" id="description" name="Description" [(ngModel)]="model.description"
-              class="form-control" aria-label="Small" aria-describedby="description">{{model.description}}</textarea>
-
-  </div>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" id="description" name="Description" [(ngModel)]="model.description" >{{model.description}}</textarea>
+  </mat-form-field>
+  <span style="width: 10px">  </span>
+</div>
   <button type="submit" class="btn pur-btns margin-small" id="addNewProduct">Add New Product
   </button>
 

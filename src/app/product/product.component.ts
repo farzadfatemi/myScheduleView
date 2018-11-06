@@ -4,6 +4,7 @@ import {ProductService} from './product.service';
 import {Product} from '../domain/product';
 import {Manufacturer} from '../domain/manufacturer';
 import {Category} from '../domain/category';
+import {MatDatepickerInputEvent} from '@angular/material';
 
 @Component({
   selector: 'app-product',
@@ -25,21 +26,30 @@ export class ProductComponent implements OnInit {
     this.productServices.getAllProducts().then(productList => {
       this.productList = productList;
     });
-    let d = new Date();
-    let formatedDate = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
-    this.model.prodDate = formatedDate;
-    console.log('now  ' + formatedDate);
-    this.model.expDate = formatedDate;
+    this.model.prodDate = this.formatDate(new Date());
+    console.log('now  ' + this.formatDate(new Date()));
+    this.model.expDate = this.formatDate(new Date());
 
     $(document).ready(function () {
 
     });
 
   }
+  setProdDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    console.log("Prod Date Chosen : "+ event.value);
+
+    this.model.prodDate = this.formatDate(event.value);
+  }
+  setExpDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    console.log("Exp Date Chosen : "+ event.value);
+    this.model.expDate = this.formatDate(event.value);
+  }
 
   addProduct() {
     this.productServices.addPruduct(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
-
+ formatDate(d){
+   return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+ }
 }
