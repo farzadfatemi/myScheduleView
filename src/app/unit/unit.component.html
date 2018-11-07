@@ -1,3 +1,14 @@
-<p>
-  unit works!
-</p>
+<form class="form" (ngSubmit)="addUnit()">
+  <div class="input-group input-group-sm mb-3">
+    <mat-form-field>
+      <input matInput placeholder="Unit Name" id="UnitName" name="UnitName" [(ngModel)]="model.name">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <textarea matInput placeholder="Unit Description" id="description" name="Description"
+                [(ngModel)]="model.description">{{model.description}}</textarea>
+    </mat-form-field>
+  </div>
+  <button type="submit" class="btn pur-btns margin-small" id="addNewUnit">Add New Unit
+  </button>
+</form>

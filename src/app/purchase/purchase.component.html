@@ -137,26 +137,14 @@
         <p-tabPanel header="Add Category" [closable]="true">
           <app-category [categoryList]='this.categoryList'></app-category>
         </p-tabPanel>
-        <p-tabPanel header="Add Seller" [selected]="true"  [closable]="true">
-                <app-seller></app-seller>
+        <p-tabPanel header="Add Seller" [closable]="true">
+          <app-seller></app-seller>
         </p-tabPanel>
-        <p-tabPanel header="Add Store" [closable]="true">
-          <form class="form" (ngSubmit)="onSubmit()">
-            <div class="input-group input-group-sm mb-3">
+        <p-tabPanel header="Add Store" [selected]="true" [closable]="true">
 
-            </div>
-            <button type="submit" class="btn pur-btns margin-small" id="addNewStore">Add New Store
-            </button>
-          </form>
         </p-tabPanel>
         <p-tabPanel header="Add Unit" [closable]="true">
-          <form class="form" (ngSubmit)="onSubmit()">
-            <div class="input-group input-group-sm mb-3">
-
-            </div>
-            <button type="submit" class="btn pur-btns margin-small" id="addNewUnit">Add New Unit
-            </button>
-          </form>
+          <app-unit></app-unit>
         </p-tabPanel>
         <p-tabPanel header="Add Manufacturer" [closable]="true">
           <form class="form" (ngSubmit)="onSubmit()">

@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Unit} from '../domain/unit';
+import {UnitService} from '../unit/unit.service';
 
 @Component({
   selector: 'app-unit',
@@ -7,9 +9,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UnitComponent implements OnInit {
 
-  constructor() { }
+  @Input() unitList: Unit[];
 
+  constructor(
+    private unitServices: UnitService) { }
+
+  model: any = {};
   ngOnInit() {
+  }
+
+  addUnit() {
+    this.unitServices.addUnit(this.model);
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
 
 }
