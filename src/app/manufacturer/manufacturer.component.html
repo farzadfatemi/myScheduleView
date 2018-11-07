@@ -1,3 +1,59 @@
-<p>
-  manufacturer works!
-</p>
+<form class="form" (ngSubmit)="addManufacturer()">
+  <div class="input-group input-group-sm mb-3">
+    <mat-form-field>
+      <input matInput placeholder="Manufacturer Name" id="ManufacturerName" name="ManufacturerName" [(ngModel)]="model.name">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput placeholder="Branch Name" id="BranchName" name="BranchName" [(ngModel)]="model.branch">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <mat-select placeholder="Nationality"  class="dropdown-style" id="Nationality" required [(ngModel)]="model.nationality" name="nationality">
+        <mat-option class="ui dropdown" *ngFor="let nationality of nationalityList"
+                    [(value)]="nationality.id">{{ nationality.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput placeholder="Filed Name" id="FiledName" name="FiledName" [(ngModel)]="model.filed">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+
+    <mat-form-field>
+      <mat-select placeholder="Seller"  class="dropdown-style" id="Seller" required [(ngModel)]="model.sellerId" name="seller">
+        <mat-option class="ui dropdown" *ngFor="let seller of sellerList"
+                    [(value)]="seller.sellerId">{{ seller.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+
+    <mat-form-field >
+      <input matInput type="tel" placeholder="Phone" id="Phone" name="Phone" [(ngModel)]="model.phone">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email"   id="email" name="Email" [(ngModel)]="model.email">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput type="url" placeholder="Website"   id="website" name="Website" [(ngModel)]="model.website">
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+    <mat-form-field>
+      <input matInput placeholder="Address" id="address" name="Address" [(ngModel)]="model.address">
+    </mat-form-field>
+
+  </div>
+  <div class="input-group input-group-sm mb-3">
+    <mat-form-field>
+      <textarea matInput placeholder="Manufacturer Description" id="description" name="Description"
+                [(ngModel)]="model.description">{{model.description}}</textarea>
+    </mat-form-field>
+    <span style="width: 10px">  </span>
+  </div>
+  <button type="submit" class="btn pur-btns margin-small" id="addNewManufacturer">Add New Manufacturer
+  </button>
+</form>

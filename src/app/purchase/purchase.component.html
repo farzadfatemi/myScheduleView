@@ -147,13 +147,7 @@
           <app-unit></app-unit>
         </p-tabPanel>
         <p-tabPanel header="Add Manufacturer" [closable]="true">
-          <form class="form" (ngSubmit)="onSubmit()">
-            <div class="input-group input-group-sm mb-3">
-
-            </div>
-            <button type="submit" class="btn pur-btns margin-small" id="addNewManufacturer">Add New Manufacturer
-            </button>
-          </form>
+          <app-manufacturer [sellerList]='this.sellerList'></app-manufacturer>
         </p-tabPanel>
       </p-tabView>
     </div>

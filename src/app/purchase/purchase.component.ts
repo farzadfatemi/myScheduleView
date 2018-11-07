@@ -58,7 +58,7 @@ export class PurchaseComponent implements OnInit {
       {field: 'amount', header: 'Amount', width: '25%'},
       {field: 'unitId', header: 'Unit Id', width: '25%'},
       {field: 'todo', header: 'Todo', width: '25%'},
-      {field: 'comment', header: 'Comment', width: '25%'},
+      {field: 'description', header: 'Comment', width: '25%'},
       {field: 'date', header: 'Date', width: '25%'}
     ];
     this.selectedColumns = this.cols;

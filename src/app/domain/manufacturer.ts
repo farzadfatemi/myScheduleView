@@ -1,13 +1,13 @@
 export interface Manufacturer {
-  address,
-  branch,
-  comment,
-  email,
-  field,
   manufacturerId,
   name,
+  address,
+  branch,
+  email,
+  field,
   nationality,
   phone,
   sellerId,
-  website
+  website,
+  description
 }

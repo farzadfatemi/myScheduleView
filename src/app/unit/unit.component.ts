@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Unit} from '../domain/unit';
-import {UnitService} from '../unit/unit.service';
+import {UnitService} from './unit.service';
 
 @Component({
   selector: 'app-unit',
