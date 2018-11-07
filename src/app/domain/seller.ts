@@ -4,5 +4,6 @@ export interface Seller {
   phone;
   website;
   email;
-  comment;
+  address;
+  description;
 }

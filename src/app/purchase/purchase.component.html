@@ -68,38 +68,44 @@
   <div class="card store-group">
     <div class="card-body" style="text-align: center">
       <p-tabView [controlClose]="true" (onClose)="handleClose($event)">
-                 <!--  //----------   ///////////// Purchase Tab //////////  ------------->
+        <!--  //----------   ///////////// Purchase Tab //////////  ------------->
         <p-tabPanel header="Purchased Item" [closable]="false">
-          <form class="form" (ngSubmit)="onSubmit()" >
+          <form class="form" (ngSubmit)="onSubmit()">
             <div class="input-group input-group-sm mb-3">
 
-              <select class="dropdown-style"  #productItem (change)="productChangeEv(productItem.value)" id="productItem" required [(ngModel)]="model.productId" name="category" >
-                <option  [ngValue]="undefined" disabled hidden selected> Product </option>
-                <option class="ui dropdown" *ngFor="let product of productList" [(ngValue)]="product.productId">{{ product.name }}</option>
+              <select class="dropdown-style" #productItem (change)="productChangeEv(productItem.value)" id="productItem"
+                      required [(ngModel)]="model.productId" name="category">
+                <option [ngValue]="undefined" disabled hidden selected> Product</option>
+                <option class="ui dropdown" *ngFor="let product of productList" [(ngValue)]="product.productId">{{
+                  product.name }}
+                </option>
               </select>
-                <div class="input-group-prepend">
+              <div class="input-group-prepend">
                   <span class="input-group-text" id="productName">
                      <img src="../../assets/images/box.svg" class="box-image"/>
                   </span>
               </div>
 
               <span style="width: 10px">  </span>
-              <input type="text" placeholder="Price" name="price" [(ngModel)]="model.price"  class="form-control" aria-label="Small" aria-describedby="purchasePrice">
-              <div class="input-group-prepend" >
+              <input type="text" placeholder="Price" name="price" [(ngModel)]="model.price" class="form-control"
+                     aria-label="Small" aria-describedby="purchasePrice">
+              <div class="input-group-prepend">
                   <span class="input-group-text  " id="purchasePrice"><img src="../../assets/images/coins.svg"
                                                                            class="box-image"/> </span>
               </div>
               <span style="width: 10px">  </span>
-              <input type="text" placeholder="Amount" name="amount" [(ngModel)]="model.amount" class="form-control" aria-label="Small"
+              <input type="text" placeholder="Amount" name="amount" [(ngModel)]="model.amount" class="form-control"
+                     aria-label="Small"
                      aria-describedby="purchaseAmount">
               <div class="input-group-prepend">
                   <span class="input-group-text  " id="purchaseAmount"><img src="../../assets/images/plank.svg"
                                                                             class="box-image"/> </span>
               </div>
               <div class="input-group-prepend">
-                <select class="dropdown-style" id="units" required [(ngModel)]="model.unitId" name="unit" >
-                  <option  [ngValue]="undefined" disabled hidden selected> Unit </option>
-                  <option class="ui dropdown" *ngFor="let unit of unitList" [ngValue]="unit.unitId">{{ unit.name }}</option>
+                <select class="dropdown-style" id="units" required [(ngModel)]="model.unitId" name="unit">
+                  <option [ngValue]="undefined" disabled hidden selected> Unit</option>
+                  <option class="ui dropdown" *ngFor="let unit of unitList" [ngValue]="unit.unitId">{{ unit.name }}
+                  </option>
                 </select>
                 <span class="input-group-text  " id="pUnit"> <img src="../../assets/images/ruler.svg"
                                                                   class="box-image"/></span>
@@ -108,83 +114,56 @@
               <span style="width: 10px">  </span>
 
               <div class="input-group-prepend">
-                <select class="dropdown-style" id="shopList" required [(ngModel)]="model.sellerId" name="seller" >
-                  <option  [ngValue]="undefined" disabled hidden selected> Shop </option>
-                  <option class="ui dropdown" *ngFor="let seller of sellerList" [ngValue]="seller.sellerId">{{ seller.name }}</option>
+                <select class="dropdown-style" id="shopList" required [(ngModel)]="model.sellerId" name="seller">
+                  <option [ngValue]="undefined" disabled hidden selected> Shop</option>
+                  <option class="ui dropdown" *ngFor="let seller of sellerList" [ngValue]="seller.sellerId">{{
+                    seller.name }}
+                  </option>
                 </select>
                 <span class="input-group-text  " id="pStore"> <img src="../../assets/images/shop.svg"
                                                                    class="box-image"/></span>
 
               </div>
             </div>
-            <button type="submit" class="btn pur-btns margin-small"   id="addNewPurchase">Add New
+            <button type="submit" class="btn pur-btns margin-small" id="addNewPurchase">Add New
             </button>
           </form>
         </p-tabPanel>
         <!--  //----------   ///////////// Add Item Tab //////////  ------------->
-        <p-tabPanel header="Add Item" [selected]="true" [closable]="true">
+        <p-tabPanel header="Add Item" [closable]="true">
           <app-product [categoryList]='this.categoryList' [manufacturerList]='this.manufacturerList'></app-product>
         </p-tabPanel>
         <!--  //----------   ///////////// Add Category Tab //////////  ------------->
         <p-tabPanel header="Add Category" [closable]="true">
-          <form class="form" (ngSubmit)="addCategory()" >
-            <div class="input-group input-group-sm mb-3">
-              <input type="text" placeholder="CategoryName" id="CategoryName" name="CategoryName" [(ngModel)]="model.name"  class="form-control" aria-label="Small"  aria-describedby="CategoryName">
-              <div class="input-group-prepend">
-                  <span class="input-group-text"  >
-                    <img src="../../assets/images/box.svg" class="box-image"/>
-                  </span>
-              </div>
-              <input type="text" placeholder="Type" id="type" name="Type" [(ngModel)]="model.type"  class="form-control" aria-label="Small"  aria-describedby="type">
-              <div class="input-group-prepend">
-                  <span class="input-group-text"  >
-                    <img src="../../assets/images/box.svg" class="box-image"/>
-                  </span>
-              </div>
-              <textarea type="text" placeholder="Category Description" id="CatDescription" name="CatDescription" [(ngModel)]="model.description"  class="form-control" aria-label="Small"  aria-describedby="CatDescription">{{model.description}}</textarea>
-              <div class="input-group-prepend">
-                  <span class="input-group-text"  >
-                    <img src="../../assets/images/box.svg" class="box-image"/>
-                  </span>
-              </div>
-            </div>
-            <button type="submit" class="btn pur-btns margin-small"   id="addNewCategory">Add New Cat
-            </button>
-          </form>
+          <app-category [categoryList]='this.categoryList'></app-category>
         </p-tabPanel>
-         <p-tabPanel header="Add Seller" [closable]="true">
-          <form class="form" (ngSubmit)="onSubmit()" >
-            <div class="input-group input-group-sm mb-3">
-
-            </div>
-            <button type="submit" class="btn pur-btns margin-small"   id="addNewSeller">Add New Seller
-            </button>
-          </form>
+        <p-tabPanel header="Add Seller" [selected]="true"  [closable]="true">
+                <app-seller></app-seller>
         </p-tabPanel>
         <p-tabPanel header="Add Store" [closable]="true">
-          <form class="form" (ngSubmit)="onSubmit()" >
+          <form class="form" (ngSubmit)="onSubmit()">
             <div class="input-group input-group-sm mb-3">
 
             </div>
-            <button type="submit" class="btn pur-btns margin-small"   id="addNewStore">Add New Store
+            <button type="submit" class="btn pur-btns margin-small" id="addNewStore">Add New Store
             </button>
           </form>
         </p-tabPanel>
         <p-tabPanel header="Add Unit" [closable]="true">
-          <form class="form" (ngSubmit)="onSubmit()" >
+          <form class="form" (ngSubmit)="onSubmit()">
             <div class="input-group input-group-sm mb-3">
 
             </div>
-            <button type="submit" class="btn pur-btns margin-small"   id="addNewUnit">Add New Unit
+            <button type="submit" class="btn pur-btns margin-small" id="addNewUnit">Add New Unit
             </button>
           </form>
         </p-tabPanel>
-       <p-tabPanel header="Add Manufacturer" [closable]="true">
-          <form class="form" (ngSubmit)="onSubmit()" >
+        <p-tabPanel header="Add Manufacturer" [closable]="true">
+          <form class="form" (ngSubmit)="onSubmit()">
             <div class="input-group input-group-sm mb-3">
 
             </div>
-            <button type="submit" class="btn pur-btns margin-small"   id="addNewManufacturer">Add New Manufacturer
+            <button type="submit" class="btn pur-btns margin-small" id="addNewManufacturer">Add New Manufacturer
             </button>
           </form>
         </p-tabPanel>

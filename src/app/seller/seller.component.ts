@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {SellerService} from './seller.service';
 
 @Component({
   selector: 'app-seller',
@@ -7,9 +8,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SellerComponent implements OnInit {
 
-  constructor() { }
+  constructor( private sellerServices: SellerService) {
+
+  }
 
   ngOnInit() {
   }
-
+  model: any = {};
+  addSeller() {
+    this.sellerServices.addSeller(this.model);
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
+  }
 }
