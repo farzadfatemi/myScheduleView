@@ -21,6 +21,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
+import {BranchComponent} from './branch/branch.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatNativeDateModule} from '@angular/material';
     UnitComponent,
     CategoryComponent,
     ProductComponent,
-    ManufacturerComponent
+    ManufacturerComponent,
+    BranchComponent
   ],
   imports: [
     BrowserModule,
