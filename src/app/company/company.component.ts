@@ -12,11 +12,14 @@ export class CompanyComponent implements OnInit {
 
   @Input() companyList: Company[];
   @Input() sellerList: Seller[];
-  nationalityList:[
+  nationalityList=[
     {"id":"1","name":"New Zealand"},
     {"id":"2","name":"Iran"}
     ];
-
+  businessTypeList=[
+    {"id":"1","name":"Seller"},
+    {"id":"2","name":"Producer"}
+    ];
   constructor(
     private companyServices: CompanyService) { }
 

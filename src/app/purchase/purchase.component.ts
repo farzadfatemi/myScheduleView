@@ -81,7 +81,7 @@ export class PurchaseComponent implements OnInit {
     this.productServices.getAllProducts().then(productList => {
       this.productList = productList;
     });
-   this.companyServices.getAllCompanys().then(companyList => {
+   this.companyServices.getAllCompanies().then(companyList => {
       this.companyList = companyList;
     });
 

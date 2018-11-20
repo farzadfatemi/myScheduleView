@@ -9,22 +9,22 @@
     </mat-form-field>
     <span style="width: 10px">  </span>
     <mat-form-field>
-      <mat-select placeholder="Nationality"  class="dropdown-style" id="Nationality" required [(ngModel)]="model.nationality" name="nationality">
+      <mat-select placeholder="Nationality"  class="dropdown-style" id="Nationality" [(ngModel)]="model.nationality" name="nationality">
         <mat-option class="ui dropdown" *ngFor="let nationality of nationalityList"
-                    [(value)]="nationality.id">{{ nationality.name }}
+                    [(value)]="nationality['id']">{{ nationality['name'] }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <span style="width: 10px">  </span>
     <mat-form-field>
-      <input matInput placeholder="Filed Name" id="FiledName" name="FiledName" [(ngModel)]="model.filed">
+      <input matInput placeholder="Filed Name" id="FiledName" name="FiledName" [(ngModel)]="model.field">
     </mat-form-field>
     <span style="width: 10px">  </span>
 
     <mat-form-field>
-      <mat-select placeholder="Seller"  class="dropdown-style" id="Seller" required [(ngModel)]="model.sellerId" name="seller">
-        <mat-option class="ui dropdown" *ngFor="let seller of sellerList"
-                    [(value)]="seller.sellerId">{{ seller.name }}
+      <mat-select placeholder="Business"  class="dropdown-style" id="Business" [(ngModel)]="model.businessId" name="business">
+        <mat-option class="ui dropdown" *ngFor="let business of businessTypeList"
+                    [(value)]="business.businessId">{{ business.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
