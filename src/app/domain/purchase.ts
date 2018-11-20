@@ -3,7 +3,7 @@ export interface Purchase {
   productId;
   sellerId;
   categoryId;
-  manufacturerId;
+  companyId;
   price;
   amount;
   unitId;

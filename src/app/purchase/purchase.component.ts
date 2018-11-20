@@ -11,8 +11,8 @@ import {CategoryService} from '../category/category.service';
 import {Category} from '../domain/category';
 import {Product} from '../domain/product';
 import {ProductService} from '../product/product.service';
-import {Manufacturer} from '../domain/manufacturer';
-import {ManufacturerService} from '../manufacturer/manufacturer.service';
+import {Company} from '../domain/company';
+import {CompanyService} from '../company/company.service';
 
 
 const URL = 'http://localhost:8080/';
@@ -31,7 +31,7 @@ export class PurchaseComponent implements OnInit {
   unitList: Unit[];
   categoryList: Category[];
   productList: Product[];
-  manufacturerList: Manufacturer[];
+  companyList: Company[];
   selectedProduct: Product;
   model: any = {};
 
@@ -42,7 +42,7 @@ export class PurchaseComponent implements OnInit {
     private unitServices: UnitService,
     private categoryServices: CategoryService,
     private productServices: ProductService,
-    private manufacturerServices: ManufacturerService,
+    private companyServices: CompanyService,
     private spinner: NgxSpinnerService) {
   }
 
@@ -53,7 +53,7 @@ export class PurchaseComponent implements OnInit {
       {field: 'productId', header: 'product Id', width: '15%'},
       {field: 'sellerId', header: 'Seller Id', width: '35%'},
       {field: 'categoryId', header: 'Category Id', width: '25%'},
-      {field: 'manufacturerId', header: 'Manufacturer Id', width: '25%'},
+      {field: 'companyId', header: 'Company Id', width: '25%'},
       {field: 'price', header: 'Price', width: '25%'},
       {field: 'amount', header: 'Amount', width: '25%'},
       {field: 'unitId', header: 'Unit Id', width: '25%'},
@@ -81,8 +81,8 @@ export class PurchaseComponent implements OnInit {
     this.productServices.getAllProducts().then(productList => {
       this.productList = productList;
     });
-   this.manufacturerServices.getAllManufacturers().then(manufacturerList => {
-      this.manufacturerList = manufacturerList;
+   this.companyServices.getAllCompanys().then(companyList => {
+      this.companyList = companyList;
     });
 
     // alert(this.purchaseList);
@@ -168,7 +168,7 @@ export class PurchaseComponent implements OnInit {
       productId: '1',
       sellerId: '31',
       categoryId: '15',
-      manufacturerId: '61',
+      companyId: '61',
       price: '55',
       amount: '33',
       unitId: '33',

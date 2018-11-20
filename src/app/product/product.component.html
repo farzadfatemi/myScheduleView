@@ -5,9 +5,9 @@
     </mat-form-field>
     <span style="width: 10px">  </span>
     <mat-form-field>
-      <mat-select placeholder="Manufacturer"  class="dropdown-style" id="Manufacturer" required [(ngModel)]="model.manufacturerId" name="manufacturer">
-          <mat-option class="ui dropdown" *ngFor="let manufacturer of manufacturerList"
-                [(value)]="manufacturer.manufacturerId">{{ manufacturer.name }}
+      <mat-select placeholder="Company"  class="dropdown-style" id="Company" required [(ngModel)]="model.companyId" name="company">
+          <mat-option class="ui dropdown" *ngFor="let company of companyList"
+                [(value)]="company.companyId">{{ company.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>

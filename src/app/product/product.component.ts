@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 import {ProductService} from './product.service';
 import {Product} from '../domain/product';
-import {Manufacturer} from '../domain/manufacturer';
+import {Company} from '../domain/company';
 import {Category} from '../domain/category';
 import {MatDatepickerInputEvent} from '@angular/material';
 
@@ -13,7 +13,7 @@ import {MatDatepickerInputEvent} from '@angular/material';
 })
 export class ProductComponent implements OnInit {
   @Input() categoryList: Category[];
-  @Input() manufacturerList: Manufacturer[];
+  @Input() companyList: Company[];
   productList: Product[];
   model: any = {};
 

@@ -1,7 +1,7 @@
-<form class="form" (ngSubmit)="addManufacturer()">
+<form class="form" (ngSubmit)="addCompany()">
   <div class="input-group input-group-sm mb-3">
     <mat-form-field>
-      <input matInput placeholder="Manufacturer Name" id="ManufacturerName" name="ManufacturerName" [(ngModel)]="model.name">
+      <input matInput placeholder="Company Name" id="CompanyName" name="CompanyName" [(ngModel)]="model.name">
     </mat-form-field>
     <span style="width: 10px">  </span>
     <mat-form-field>
@@ -49,11 +49,11 @@
   </div>
   <div class="input-group input-group-sm mb-3">
     <mat-form-field>
-      <textarea matInput placeholder="Manufacturer Description" id="description" name="Description"
+      <textarea matInput placeholder="Company Description" id="description" name="Description"
                 [(ngModel)]="model.description">{{model.description}}</textarea>
     </mat-form-field>
     <span style="width: 10px">  </span>
   </div>
-  <button type="submit" class="btn pur-btns margin-small" id="addNewManufacturer">Add New Manufacturer
+  <button type="submit" class="btn pur-btns margin-small" id="addNewCompany">Add New Company
   </button>
 </form>

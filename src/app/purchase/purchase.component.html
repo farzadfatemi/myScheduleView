@@ -131,15 +131,17 @@
         </p-tabPanel>
         <!--  //----------   ///////////// Add Item Tab //////////  ------------->
         <p-tabPanel header="Add Item" [closable]="true">
-          <app-product [categoryList]='this.categoryList' [manufacturerList]='this.manufacturerList'></app-product>
+          <app-product [categoryList]='this.categoryList' [companyList]='this.companyList'></app-product>
         </p-tabPanel>
         <!--  //----------   ///////////// Add Category Tab //////////  ------------->
         <p-tabPanel header="Add Category" [closable]="true">
           <app-category [categoryList]='this.categoryList'></app-category>
         </p-tabPanel>
+        <!--  //----------   ///////////// Add Seller //////////  ------------->
         <p-tabPanel header="Add Seller" [closable]="true">
           <app-seller></app-seller>
         </p-tabPanel>
+        <!--  //----------   ///////////// Add Store //////////  ------------->
         <p-tabPanel header="Add Store" [selected]="true" [closable]="true">
           <app-branch></app-branch>
           <app-seller></app-seller>
@@ -147,8 +149,8 @@
         <p-tabPanel header="Add Unit" [closable]="true">
           <app-unit></app-unit>
         </p-tabPanel>
-        <p-tabPanel header="Add Manufacturer" [closable]="true">
-          <app-manufacturer [sellerList]='this.sellerList'></app-manufacturer>
+        <p-tabPanel header="Add Company" [closable]="true">
+          <app-company [sellerList]='this.sellerList'></app-company>
         </p-tabPanel>
       </p-tabView>
     </div>

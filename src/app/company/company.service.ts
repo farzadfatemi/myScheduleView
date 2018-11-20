@@ -1,26 +1,26 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Manufacturer} from '../domain/manufacturer';
+import {Company} from '../domain/company';
 
 const URL = 'http://localhost:8080/';
 @Injectable({
   providedIn: 'root'
 })
-export class ManufacturerService {
+export class CompanyService {
 
   constructor(private http: HttpClient) { }
 
-  getAllManufacturers() {
-    return this.http.get<any>(URL+'allManufacturers')
+  getAllCompanys() {
+    return this.http.get<any>(URL+'allCompanys')
       .toPromise()
-      .then(res => <Manufacturer[]>res)
+      .then(res => <Company[]>res)
       .then(data => { return data; });
   }
-  addManufacturer(file) {
+  addCompany(file) {
     console.log( JSON.stringify(file));
 
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/form-data');
-    return this.http.post((URL+'addManufacturer'),file, {headers: headers }).subscribe(res => <Manufacturer[]>res);
+    return this.http.post((URL+'addCompany'),file, {headers: headers }).subscribe(res => <Company[]>res);
   }
 }

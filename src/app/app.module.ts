@@ -16,7 +16,7 @@ import {SellerComponent} from './seller/seller.component';
 import {UnitComponent} from './unit/unit.component';
 import {CategoryComponent} from './category/category.component';
 import {ProductComponent} from './product/product.component';
-import {ManufacturerComponent} from './manufacturer/manufacturer.component';
+import {CompanyComponent} from './company/company.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -34,7 +34,7 @@ import {BranchComponent} from './branch/branch.component';
     UnitComponent,
     CategoryComponent,
     ProductComponent,
-    ManufacturerComponent,
+    CompanyComponent,
     BranchComponent
   ],
   imports: [

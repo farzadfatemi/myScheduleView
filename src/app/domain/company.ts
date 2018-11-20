@@ -1,5 +1,5 @@
-export interface Manufacturer {
-  manufacturerId,
+export interface Company {
+  companyId,
   name,
   address,
   branch,
@@ -7,7 +7,7 @@ export interface Manufacturer {
   field,
   nationality,
   phone,
-  sellerId,
+  businessTypeId,
   website,
   description
 }

@@ -2,7 +2,7 @@ export interface Product {
     productId;
     name;
     description;
-    manufacturerId;
+    companyId;
     categoryId;
     prod;
     exp;
