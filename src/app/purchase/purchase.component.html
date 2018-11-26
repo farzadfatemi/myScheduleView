@@ -142,14 +142,14 @@
           <app-seller></app-seller>
         </p-tabPanel>
         <!--  //----------   ///////////// Add Store //////////  ------------->
-        <p-tabPanel header="Add Store" [selected]="true" [closable]="true">
+        <p-tabPanel header="Add Store"  [closable]="true">
           <app-branch></app-branch>
           <app-seller></app-seller>
         </p-tabPanel>
         <p-tabPanel header="Add Unit" [closable]="true">
           <app-unit></app-unit>
         </p-tabPanel>
-        <p-tabPanel header="Add Company" [closable]="true">
+        <p-tabPanel header="Add Company" [selected]="true" [closable]="true">
           <app-company [sellerList]='this.sellerList'></app-company>
         </p-tabPanel>
       </p-tabView>

@@ -20,9 +20,9 @@ import {CompanyComponent} from './company/company.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatSnackBarModule} from '@angular/material';
 import {BranchComponent} from './branch/branch.component';
-
+import {DialogBoxComponent} from './dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import {BranchComponent} from './branch/branch.component';
     CategoryComponent,
     ProductComponent,
     CompanyComponent,
-    BranchComponent
+    BranchComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +53,9 @@ import {BranchComponent} from './branch/branch.component';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule
+  ],
+  exports: [
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,11 +3,7 @@
     <mat-form-field>
       <input matInput placeholder="Company Name" id="CompanyName" name="CompanyName" [(ngModel)]="model.name">
     </mat-form-field>
-    <span style="width: 10px">  </span>
-    <mat-form-field>
-      <input matInput placeholder="Branch Name" id="BranchName" name="BranchName" [(ngModel)]="model.branch">
-    </mat-form-field>
-    <span style="width: 10px">  </span>
+    <span style="width: 10px"> </span>
     <mat-form-field>
       <mat-select placeholder="Nationality"  class="dropdown-style" id="Nationality" [(ngModel)]="model.nationality" name="nationality">
         <mat-option class="ui dropdown" *ngFor="let nationality of nationalityList"
@@ -22,9 +18,9 @@
     <span style="width: 10px">  </span>
 
     <mat-form-field>
-      <mat-select placeholder="Business"  class="dropdown-style" id="Business" [(ngModel)]="model.businessId" name="business">
+      <mat-select placeholder="Business Type"  class="dropdown-style" id="BusinessType" [(ngModel)]="model.businessTypeId" name="business">
         <mat-option class="ui dropdown" *ngFor="let business of businessTypeList"
-                    [(value)]="business.businessId">{{ business.name }}
+                    [(value)]="business.id">{{ business.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -56,4 +52,5 @@
   </div>
   <button type="submit" class="btn pur-btns margin-small" id="addNewCompany">Add New Company
   </button>
+  <!--<h1 *ngIf="this.response">{{this.response.name}}</h1>-->
 </form>

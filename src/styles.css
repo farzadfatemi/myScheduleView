@@ -2,3 +2,17 @@
 .align-center{
   margin: 0 auto;
 }
+.blue-snackbar {
+  max-height: 150px;
+  background: #bae8f3 !important;
+  color: black;
+  border-radius: 10px;
+  max-width: 568px;
+  min-width: 288px;
+  padding: 14px 24px;
+  transform: translateY(100%) translateY(24px);
+
+}.blue-snackbar button {
+   background-color: gray;
+   color: white;
+ }
