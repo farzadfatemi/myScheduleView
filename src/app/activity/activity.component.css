@@ -1,0 +1,21 @@
+.top-body {
+  margin-top: 60px;
+  /*padding : 30px;*/
+  /*direction: rtl;*/
+  /*!*text-align: left;*!*/
+  /*!*float: right;*!*/
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.input_table{
+  width: 100%;
+}
+.custom-body{
+  padding-left: 10px;
+}
