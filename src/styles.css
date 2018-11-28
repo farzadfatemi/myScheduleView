@@ -16,3 +16,7 @@
    background-color: gray;
    color: white;
  }
+.btn{
+  white-space:normal !important;
+  max-width:200px;
+}

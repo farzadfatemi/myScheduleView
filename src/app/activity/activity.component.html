@@ -14,7 +14,7 @@
             </th>
             <th>10-12</th>
             <th>8-10</th>
-            <th>6-8</th>
+            <th></th>
           </tr>
           </thead>
           <tbody>
@@ -60,7 +60,7 @@
       <div class="row text-right  ">
         <div class="col">
           <div class="card-header">
-            Select the store
+            Sunday
           </div>
           <div class="card zero-border">
             <div class="card-body">
@@ -74,7 +74,7 @@
         </div>
         <div class="col">
           <div class="card-header">
-            Select the store
+            Saturday
           </div>
           <div class="card zero-border">
             <div class="card-body">
@@ -88,7 +88,7 @@
         </div>
         <div class="col">
           <div class="card-header">
-            Select the store
+            Friday
           </div>
           <div class="card zero-border">
             <div class="card-body">
@@ -102,7 +102,7 @@
         </div>
         <div class="col">
           <div class="card-header">
-            Select the store
+            Thursday
           </div>
           <div class="card zero-border">
             <div class="card-body">
@@ -116,7 +116,7 @@
         </div>
         <div class="col">
           <div class="card-header">
-            Select the store
+            Wednesday
           </div>
           <div class="card zero-border">
             <div class="card-body">
@@ -130,13 +130,18 @@
         </div>
         <div class="col">
           <div class="card-header">
-            Select the store
+            Tuesday
           </div>
           <div class="card zero-border">
             <div class="card-body">
               <div class="form-group row">
-                <label class="col-5 col-form-label">Purchased Items : </label>
-                <div class="col-9">
+                <div class="row">
+                  <div class="span4 collapse-group">
+                    <h2>Heading</h2>
+                    <p>You need to keep your enterprise secure, and you want to do it on your terms. <span
+                      class="collapse" id="viewdetails3"> Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </span>
+                      <a data-toggle="collapse" data-target="#viewdetails3">More... &raquo;</a></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -144,15 +149,49 @@
         </div>
         <div class="col">
           <div class="card-header">
-            Select the store
+            Monday
           </div>
           <div class="card zero-border">
             <div class="card-body">
-              <div class="form-group row">
-                <button type="button" class="btn pur-btns btn-info  "
-                        id="intoList5">
-                  VegiMarket
+              <div class="form-group centered row">
+
+                <div class=" btn pur-btns  monday-color " style="margin-bottom:10px; max-width: 200px">
+                  <span class="summary  ">
+
+                    <p class="collapse " id="collapseSummary">
+                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
+                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
+                      Server is listening on localhost:5000, open your browser on
+                    </p>
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary" aria-expanded="false"
+                       aria-controls="collapseSummary"><i class="fa black-icon-color"></i></a>
+                  </span>
+                  <a  class="edit" href="#edit" (click)="editEvent(model.id)"><i class="far fa-check-circle black-icon-color"></i></a>
+                  <a  style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i class="fas fa-wrench black-icon-color"></i></a>
+                </div>
+
+
+                <button type="button" class="summary btn pur-btns btn-danger  "
+                        style="margin-bottom:10px; max-width: 200px">
+
+                  <p class="collapse" id="collapseSummary2">
+                    Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
+                    Development Server is listening on localhost:5000, open your browser on Angular Live Development
+                    Server is listening on localhost:5000, open your browser on
+                  </p>
+                  <a class="collapsed" data-toggle="collapse" href="#collapseSummary2" aria-expanded="false"
+                     aria-controls="collapseSummary2"></a>
+
                 </button>
+                <button type="button" class="btn pur-btns btn-outline-info  "
+                        style="margin-bottom:10px; max-width: 200px" id="intoList2">
+                  Angular Live Development Server is listening on localhost:5000, open your browser on
+                </button>
+                <button type="button" class="btn pur-btns btn-info  " style="margin-bottom:10px; max-width: 200px"
+                        id="intoList1">
+                  Angular Live Development Server is listening on localhost:5000, open your browser on
+                </button>
+
               </div>
             </div>
           </div>

@@ -30,6 +30,11 @@ export class ActivityComponent implements OnInit {
     return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
   }
 
+  editEvent(event:any){
+    console.log("d = "+JSON.stringify(event.value));
+    return null;
+  }
+
   /*displayedColumns: string[] =  ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 

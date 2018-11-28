@@ -19,3 +19,28 @@
 .custom-body{
   padding-left: 10px;
 }
+.monday-color{
+  background-color: #74CFEC;
+}
+.summary p.collapse:not(.show) {
+  height: 42px !important;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.summary p.collapsing {
+  min-height: 42px !important;
+}
+
+/*.summary a.collapsed:after  {*/
+  /*content: '+';*/
+/*}*/
+[data-toggle="collapse"] .fa:before {
+  content: "\f139";
+}[data-toggle="collapse"].collapsed .fa:before {
+   content: "\f13a";
+ }
+.black-icon-color {color:black;}
