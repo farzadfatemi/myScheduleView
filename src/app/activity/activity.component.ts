@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDatepickerInputEvent} from '@angular/material';
+import {ActivityService} from './activity.service';
+import {Activity} from '../domain/activity';
 
 @Component({
   selector: 'app-activity',
@@ -9,30 +11,63 @@ import {MatDatepickerInputEvent} from '@angular/material';
 export class ActivityComponent implements OnInit {
 
 
-  constructor() { }
+  activityList: Activity[];
+  saturdayActivityList: Activity[];
+  constructor(
+    private activityService: ActivityService,) {
+  }
 
   model: any = {};
+
   ngOnInit() {
     this.model.startDate = this.formatDate(new Date());
     console.log('now  ' + this.formatDate(new Date()));
     this.model.endDate = this.formatDate(new Date());
+
+    this.activityService.getAllActivities().then(activityList => {
+      this.activityList = activityList;
+      if (activityList !=null && activityList.length>0){
+        activityList.forEach(activity=>{
+          if(activity.startDate !=null){
+            console.log("Start Date" + activity.startDate);
+            // console.log("Start Date" + activity.startDate.getDay())
+          }
+        })
+      }
+
+    });
   }
+
   setStartDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log("Start Date Chosen : "+ event.value);
+    console.log('Start Date Chosen : ' + event.value);
 
     this.model.startDate = this.formatDate(event.value);
   }
+
   setEndDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log("End Date Chosen : "+ event.value);
+    console.log('End Date Chosen : ' + event.value);
     this.model.endDate = this.formatDate(event.value);
   }
-  formatDate(d){
+
+  formatDate(d) {
     return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
   }
 
-  editEvent(event:any){
-    console.log("d = "+JSON.stringify(event.value));
+  editEvent(event: any) {
+
+  }
+
+  isDone: boolean = false;
+
+  isDoneEvent(event) {
+    console.log("===>"+event );
+    this.isDone = !this.isDone;
     return null;
+  }
+
+  addActivity() {
+    this.activityService.addActivity(this.model);
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
 
   /*displayedColumns: string[] =  ['position', 'name', 'weight', 'symbol'];
