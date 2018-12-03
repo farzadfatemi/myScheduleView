@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDatepickerInputEvent} from '@angular/material';
 import {ActivityService} from './activity.service';
 import {Activity} from '../domain/activity';
 
@@ -14,15 +13,19 @@ export class ActivityComponent implements OnInit {
   activityList: Activity[];
   saturdayActivityList: Activity[];
   constructor(
-    private activityService: ActivityService,) {
+    private activityService: ActivityService,
+    ) {
   }
 
   model: any = {};
+  isShowAddEditBox: boolean = false;
+  dayForAddActivity: string = '';
 
+  dayForAdd(isShow:boolean,a:any){
+    this.isShowAddEditBox = isShow;
+    this.dayForAddActivity = a;
+  }
   ngOnInit() {
-    this.model.startDate = this.formatDate(new Date());
-    console.log('now  ' + this.formatDate(new Date()));
-    this.model.endDate = this.formatDate(new Date());
 
     this.activityService.getAllActivities().then(activityList => {
       this.activityList = activityList;
@@ -38,20 +41,7 @@ export class ActivityComponent implements OnInit {
     });
   }
 
-  setStartDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log('Start Date Chosen : ' + event.value);
 
-    this.model.startDate = this.formatDate(event.value);
-  }
-
-  setEndDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log('End Date Chosen : ' + event.value);
-    this.model.endDate = this.formatDate(event.value);
-  }
-
-  formatDate(d) {
-    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
-  }
 
   editEvent(event: any) {
 
@@ -69,6 +59,9 @@ export class ActivityComponent implements OnInit {
     this.activityService.addActivity(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
+
+
+
 
   /*displayedColumns: string[] =  ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);

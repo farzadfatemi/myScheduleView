@@ -1,63 +1,4 @@
 <div class="container-fluid  top-body">
-  <div class="card store-group">
-    <div class="card-body">
-      <div class="table-bordered table-responsive">
-        <table class="table">
-          <thead>
-          <tr>
-            <th><select class="form-control" required name="time">
-              <option class="ui dropdown" selected> 2-4</option>
-              <option class="ui dropdown" selected> 4-8</option>
-              <option class="ui dropdown" selected> 2-10</option>
-              <option class="ui dropdown" selected> 2-10</option>
-            </select>
-            </th>
-            <th>10-12</th>
-            <th>8-10</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>
-              <mat-form-field>
-                <textarea matInput placeholder="Description" id=" " name="Description"
-                          [(ngModel)]="model.description">{{model.description}}</textarea>
-              </mat-form-field>
-            </td>
-
-            <td>
-              <mat-form-field>
-                <mat-label>Activity Name</mat-label>
-                <input matInput>
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Input the title</mat-hint>
-              </mat-form-field>
-            </td>
-
-            <td>
-              <mat-form-field>
-                <input matInput [matDatepicker]="picker" [value]="model.startDate"
-                       (dateChange)="setStartDate('change', $event)" placeholder="Choose a produce date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <button type="submit" class="btn pur-btns margin-small" id="addNewActivity">Add New Cat</button>
-    <div *ngFor="let item of activityList;">{{item.title}}</div>
-  </div>
-
-
-
-
-
-
-
 
   <div class="card store-group">
     <div class="card-body">
@@ -109,6 +50,9 @@
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
+          <span class="add-button" > <a  href="#add"  (click)="dayForAdd(true,'Sunday')"><i class="fas fa-plus-circle" style="color: #5AE050;"></i></a>
+          </span>
+          <!--<img  class="add-button " (click)="showAddEditBox(true)" src="../../assets/images/Add.svg" />-->
         </div>
 
         <!-- /////////        Saturday    /////////////// -->
@@ -151,6 +95,8 @@
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
+          <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Saturday')"><i class="fas fa-plus-circle" style="color: #ffb600;"></i></a>
+          </span>
         </div>
 
         <!-- /////////        Friday    /////////////// -->
@@ -194,6 +140,8 @@
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
+           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Friday')"><i class="fas fa-plus-circle" style="color: #eceb06;"></i></a>
+          </span>
         </div>
 
 
@@ -237,6 +185,8 @@
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
+           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Thursday')"><i class="fas fa-plus-circle" style="color: #eb8dec;"></i></a>
+          </span>
         </div>
 
          <!-- /////////        Wednesday    /////////////// -->
@@ -279,6 +229,8 @@
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
+           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Wednesday')"><i class="fas fa-plus-circle" style="color: #43ecce;"></i></a>
+          </span>
         </div>
 
          <!-- /////////        Tuesday    /////////////// -->
@@ -321,6 +273,8 @@
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
+           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Tuesday')"><i class="fas fa-plus-circle" style="color: #a5a7ec;"></i></a>
+          </span>
         </div>
 
          <!-- /////////        Monday    /////////////// -->
@@ -363,12 +317,11 @@
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
+           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Monday')"><i class="fas fa-plus-circle" style="color: #00d7f3;"></i></a>
+          </span>
         </div>
 
-
-
       </div>
-
 
       <!--  <div class="col">
           <div class="card-header">
@@ -922,4 +875,5 @@
 
     </div>
   </div>
+  <app-add-edit-activity [showAddEditBox]="isShowAddEditBox" [dayForAddActivity]="dayForAddActivity"></app-add-edit-activity>
 </div>

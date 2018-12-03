@@ -1,0 +1,67 @@
+<div *ngIf="showAddEditBox" class="card store-group">
+  <div class="card-body">
+    <div class="table-bordered table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>
+            <div class=" btn {{dayForAddActivity.toLowerCase()}}-color " style="width: 100% ">
+              {{dayForAddActivity}}
+            </div>
+          </th>
+            <th>
+            <select class="form-control" required name="time">
+            <option class="ui dropdown" selected> 2-4</option>
+            <option class="ui dropdown" selected> 4-8</option>
+            <option class="ui dropdown" selected> 2-10</option>
+            <option class="ui dropdown" selected> 2-10</option>
+          </select>
+          </th>
+          <th>10-12</th>
+          <th>
+            <select class="form-control" required name="time">
+              <option *ngFor="let hour of getNumberArr(12); let hour = index;" class="ui dropdown" selected>{{hour}} </option>
+
+            </select>
+            <select class="form-control" required name="time">
+              <option *ngFor="let hour of getNumberArr(60); let hour = index;" class="ui dropdown" selected>{{hour}} </option>
+
+            </select>
+
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <mat-form-field>
+                <textarea matInput placeholder="Description" id=" " name="Description"
+                          [(ngModel)]="model.description">{{model.description}}</textarea>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field>
+              <mat-label>Activity Name</mat-label>
+              <input matInput>
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Input the title</mat-hint>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" [value]="model.startDate"
+                     (dateChange)="setStartDate('change', $event)" placeholder="Choose a produce date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button type="submit" class="btn pur-btns margin-small" id="addNewActivity">Add New Cat</button>
+  <div *ngFor="let item of activityList;">{{item.title}}</div>
+</div>

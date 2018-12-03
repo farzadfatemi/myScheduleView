@@ -24,6 +24,7 @@ import {MatCardModule, MatIconModule, MatNativeDateModule, MatPaginatorModule, M
 import {BranchComponent} from './branch/branch.component';
 import {DialogBoxComponent} from './dialog-box/dialog-box.component';
 import {ActivityComponent} from './activity/activity.component';
+import {AddEditActivityComponent} from './add-edit-activity/add-edit-activity.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {ActivityComponent} from './activity/activity.component';
     CompanyComponent,
     BranchComponent,
     DialogBoxComponent,
-    ActivityComponent
+    ActivityComponent,
+    AddEditActivityComponent
   ],
   imports: [
     BrowserModule,
