@@ -20,7 +20,15 @@ import {CompanyComponent} from './company/company.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatCardModule, MatIconModule, MatNativeDateModule, MatPaginatorModule, MatSnackBarModule, MatTableModule} from '@angular/material';
+import {
+  MatCardModule,
+  MatCheckboxModule,
+  MatIconModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatSnackBarModule,
+  MatTableModule
+} from '@angular/material';
 import {BranchComponent} from './branch/branch.component';
 import {DialogBoxComponent} from './dialog-box/dialog-box.component';
 import {ActivityComponent} from './activity/activity.component';
@@ -61,6 +69,7 @@ import {AddEditActivityComponent} from './add-edit-activity/add-edit-activity.co
     MatPaginatorModule,
     MatCardModule,
     MatIconModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatSnackBarModule

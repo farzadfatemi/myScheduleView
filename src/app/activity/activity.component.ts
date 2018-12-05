@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivityService} from './activity.service';
 import {Activity} from '../domain/activity';
+import {Category} from '../domain/category';
 
 @Component({
   selector: 'app-activity',
@@ -11,7 +12,7 @@ export class ActivityComponent implements OnInit {
 
 
   activityList: Activity[];
-  saturdayActivityList: Activity[];
+  actCatList: Category[]
   constructor(
     private activityService: ActivityService,
     ) {
@@ -38,6 +39,9 @@ export class ActivityComponent implements OnInit {
         })
       }
 
+    });
+    this.activityService.getAllActivityCat().then(catList => {
+      this.actCatList = catList;
     });
   }
 

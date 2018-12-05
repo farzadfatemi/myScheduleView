@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Activity} from '../domain/activity';
 import {catchError} from 'rxjs/operators';
+import {Category} from '../domain/category';
 
 const URL = 'http://localhost:8080/';
 
@@ -16,6 +17,12 @@ export class ActivityService {
     return this.http.get<any>(URL+'allActivities')
       .toPromise()
       .then(res => <Activity[]>res)
+      .then(data => { return data; });
+  }
+  getAllActivityCat (){
+    return this.http.get<any>(URL+'allActivityCat')
+      .toPromise()
+      .then(res => <Category[]>res)
       .then(data => { return data; });
   }
   addActivity(file) {
