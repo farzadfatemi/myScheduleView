@@ -79,7 +79,7 @@
                                 [(ngModel)]="model.shoppingId" name="category" multiple>
                       <mat-option  class="ui dropdown" *ngFor="let shop of  shopList"
                                   [(value)]="shop.purchaseId">{{
-                          shop.purchaseId }}
+                          shop.name }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>

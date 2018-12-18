@@ -14,7 +14,7 @@ export class PurchaseService {
     console.log("getAllPurchase is calling ...");
     return this.http.get<any>(URL+'allPurchases')
       .toPromise()
-      .then(res => <Purchase[]>res)
+      .then(res => res)
       .then(data => { return data; });
   }
   addPurchases(file) {

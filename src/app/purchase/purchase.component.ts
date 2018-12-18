@@ -173,6 +173,7 @@ export class PurchaseComponent implements OnInit {
       amount: '33',
       unitId: '33',
       todo: '1',
+      name: 'New Purchase',
       comment: 'adding New Purchase',
       date: '2018-10-19'
     };

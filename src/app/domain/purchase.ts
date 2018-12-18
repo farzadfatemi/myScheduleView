@@ -1,4 +1,5 @@
 export interface Purchase {
+  name;
   purchaseId;
   productId;
   sellerId;

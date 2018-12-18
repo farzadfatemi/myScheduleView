@@ -63,6 +63,7 @@ export class AddEditActivityComponent implements OnInit {
 
   addEditActivity() {
     this.model.chosenDay = this.chosenDay;
+    console.log('e3333 '+JSON.stringify(this.shopList));
     // this.categoryServices.addCategory(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
