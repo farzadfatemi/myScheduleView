@@ -1,8 +1,8 @@
 <div   class="card store-group">
 <!--<div *ngIf="showAddEditBox" class="card store-group">-->
-  <form class="form" (ngSubmit)="addEditActivity()">
+  <form  class="form" (ngSubmit)="addEditActivity()">
     <div class="card-body">
-      <div class="table-bordered table-responsive">
+      <div class="table-bordered tab  le-responsive">
         <table class="table">
           <!-- <thead>
            <tr>
@@ -36,13 +36,13 @@
           <tr>
             <td>
               <mat-form-field>
-                <textarea matInput placeholder="Description" id="description" name="Description" [(ngModel)]="model.description">{{model.description}}</textarea>
+                <textarea  matInput placeholder="Description" id="description" name="Description" [(ngModel)]="model.description">{{model.description}}</textarea>
               </mat-form-field>
             </td>
             <td>
               <mat-form-field>
                 <mat-label>Activity Name</mat-label>
-                <input matInput [(ngModel)]="model.name" name="Name">
+                <input matInput  [(ngModel)]="model.name" name="Name">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-hint>Input the title</mat-hint>
               </mat-form-field>
@@ -51,19 +51,35 @@
             <td>
 
               <div>
-                <div *ngFor="let activityCategory of actCatList; let i = index">
 
-                  <mat-checkbox class="example-margin" name="checkBox{{activityCategory.categoryId}}" *ngIf="activityCategory.isMain==='1'"
-                                (change)="selectCats($event)"
+<!--                <div *ngFor="let activityCategory of actCatList; let i = index" formArrayName="mainCats">
+                  <input type="checkbox" [formControlName]="i" *ngIf="activityCategory.isMain==='1'">
+                  <span *ngIf="activityCategory.isMain==='1'">{{activityCategory.name+i}}</span>
+                </div>
+              &lt;!&ndash;  <div *ngFor="let activityCategory of actCatList; let i = index">
+
+                  <mat-checkbox class="example-margin" name="checkBox{{activityCategory.categoryId}}" formArrayName="mainCats" *ngIf="activityCategory.isMain==='1'"
+
                                 [(value)]="activityCategory.categoryId">{{activityCategory.name}} </mat-checkbox>
+                </div>&ndash;&gt;-->
+                <div>
+                  <mat-form-field>
+                    <mat-select  placeholder="Category" required (selectionChange)="selectCats($event)"
+                                [(ngModel)]="model.nfCategoryId" name="category" multiple>
+                      <mat-option  class="ui dropdown" *ngFor="let category of  actCatList "
+                                  [(value)]="category.categoryId">{{
+                        category.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
                 <div>
                   <mat-form-field>
-                    <mat-select placeholder="Category" required
-                                [(ngModel)]="model.nfCategoryId" name="category" multiple>
-                      <mat-option class="ui dropdown" *ngFor="let category of getNonFrequentCats(actCatList)"
-                                  [(value)]="category.categoryId">{{
-                        category.name }}
+                    <mat-select  placeholder="Shopping Id" required (selectionChange)="selectShop($event)"
+                                [(ngModel)]="model.shoppingId" name="category" multiple>
+                      <mat-option  class="ui dropdown" *ngFor="let shop of  shopList"
+                                  [(value)]="shop.purchaseId">{{
+                          shop.purchaseId }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -71,15 +87,19 @@
               </div>
             </td>
             <td>
-              <div class=" {{dayForAddActivity.toLowerCase()}}-color " style="width: 100% ">
-                {{dayForAddActivity}}
+              <div>
+              <button  [value]="model.chosenDay" class="btn {{chosenDay.toLowerCase()}}-color " style="width: 100% ">
+                {{chosenDay}}
+              </button>
               </div>
+              <div>
               <mat-form-field>
                 <input matInput [matDatepicker]="picker" [value]="model.startDate" name="StartDate"
                        (dateChange)="setStartDate('change', $event)" placeholder="Choose a produce date">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
+              </div>
             </td>
           </tr>
           </tbody>

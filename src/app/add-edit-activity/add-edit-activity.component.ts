@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDatepickerInputEvent} from '@angular/material';
 import {Category} from '../domain/category';
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-activity',
@@ -9,33 +8,36 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./add-edit-activity.component.css']
 })
 export class AddEditActivityComponent implements OnInit {
-  @Input() dayForAddActivity: any;
+  @Input() chosenDay: any;
   @Input() showAddEditBox: boolean;
   @Input() actCatList: any;
+  @Input() shopList: any;
 
-  constructor() {
-  }
 
   model: any = {};
-    selectedCat: any = [];
-  nonFrequentCats: any = [];
+  selectedCat: any = [];
+  selectedShop: any = [];
+  category: any = [];
+  description: any = [];
 
   ngOnInit() {
     this.model.startDate = this.formatDate(new Date());
     console.log('now  ' + this.formatDate(new Date()));
     console.log('model.nfCategoryId  ' + this.model.nfCategoryId);
     this.model.endDate = this.formatDate(new Date());
-
+    this.model.chosenDay = this.chosenDay;
 
   }
 
-  getNonFrequentCats(itemList: Category[])  {
+  getNonFrequentCats(itemList: Category[]) {
     let result: Category[] = [];
-    result = itemList.filter(nonFrequentCat => {
-      if (nonFrequentCat.isMain === '0') {
-        return nonFrequentCat;
-      }
-    });
+    if (itemList != null) {
+      result = itemList.filter(nonFrequentCat => {
+        if (nonFrequentCat.isMain === '0') {
+          return nonFrequentCat;
+        }
+      });
+    }
     return result;
   }
 
@@ -60,28 +62,32 @@ export class AddEditActivityComponent implements OnInit {
   }
 
   addEditActivity() {
+    this.model.chosenDay = this.chosenDay;
     // this.categoryServices.addCategory(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
-  selectCats(event) {
-    // const interests = <FormArray>this.interestFormGroup.get('interests') as FormArray;
 
-    if(event.checked) {
-      console.log("=-=e>"+event.checked);
-      this.selectedCat.push(new FormControl(event.source.value))
-    } else {
+  selectCats(event, i) {
+    this.selectedCat = event.source.value;
+    console.log('=-=d>' + event.source.value);
+    /*
+        if (event.checked) {
+          console.log('=-=e>' + event.checked + ' =-= value>' + event.value);
+          this.selectedCat.push(new FormControl(event.source.value));
+        } else {
+          if (i !== -1) {
+            this.selectedCat.splice(i, 1);
+          }
 
-      const index: number = this.selectedCat.indexOf(event.source.value);
-      if (index !== -1) {
-        this.selectedCat.splice(index, 1);
-      }
-
-      console.log("=-=d>"+event.source.value);
-      // const i = this.selectedCat.findIndex(x => x.value === event.source.value);
-      // this.selectedCat.remove(i);
-    }
-    console.log("=-=0>"+this.selectedCat);
+        }
+        console.log('=-=0>' + JSON.stringify(this.selectedCat));*/
   }
+  selectShop(event, i) {
+    this.selectedShop = event.source.value;
+    console.log('=-=d>' + event.source.value);
+
+  }
+
   selectedBox(event) {
     // const interests = <FormArray>this.interestFormGroup.get('interests') as FormArray;
     //

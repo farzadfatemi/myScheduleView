@@ -10,7 +10,7 @@ import {PurchaseComponent} from './purchase/purchase.component';
 import {TabbarComponent} from './tabbar/tabbar.component';
 import {SharedModule} from 'primeng/shared';
 import {TableModule} from 'primeng/table';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MultiSelectModule, TabViewModule} from 'primeng/primeng';
 import {SellerComponent} from './seller/seller.component';
 import {UnitComponent} from './unit/unit.component';
@@ -70,6 +70,7 @@ import {AddEditActivityComponent} from './add-edit-activity/add-edit-activity.co
     MatCardModule,
     MatIconModule,
     MatCheckboxModule,
+    ReactiveFormsModule,
   ],
   exports: [
     MatSnackBarModule

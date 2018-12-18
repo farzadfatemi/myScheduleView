@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivityService} from './activity.service';
 import {Activity} from '../domain/activity';
 import {Category} from '../domain/category';
+import {Purchase} from '../domain/purchase';
+import {PurchaseService} from '../purchase/purchase.service';
 
 @Component({
   selector: 'app-activity',
@@ -12,19 +14,21 @@ export class ActivityComponent implements OnInit {
 
 
   activityList: Activity[];
-  actCatList: Category[]
+  actCatList: Category[];
+  shopList: Purchase[];
   constructor(
     private activityService: ActivityService,
+    private purchaseService: PurchaseService,
     ) {
   }
 
   model: any = {};
   isShowAddEditBox: boolean = false;
-  dayForAddActivity: string = '';
+  chosenDay: string = '';
 
-  dayForAdd(isShow:boolean,a:any){
+  dayForAdd(isShow:boolean,nameOfTheDay:any){
     this.isShowAddEditBox = isShow;
-    this.dayForAddActivity = a;
+    this.chosenDay = nameOfTheDay;
   }
   ngOnInit() {
 
@@ -42,6 +46,9 @@ export class ActivityComponent implements OnInit {
     });
     this.activityService.getAllActivityCat().then(catList => {
       this.actCatList = catList;
+    });
+    this.purchaseService.getAllPurchases().then(shopList => {
+      this.shopList = shopList;
     });
   }
 

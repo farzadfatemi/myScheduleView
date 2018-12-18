@@ -11,6 +11,7 @@ export class PurchaseService {
   constructor(private http: HttpClient) { }
 
   getAllPurchases() {
+    console.log("getAllPurchase is calling ...");
     return this.http.get<any>(URL+'allPurchases')
       .toPromise()
       .then(res => <Purchase[]>res)
