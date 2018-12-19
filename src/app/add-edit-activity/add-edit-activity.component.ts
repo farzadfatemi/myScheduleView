@@ -19,8 +19,21 @@ export class AddEditActivityComponent implements OnInit {
   selectedShop: any = [];
   category: any = [];
   description: any = [];
-
+  showPurchasedList: boolean = false;
+  fr24to2:any='24-2';
+  fr2to4:any='2-4';
+  fr4to6:any='4-6';
+  fr6to8:any='6-8';
+  fr8to10:any='8-10';
+  fr10to12:any='10-12';
+  fr12to14:any='12-14';
+  fr14to16:any='14-16';
+  fr16to18:any='16-18';
+  fr18to20:any='18-20';
+  fr20to22:any='20-22';
+  fr22to24:any='22-24';
   ngOnInit() {
+
     this.model.startDate = this.formatDate(new Date());
     console.log('now  ' + this.formatDate(new Date()));
     console.log('model.nfCategoryId  ' + this.model.nfCategoryId);
@@ -63,14 +76,16 @@ export class AddEditActivityComponent implements OnInit {
 
   addEditActivity() {
     this.model.chosenDay = this.chosenDay;
-    console.log('e3333 '+JSON.stringify(this.shopList));
+    console.log('e3333 ' + JSON.stringify(this.shopList));
     // this.categoryServices.addCategory(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
 
-  selectCats(event, i) {
+  selectCats(event) {
     this.selectedCat = event.source.value;
+    this.showPurchasedList = this.selectedCat.includes('Shopping') ;
     console.log('=-=d>' + event.source.value);
+    console.log('=-=w>' +( this.selectedCat.includes('Shopping')));
     /*
         if (event.checked) {
           console.log('=-=e>' + event.checked + ' =-= value>' + event.value);
@@ -83,9 +98,10 @@ export class AddEditActivityComponent implements OnInit {
         }
         console.log('=-=0>' + JSON.stringify(this.selectedCat));*/
   }
+
   selectShop(event, i) {
     this.selectedShop = event.source.value;
-    console.log('=-=d>' + event.source.value);
+    console.log('=-=shop Selected>' + event.source.value);
 
   }
 

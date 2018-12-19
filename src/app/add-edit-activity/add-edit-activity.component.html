@@ -37,6 +37,23 @@
           <tr>
 
             <th style="text-align: center" colspan="2">
+              <section class="example-section">
+
+                <mat-checkbox name="fr24to2"  [(ngModel)]="model.fr24to2">12-2 am</mat-checkbox>
+                <mat-checkbox name="fr2to4"   [(ngModel)]="model.fr2to4">2-4 am</mat-checkbox>
+                <mat-checkbox name="fr4to6"   [(ngModel)]="model.fr4to6">4-6 am</mat-checkbox>
+                <mat-checkbox name="fr6to8"   [(ngModel)]="model.fr6to8">6-8 am</mat-checkbox>
+                <mat-checkbox name="fr8to10"  [(ngModel)]="model.fr8to10">8-10 am</mat-checkbox>
+                <mat-checkbox name="fr10to12" [(ngModel)]="model.fr10to12">10-12 am</mat-checkbox>
+                <mat-checkbox name="fr12to14" [(ngModel)]="model.fr12to14">12-2 pm </mat-checkbox>
+                <mat-checkbox name="fr14to16" [(ngModel)]="model.fr14to16">2-4 pm  </mat-checkbox>
+                <mat-checkbox name="fr16to18" [(ngModel)]="model.fr16to18">4-6 pm  </mat-checkbox>
+                <mat-checkbox name="fr18to20" [(ngModel)]="model.fr18to20">6-8 pm  </mat-checkbox>
+                <mat-checkbox name="fr20to22" [(ngModel)]="model.fr20to22">8-10 pm  </mat-checkbox>
+                <mat-checkbox name="fr22to24" [(ngModel)]="model.fr22to24">10-12 pm  </mat-checkbox>
+
+              </section>
+
               <mat-form-field>
                 <input matInput [matDatepicker]="picker" [value]="model.startDate" name="StartDate"
                        (dateChange)="setStartDate('change', $event)" placeholder="Choose a produce date">
@@ -72,7 +89,7 @@
                                 </div>
                               &lt;!&ndash;  <div *ngFor="let activityCategory of actCatList; let i = index">
 
-                                  <mat-checkbox class="example-margin" name="checkBox{{activityCategory.categoryId}}" formArrayName="mainCats" *ngIf="activityCategory.isMain==='1'"
+                                  <mat-checkbox name="checkBox{{activityCategory.categoryId}}" formArrayName="mainCats" *ngIf="activityCategory.isMain==='1'"
 
                                                 [(value)]="activityCategory.categoryId">{{activityCategory.name}} </mat-checkbox>
                                 </div>&ndash;&gt;-->
@@ -81,13 +98,13 @@
                     <mat-select placeholder="Category" required (selectionChange)="selectCats($event)"
                                 [(ngModel)]="model.nfCategoryId" name="category" multiple>
                       <mat-option class="ui dropdown" *ngFor="let category of  actCatList "
-                                  [(value)]="category.categoryId">{{
+                                  [value]="category.name">{{
                         category.name }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
-                <div>
+                <div *ngIf="showPurchasedList">
                   <mat-form-field>
                     <mat-select placeholder="Shopping Id" required (selectionChange)="selectShop($event)"
                                 [(ngModel)]="model.shoppingId" name="category" multiple>
