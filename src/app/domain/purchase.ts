@@ -1,7 +1,5 @@
 export interface Purchase {
-  name;
-  purchaseId;
-  productId;
+  id;
   sellerId;
   categoryId;
   companyId;
@@ -9,6 +7,7 @@ export interface Purchase {
   amount;
   unitId;
   todo;
-  comment;
+  description;
   date;
+  product;
 }

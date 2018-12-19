@@ -48,6 +48,7 @@ export class ActivityComponent implements OnInit {
       this.actCatList = catList;
     });
     this.purchaseService.getAllPurchases().then(shopList => {
+      // console.log("--->"+JSON.stringify(shopList));
       this.shopList = shopList;
     });
   }

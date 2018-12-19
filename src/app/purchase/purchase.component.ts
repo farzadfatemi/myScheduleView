@@ -49,7 +49,7 @@ export class PurchaseComponent implements OnInit {
   ngOnInit() {
 
     this.cols = [
-      {field: 'purchaseId', header: 'Purchase Id', width: '25%'},
+      {field: 'id', header: 'Purchase Id', width: '25%'},
       {field: 'productId', header: 'product Id', width: '15%'},
       {field: 'sellerId', header: 'Seller Id', width: '35%'},
       {field: 'categoryId', header: 'Category Id', width: '25%'},
@@ -66,8 +66,9 @@ export class PurchaseComponent implements OnInit {
       this.purchaseList = purchaseList;
       // this.purchaseList.sort((val1, val2)=> {return <any>new Date(val2.date) - <any>new Date(val1.date)});
       this.purchaseList.sort((val1, val2) => {
-        return (val2.purchaseId) - (val1.purchaseId);
+        return (val2.id) - (val1.id);
       });
+
     });
     this.unitServices.getAllUnits().then(unitsList => {
       this.unitList = unitsList;
@@ -164,8 +165,7 @@ export class PurchaseComponent implements OnInit {
 
   addRow() {
     const newPurchase = {
-      purchaseId: '18',
-      productId: '1',
+      id: '18',
       sellerId: '31',
       categoryId: '15',
       companyId: '61',
@@ -174,14 +174,15 @@ export class PurchaseComponent implements OnInit {
       unitId: '33',
       todo: '1',
       name: 'New Purchase',
-      comment: 'adding New Purchase',
-      date: '2018-10-19'
+      description: 'adding New Purchase',
+      date: '2018-10-19',
+      product:[]
     };
     let newP = [...this.purchaseList];
     newP.push(newPurchase);
 
     this.purchaseList = (newP);
-    this.sortFunc(this.purchaseList, 'purchaseId');
+    this.sortFunc(this.purchaseList, 'id');
   }
 
   sortFunc(data, id) {
