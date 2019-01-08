@@ -7,4 +7,5 @@ export interface Activity {
   description;
   purchaseId;
   todo;
+  day;
 }

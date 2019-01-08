@@ -25,19 +25,87 @@ export class ActivityComponent implements OnInit {
   model: any = {};
   isShowAddEditBox: boolean = false;
   chosenDay: string = '';
+  mondayList: any=[];
+  tuesdayList: any=[];
+  wednesdayList: any=[];
+  thursdayList: any=[];
+  fridayList: any=[];
+  saturdayList: any=[];
+  sundayList: any=[];
 
   dayForAdd(isShow:boolean,nameOfTheDay:any){
     this.isShowAddEditBox = isShow;
     this.chosenDay = nameOfTheDay;
   }
+   addToWeekDaysList(activity:Activity) {
+     let day = new Date(activity.startDate);
+     console.log("Day of date : "+day.getDay());
+     if(day.getDay()===1){
+       this.mondayList.push(activity);
+       console.log("Add to Monday List ... ");
+       this.mondayList.forEach(activity=>{
+            console.log(" - " + activity.title );
+         }
+        );
+     } else  if(day.getDay()===2){
+       this.tuesdayList.push(activity);
+       console.log("Add to Tuesday List ... ");
+       this.tuesdayList.forEach(activity=>{
+           console.log(" - " + activity.title );
+         }
+       );
+     } else  if(day.getDay()===3){
+       this.wednesdayList.push(activity);
+       console.log("Add to Wednesday List ... ");
+       this.wednesdayList.forEach(activity=>{
+           console.log(" - " + activity.title );
+         }
+       );
+     } else  if(day.getDay()===4){
+       this.thursdayList.push(activity);
+       console.log("Add to Thursday List ... ");
+       this.thursdayList.forEach(activity=>{
+           console.log(" - " + activity.title );
+         }
+       );
+     } else  if(day.getDay()===5){
+       this.fridayList.push(activity);
+       console.log("Add to Friday List ... ");
+       this.fridayList.forEach(activity=>{
+           console.log(" - " + activity.title );
+         }
+       );
+     } else  if(day.getDay()===6){
+       this.saturdayList.push(activity);
+       console.log("Add to Saturday List ... ");
+       this.saturdayList.forEach(activity=>{
+           console.log(" - " + activity.title );
+         }
+       );
+     } else  if(day.getDay()===0){
+       this.sundayList.push(activity);
+       console.log("Add to Sunday List ... ");
+       this.sundayList.forEach(activity=>{
+           console.log(" - " + activity.title );
+         }
+       );
+     }
+
+
+  }
+
   ngOnInit() {
 
     this.activityService.getAllActivities().then(activityList => {
       this.activityList = activityList;
       if (activityList !=null && activityList.length>0){
         activityList.forEach(activity=>{
+
           if(activity.startDate !=null){
-            console.log("Start Date" + activity.startDate);
+            console.log("Start Date " + activity.startDate );
+
+            this.addToWeekDaysList(activity);
+
             // console.log("Start Date" + activity.startDate.getDay())
           }
         })

@@ -72,3 +72,19 @@
 .vertical-align{
   vertical-align: middle;
 }
+.divider{
+  flex-grow:1;
+  height: 1px;
+  background-color: #9f9f9f;
+}
+.day-style{
+  width: 100% ;
+}
+@font-face {
+  font-family: 'Koodak';
+
+  src: url('assets/fonts/Far_Casablanca.ttf') format("opentype");
+}
+.font-koodak{
+  font-family: Koodak,serif; margin: 0 auto;display: block; text-align: center
+}

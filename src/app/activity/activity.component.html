@@ -15,41 +15,25 @@
             <!--<div class="col-auto">v</div>-->
             <!--<div class="col"><hr></div>-->
           <!--</div>-->
-          <div class=" btn pur-btns  sunday-color " style="margin-bottom:10px; ">
+          <div *ngFor="let day of  sundayList ; let indx = index" class=" btn pur-btns  sunday-color  day-style" style="margin-bottom:10px; ">
                   <span class="summary  ">
 
-                    <p class="collapse " id="sundayCo">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
+                    <p class="collapse  day-style" id="{{'sundayCo'+indx}}">
+                      <span class="font-koodak">{{day.title}}<hr/>{{ day.description}}<hr/></span>
                     </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#sundayCo"
-                       aria-expanded="false"
-                       aria-controls="sundayCo"><i class="fa black-icon-color"></i></a>
+
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'sundayCo'+indx}}"
+                       aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
+
             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="far fa-check-circle black-icon-color"></i></a>
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
 
-          <div class=" btn pur-btns  sunday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
 
-                    <p class="collapse " id="sundayCo2">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#sundayCo2"
-                       aria-expanded="false"
-                       aria-controls="sundayCo2"><i class="fa black-icon-color"></i></a>
-                  </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
+
           <span class="add-button" > <a  href="#add"  (click)="dayForAdd(true,'Sunday')"><i class="fas fa-plus-circle" style="color: #5AE050;"></i></a>
           </span>
           <!--<img  class="add-button " (click)="showAddEditBox(true)" src="../../assets/images/Add.svg" />-->
@@ -58,43 +42,26 @@
         <!-- /////////        Saturday    /////////////// -->
         <div class="col col-border">
           <div class=" btn pur-btns  saturday-color " style=" width: 100% ">
-            Saturday
+            Saturday  <br/><span style="font-size: small">2018/12/12</span>
           </div>
           <hr/>
-          <div class=" btn pur-btns  saturday-color " style="margin-bottom:10px; ">
+          <div *ngFor="let sat of  saturdayList ; let indx = index" class=" btn pur-btns  saturday-color  day-style" style="margin-bottom:10px; ">
                   <span class="summary  ">
 
-                    <p class="collapse " id="saturdayCo1">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
+                    <p class="collapse " id="{{'saturdayCo'+indx}}">
+                      <span class="font-koodak">{{sat.title}}<hr/>{{ sat.description}}<hr/></span>
                     </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#saturdayCo1"
-                       aria-expanded="false"
-                       aria-controls="saturdayCo1"><i class="fa black-icon-color"></i></a>
+
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'saturdayCo'+indx}}"
+                       aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
+
             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="far fa-check-circle black-icon-color"></i></a>
             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
-          <div class=" btn pur-btns  saturday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
 
-                    <p class="collapse " id="saturdayCo2">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#saturdayCo2"
-                       aria-expanded="false"
-                       aria-controls="saturdayCo2"><i class="fa black-icon-color"></i></a>
-                  </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Saturday')"><i class="fas fa-plus-circle" style="color: #ffb600;"></i></a>
           </span>
         </div>
@@ -106,40 +73,23 @@
             Friday
           </div>
            <hr/>
-          <div class=" btn pur-btns  friday-color " style="margin-bottom:10px; ">
+           <div *ngFor="let day of  fridayList ; let indx = index" class=" btn pur-btns  friday-color  day-style" style="margin-bottom:10px; ">
                   <span class="summary  ">
 
-                    <p class="collapse " id="fridayCol1">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
+                    <p class="collapse"  id="{{'fridayCo'+indx}}">
+                      <span class=" day-style font-koodak" >{{day.title}}<hr/>{{ day.description}}<hr/></span>
                     </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#fridayCol1"
-                       aria-expanded="false"
-                       aria-controls="fridayCol1"><i class="fa black-icon-color"></i></a>
-                  </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
-          <div class=" btn pur-btns  friday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
 
-                    <p class="collapse " id="fridayCol2">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#fridayCol2"
-                       aria-expanded="false"
-                       aria-controls="fridayCol2"><i class="fa black-icon-color"></i></a>
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'fridayCo'+indx}}"
+                       aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
+
+             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="far fa-check-circle black-icon-color"></i></a>
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="fas fa-wrench black-icon-color"></i></a>
+           </div>
+
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Friday')"><i class="fas fa-plus-circle" style="color: #eceb06;"></i></a>
           </span>
         </div>
@@ -151,40 +101,22 @@
             Thursday
           </div>
            <hr/>
-          <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
+           <div *ngFor="let day of  thursdayList ; let indx = index" class=" btn pur-btns  thursday-color  day-style" style="margin-bottom:10px; ">
                   <span class="summary  ">
 
-                    <p class="collapse " id="thursdayCol1">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
+                    <p class="collapse " id="{{'thursdayCo'+indx}}">
+                      <span class="font-koodak">{{day.title}}<hr/>{{ day.description}}<hr/></span>
                     </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#thursdayCol1"
-                       aria-expanded="false"
-                       aria-controls="thursdayCol1"><i class="fa black-icon-color"></i></a>
-                  </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
-          <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
 
-                    <p class="collapse " id="thursdayCol2">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#thursdayCol2"
-                       aria-expanded="false"
-                       aria-controls="thursdayCol2"><i class="fa black-icon-color"></i></a>
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'thursdayCo'+indx}}"
+                       aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
+
+             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="far fa-check-circle black-icon-color"></i></a>
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="fas fa-wrench black-icon-color"></i></a>
+           </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Thursday')"><i class="fas fa-plus-circle" style="color: #eb8dec;"></i></a>
           </span>
         </div>
@@ -195,40 +127,22 @@
             Wednesday
           </div>
            <hr/>
-          <div class=" btn pur-btns  wednesday-color " style="margin-bottom:10px; ">
+           <div *ngFor="let day of  wednesdayList ; let indx = index" class=" btn pur-btns  wednesday-color  day-style" style="margin-bottom:10px; ">
                   <span class="summary  ">
 
-                    <p class="collapse " id="wednesdayCol1">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
+                    <p class="collapse " id="{{'wednesdayCo'+indx}}">
+                      <span class="font-koodak">{{day.title}}<hr/>{{ day.description}}<hr/></span>
                     </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#wednesdayCol1"
-                       aria-expanded="false"
-                       aria-controls="wednesdayCol1"><i class="fa black-icon-color"></i></a>
-                  </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
-          <div class=" btn pur-btns  wednesday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
 
-                    <p class="collapse " id="wednesdayCol2">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#wednesdayCol2"
-                       aria-expanded="false"
-                       aria-controls="wednesdayCol2"><i class="fa black-icon-color"></i></a>
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'wednesdayCo'+indx}}"
+                       aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
+
+             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="far fa-check-circle black-icon-color"></i></a>
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="fas fa-wrench black-icon-color"></i></a>
+           </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Wednesday')"><i class="fas fa-plus-circle" style="color: #43ecce;"></i></a>
           </span>
         </div>
@@ -239,40 +153,22 @@
             Tuesday
           </div>
            <hr/>
-          <div class=" btn pur-btns  " [ngClass]="isDone ? 'tuesday-color' : 'tuesday-outline-color'"  style="margin-bottom:10px; ">
+           <div *ngFor="let day of  tuesdayList ; let indx = index" class=" btn pur-btns  tuesday-color  day-style" style="margin-bottom:10px; ">
                   <span class="summary  ">
 
-                    <p class="collapse " id="tuesdayCol1">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
+                    <p class="collapse " id="{{'tuesdayCo'+indx}}">
+                      <span class="font-koodak">{{day.title}}<hr/>{{ day.description}}<hr/></span>
                     </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#tuesdayCol1"
-                       aria-expanded="false"
-                       aria-controls="tuesdayCol1"><i class="fa black-icon-color"></i></a>
-                  </span>
-            <a class="edit" href="#edit"  (click)="isDoneEvent('SDDDD')" ><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
-          <div class=" btn pur-btns   "  [ngClass]="isDone ? 'tuesday-color' : 'tuesday-outline-color'"  style="margin-bottom:10px; ">
-                  <span class="summary  ">
 
-                    <p class="collapse " id="tuesdayCol2">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#tuesdayCol2"
-                       aria-expanded="false"
-                       aria-controls="tuesdayCol2"><i class="fa black-icon-color"></i></a>
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'tuesdayCo'+indx}}"
+                       aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
-            <a class="edit" href="#edit" (click)="isDoneEvent()" ><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
+
+             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="far fa-check-circle black-icon-color"></i></a>
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="fas fa-wrench black-icon-color"></i></a>
+           </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Tuesday')"><i class="fas fa-plus-circle" style="color: #a5a7ec;"></i></a>
           </span>
         </div>
@@ -283,595 +179,29 @@
             Monday
           </div>
            <hr/>
-          <div class=" btn pur-btns   "  [ngClass]="isDone ? 'monday-color' : 'monday-outline-color'"  style="margin-bottom:10px; ">
-                  <span class="summary  ">
+           <div *ngFor="let day of  mondayList ; let indx = index" class=" btn pur-btns  monday-color day-style" style=" margin-bottom:10px; ">
+                  <span class="summary  " >
 
-                    <p class="collapse " id="mondayCol1" >
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
+                    <p class="collapse  " id="{{'mondayCo'+indx}}">
+                      <span class="font-koodak">{{day.title}}<hr/>{{ day.description}}<hr/></span>
                     </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#mondayCol1"
-                       aria-expanded="false"
-                       aria-controls="mondayCol1"><i class="fa black-icon-color"></i></a>
-                  </span>
-            <a class="edit" href="#edit"  (click)="isDoneEvent()" ><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
-          <div class=" btn pur-btns  monday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
 
-                    <p class="collapse " id="mondayCol2">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#mondayCol2"
-                       aria-expanded="false"
-                       aria-controls="mondayCol2"><i class="fa black-icon-color"></i></a>
+                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'mondayCo'+indx}}"
+                       aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-              class="fas fa-wrench black-icon-color"></i></a>
-          </div>
+
+             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="far fa-check-circle black-icon-color"></i></a>
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+               class="fas fa-wrench black-icon-color"></i></a>
+           </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Monday')"><i class="fas fa-plus-circle" style="color: #00d7f3;"></i></a>
           </span>
         </div>
 
       </div>
 
-      <!--  <div class="col">
-          <div class="card-header">
-            Sunday
-          </div>
-          <div class="card zero-border">
-            <div class="card-body">
-              <div class="form-group row">
-                <label class="col-5 col-form-label">Purchased Items : </label>
-                <div class="col-9">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card-header">
-            Saturday
-          </div>
-          <div class="card zero-border">
-            <div class="card-body">
-              <div class="form-group row">
-                <label class="col-5 col-form-label">Purchased Items : </label>
-                <div class="col-9">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card-header">
-            Friday
-          </div>
-          <div class="card zero-border">
-            <div class="card-body">
-              <div class="form-group centered row">
 
-                <div class=" btn pur-btns  friday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary9">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary9"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary9"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  friday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary92">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary92"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary92"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  friday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary93">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary92"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary92"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  friday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary94">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary92"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary92"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card-header">
-            Thursday
-          </div>
-          <div class="card zero-border">
-            <div class="card-body">
-              <div class="form-group centered row">
-
-                <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary7">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary7"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary7"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary71">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary71"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary7"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary72">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary72"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary7"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary73">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary73"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary7"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary74">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary74"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary7"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <div class=" btn pur-btns  thursday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary75">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary75"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary7"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card-header">
-            Wednesday
-          </div>
-          <div class="card zero-border">
-            <div class="card-body">
-              <div class="form-group centered row">
-
-                <div class=" btn pur-btns  wednesday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary5">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary5"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary5"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-                <div class=" btn pur-btns  wednesday-color " (click)="editEvent(model.id)" style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary51">
-                      Adddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary51"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary5"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-                <div class=" btn pur-btns  wednesday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-                    <p class="collapse " id="collapseSummary53">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary53"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary5"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card-header centered">
-            Tuesday
-          </div>
-          <div class="card zero-border">
-            <div class="card-body">
-              <div class="form-group centered ">
-
-                <div class="row centered tuesday-outline-color " style="margin-bottom:10px;">
-                  <div class="col ">
-                    <div class="row ">
-                      <span class="summary  ">
-                        <p class="collapse " id="collapseSummary3">
-                           Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                        </p>
-
-                      </span>
-                    </div>
-                    <div class="row ">
-                      <div class="col ">
-                        <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                          class="fas fa-wrench black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                          <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                            class="far fa-check-circle black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                              <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary3"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="collapseSummary3"><i class="fa black-icon-color"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row centered tuesday-outline-color " style="margin-bottom:10px;">
-                  <div class="col ">
-                    <div class="row ">
-                      <span class="summary  ">
-                        <p class="collapse " id="collapseSummary31">
-                           Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                        </p>
-
-                      </span>
-                    </div>
-                    <div class="row ">
-                      <div class="col ">
-                        <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                          class="fas fa-wrench black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                          <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                            class="far fa-check-circle black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                              <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary31"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="collapseSummary3"><i class="fa black-icon-color"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row centered tuesday-outline-color " style="margin-bottom:10px;">
-                  <div class="col ">
-                    <div class="row ">
-                      <span class="summary  ">
-                        <p class="collapse " id="collapseSummary32">
-                           Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                        </p>
-
-                      </span>
-                    </div>
-                    <div class="row ">
-                      <div class="col ">
-                        <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                          class="fas fa-wrench black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                          <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                            class="far fa-check-circle black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                              <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary3"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="collapseSummary3"><i class="fa black-icon-color"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row centered tuesday-outline-color " style="margin-bottom:10px;">
-                  <div class="col ">
-                    <div class="row ">
-                      <span class="summary  ">
-                        <p class="collapse " id="collapseSummary33">
-                           Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                        </p>
-
-                      </span>
-                    </div>
-                    <div class="row ">
-                      <div class="col ">
-                        <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                          class="fas fa-wrench black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                          <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                            class="far fa-check-circle black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                              <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary34"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="collapseSummary3"><i class="fa black-icon-color"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row centered tuesday-outline-color " style="margin-bottom:10px;">
-                  <div class="col ">
-                    <div class="row ">
-                      <span class="summary  ">
-                        <p class="collapse " id="collapseSummary34">
-                           Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                        </p>
-
-                      </span>
-                    </div>
-                    <div class="row ">
-                      <div class="col ">
-                        <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                          class="fas fa-wrench black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                          <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                            class="far fa-check-circle black-icon-color"></i></a>
-                      </div>
-                      <div class="col ">
-                              <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary34"
-                                                                                    aria-expanded="false"
-                                                                                    aria-controls="collapseSummary3"><i class="fa black-icon-color"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row centered tuesday-outline-color " style="margin-bottom:10px;">
-                  <div class="col ">
-                    <div class="row ">
-                      <span class="summary  ">
-                        <p class="collapse " id="collapseSummary35">
-                           Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                        </p>
-
-                      </span>
-                    </div>
-                    <div class="row align-items-end">
-                      <div class="col">
-                        <a   class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                          class="fas fa-wrench black-icon-color"></i></a>
-                      </div>
-                      <div class="col">
-                        <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                          class="far fa-check-circle black-icon-color"></i></a>
-                      </div>
-                      <div class="col">
-                        <a  class="collapsed" data-toggle="collapse" href="#collapseSummary35"
-                            aria-expanded="false"
-                            aria-controls="collapseSummary3"><i class="fa black-icon-color"></i></a>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card-header">
-            Monday
-          </div>
-          <div class="card zero-border">
-            <div class="card-body">
-              <div class="form-group centered row">
-
-                <div class=" btn pur-btns  monday-color " style="margin-bottom:10px; ">
-                  <span class="summary  ">
-
-                    <p class="collapse " id="collapseSummary">
-                      Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                      Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                      Server is listening on localhost:5000, open your browser on
-                    </p>
-                    <a style="float: right" class="collapsed" data-toggle="collapse" href="#collapseSummary"
-                       aria-expanded="false"
-                       aria-controls="collapseSummary"><i class="fa black-icon-color"></i></a>
-                  </span>
-                  <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="far fa-check-circle black-icon-color"></i></a>
-                  <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
-                    class="fas fa-wrench black-icon-color"></i></a>
-                </div>
-
-
-                <button type="button" class="summary btn pur-btns monday-color  "
-                        style="margin-bottom:10px; width: 200px">
-
-                  <p class="collapse" id="collapseSummary2">
-                    Angular Live Development Server is listening on localhost:5000, open your browser on Angular Live
-                    Development Server is listening on localhost:5000, open your browser on Angular Live Development
-                    Server is listening on localhost:5000, open your browser on
-                  </p>
-                  <a class="collapsed" data-toggle="collapse" href="#collapseSummary2" aria-expanded="false"
-                     aria-controls="collapseSummary2"></a>
-
-                </button>
-                <button type="button" class="btn pur-btns monday-color  "
-                        style="margin-bottom:10px; width: 200px" id="intoList2">
-                  Angular Live Development Server is listening on localhost:5000, open your browser on
-                </button>
-                <button type="button" class="btn pur-btns monday-color  " style="margin-bottom:10px; width: 200px"
-                        id="intoList1">
-                  Angular Live Development Server is listening on localhost:5000, open your browser on
-                </button>
-
-              </div>
-            </div>
-          </div>
-        </div>
--->
 
     </div>
   </div>
