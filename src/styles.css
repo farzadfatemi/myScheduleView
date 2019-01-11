@@ -81,10 +81,10 @@
   width: 100% ;
 }
 @font-face {
-  font-family: 'Koodak';
+  font-family: 'Casablanca';
 
   src: url('assets/fonts/Far_Casablanca.ttf') format("opentype");
 }
-.font-koodak{
-  font-family: Koodak,serif; margin: 0 auto;display: block; text-align: center
+.font-casablanca{
+  font-family: Casablanca,serif; margin: 0 auto;display: block; text-align: center
 }

@@ -1,86 +1,137 @@
 <div class="card store-group">
   <div *ngIf="showAddEditBox" class="card store-group">
-  <form class="form" (ngSubmit)="addEditActivity()">
-    <div class="card-body">
-      <div class="table-bordered tab  le-responsive">
-        <table class="table">
-          <!--
-          <thead>
-           <tr>
+    <form class="form" (ngSubmit)="submitAddOrEditActivity(); addEditActivityFrom.resetForm()" #addEditActivityFrom="ngForm" >
+      <div class="card-body">
+        <div class="table-bordered tab  le-responsive">
+          <table class="table">
+            <!--
+            <thead>
+             <tr>
 
+                 <th>
+                 <select class="form-control" required name="time">
+                 <option class="ui dropdown" selected> 2-4</option>
+                 <option class="ui dropdown" selected> 4-8</option>
+                 <option class="ui dropdown" selected> 2-10</option>
+                 <option class="ui dropdown" selected> 2-10</option>
+               </select>
+               </th>
+               <th>10-12</th>
                <th>
-               <select class="form-control" required name="time">
-               <option class="ui dropdown" selected> 2-4</option>
-               <option class="ui dropdown" selected> 4-8</option>
-               <option class="ui dropdown" selected> 2-10</option>
-               <option class="ui dropdown" selected> 2-10</option>
-             </select>
-             </th>
-             <th>10-12</th>
-             <th>
-               <select class="form-control" required name="time">
-                 <option *ngFor="let hour of getNumberArr(12); let hour = index;" class="ui dropdown" selected>{{hour}} </option>
+                 <select class="form-control" required name="time">
+                   <option *ngFor="let hour of getNumberArr(12); let hour = index;" class="ui dropdown" selected>{{hour}} </option>
 
-               </select>
-               <select class="form-control" required name="time">
-                 <option *ngFor="let hour of getNumberArr(60); let hour = index;" class="ui dropdown" selected>{{hour}} </option>
+                 </select>
+                 <select class="form-control" required name="time">
+                   <option *ngFor="let hour of getNumberArr(60); let hour = index;" class="ui dropdown" selected>{{hour}} </option>
 
-               </select>
+                 </select>
+
+               </th>
+               <th>
 
              </th>
-             <th>
+             </tr>
+             </thead>-->
+            <thead>
+            <tr>
 
-           </th>
-           </tr>
-           </thead>-->
-          <thead>
-          <tr>
+              <th style="text-align: center">
+                <div class="input-group input-group-sm mb-3">
+                  Start Time :
 
-            <th style="text-align: center" colspan="2">
-              <section class="example-section">
-
-                <mat-checkbox name="fr24to2"  [(ngModel)]="model.fr24to2">12-2 am</mat-checkbox>
-                <mat-checkbox name="fr2to4"   [(ngModel)]="model.fr2to4">2-4 am</mat-checkbox>
-                <mat-checkbox name="fr4to6"   [(ngModel)]="model.fr4to6">4-6 am</mat-checkbox>
-                <mat-checkbox name="fr6to8"   [(ngModel)]="model.fr6to8">6-8 am</mat-checkbox>
-                <mat-checkbox name="fr8to10"  [(ngModel)]="model.fr8to10">8-10 am</mat-checkbox>
-                <mat-checkbox name="fr10to12" [(ngModel)]="model.fr10to12">10-12 am</mat-checkbox>
-                <mat-checkbox name="fr12to14" [(ngModel)]="model.fr12to14">12-2 pm </mat-checkbox>
-                <mat-checkbox name="fr14to16" [(ngModel)]="model.fr14to16">2-4 pm  </mat-checkbox>
-                <mat-checkbox name="fr16to18" [(ngModel)]="model.fr16to18">4-6 pm  </mat-checkbox>
-                <mat-checkbox name="fr18to20" [(ngModel)]="model.fr18to20">6-8 pm  </mat-checkbox>
-                <mat-checkbox name="fr20to22" [(ngModel)]="model.fr20to22">8-10 pm  </mat-checkbox>
-                <mat-checkbox name="fr22to24" [(ngModel)]="model.fr22to24">10-12 pm  </mat-checkbox>
-
-              </section>
-
-              <mat-form-field>
-                <input matInput [matDatepicker]="picker" [value]="model.startDate" name="StartDate"
-                       (dateChange)="setStartDate('change', $event)" placeholder="Choose a produce date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </th>
-            <th class="vertical-align " style=" text-align: center" colspan="2">
+                  <mat-select placeholder="Hour" style="width:15%; " required (selectionChange)="selectStartTimeH($event)"
+                              [(ngModel)]="model.startTimeH" name="startTimeH">
+                    <mat-option class="ui  " *ngFor="let hour of getNumberArr(12); let hour = index;"
+                                [value]="hour "> {{hour}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-select  placeholder="Min" style="width:15%; " required (selectionChange)="selectStartTimeM($event)"
+                              [(ngModel)]="model.startTimeM" name="startTimeM">
+                    <mat-option class="ui  " *ngFor="let min of getNumberArr(60); let min = index;"
+                                [value]="min "> {{min}}
+                    </mat-option>
+                  </mat-select>
 
 
-                <button *ngIf="chosenDay" [value]="model.chosenDay" class="btn {{chosenDay.toLowerCase()}}-color " style="width: 100% ">
+                 End Time :
+
+                  <mat-select placeholder="Hour" style="width:15%; " required (selectionChange)="selectEndTimeH($event)"
+                              [(ngModel)]="model.endTimeH" name="endTimeH">
+                    <mat-option class="ui  " *ngFor="let hour of getNumberArr(12); let hour = index;"
+                                [value]="hour "> {{hour}}
+                    </mat-option>
+                  </mat-select>
+
+
+
+                  <mat-select  placeholder="Min" style="width:15%; " required (selectionChange)="selectEndTimeM($event)"
+                              [(ngModel)]="model.endTimeM" name="endTimeM">
+                    <mat-option class="ui  " *ngFor="let min of getNumberArr(60); let min = index;"
+                                [value]="min "> {{min}}
+                    </mat-option>
+                  </mat-select>
+
+
+                  <!-- <section class="example-section">
+
+                     <mat-checkbox name="fr24to2"  [(ngModel)]="model.fr24to2">12-2 am</mat-checkbox>
+                     <mat-checkbox name="fr2to4"   [(ngModel)]="model.fr2to4">2-4 am</mat-checkbox>
+                     <mat-checkbox name="fr4to6"   [(ngModel)]="model.fr4to6">4-6 am</mat-checkbox>
+                     <mat-checkbox name="fr6to8"   [(ngModel)]="model.fr6to8">6-8 am</mat-checkbox>
+                     <mat-checkbox name="fr8to10"  [(ngModel)]="model.fr8to10">8-10 am</mat-checkbox>
+                     <mat-checkbox name="fr10to12" [(ngModel)]="model.fr10to12">10-12 am</mat-checkbox>
+                     <mat-checkbox name="fr12to14" [(ngModel)]="model.fr12to14">12-2 pm </mat-checkbox>
+                     <mat-checkbox name="fr14to16" [(ngModel)]="model.fr14to16">2-4 pm  </mat-checkbox>
+                     <mat-checkbox name="fr16to18" [(ngModel)]="model.fr16to18">4-6 pm  </mat-checkbox>
+                     <mat-checkbox name="fr18to20" [(ngModel)]="model.fr18to20">6-8 pm  </mat-checkbox>
+                     <mat-checkbox name="fr20to22" [(ngModel)]="model.fr20to22">8-10 pm  </mat-checkbox>
+                     <mat-checkbox name="fr22to24" [(ngModel)]="model.fr22to24">10-12 pm  </mat-checkbox>
+
+                   </section>-->
+                </div>
+              </th>
+              <th style="text-align: center">
+
+                <mat-form-field>
+
+                  <input matInput [matDatepicker]="endDatePicker" [value]="model.endDate" name="EndDate"
+                         (dateChange)="setEndDate('change', $event)" placeholder="End date">
+                  <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #endDatePicker></mat-datepicker>
+                </mat-form-field>
+                <div>  </div>
+                <mat-form-field>
+                  <input matInput [matDatepicker]="startDatePicker" [value]="model.startDate" name="StartDate"
+                         (dateChange)="setStartDate('change', $event)" placeholder="Start date">
+                  <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
+
+
+              </th>
+
+              <th class="vertical-align " style=" text-align: center" colspan="2">
+
+
+                <button *ngIf="chosenDay" [value]="model.chosenDay" class="btn {{chosenDay.toLowerCase()}}-color "
+                        style="width: 100% ">
                   {{chosenDay}}
                 </button>
-            </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>
-              <mat-form-field>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <mat-form-field>
                 <textarea matInput placeholder="Description" id="description" name="Description"
                           [(ngModel)]="model.description">{{model.description}}</textarea>
-              </mat-form-field>
-            </td>
+                </mat-form-field>
+              </td>
 
 
-            <td style="text-align: center">
+              <td style="text-align: center">
 
 
                 <!--                <div *ngFor="let activityCategory of actCatList; let i = index" formArrayName="mainCats">
@@ -96,9 +147,9 @@
                 <div>
                   <mat-form-field>
                     <mat-select placeholder="Category" required (selectionChange)="selectCats($event)"
-                                [(ngModel)]="model.nfCategoryId" name="category" multiple>
+                                [(ngModel)]="model.activityCategoryId" name="category">
                       <mat-option class="ui dropdown" *ngFor="let category of  actCatList "
-                                  [value]="category.name">{{
+                                  [value]="category.categoryId">{{
                         category.name }}
                       </mat-option>
                     </mat-select>
@@ -107,7 +158,7 @@
                 <div *ngIf="showPurchasedList">
                   <mat-form-field>
                     <mat-select placeholder="Shopping Id" required (selectionChange)="selectShop($event)"
-                                [(ngModel)]="model.shoppingId" name="category" multiple>
+                                [(ngModel)]="model.purchaseId" name="category"  >
                       <mat-option class="ui dropdown" *ngFor="let shop of  shopList"
                                   [(value)]="shop.id">
                         <!--<span *ngFor="let product of  shop.product">{{product.name}}</span>-->
@@ -116,23 +167,23 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-            </td>
-            <td style="text-align: center">
-              <mat-form-field>
-                <mat-label>Activity Name</mat-label>
-                <input matInput [(ngModel)]="model.name" name="Name">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Input the title</mat-hint>
-              </mat-form-field>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+              </td>
+              <td style="text-align: center">
+                <mat-form-field>
+                  <mat-label>Activity Title</mat-label>
+                  <input matInput [(ngModel)]="model.title" name="Title">
+                  <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                  <mat-hint>Input the title</mat-hint>
+                </mat-form-field>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-    <button type="submit" class="btn pur-btns margin-small" id="addNewActivity">Add New Cat</button>
+      <button type="submit" class="btn pur-btns margin-small" id="addNewActivity">Add New Cat</button>
 
-    <!--<div *ngFor="let item of activityList;">{{item.title}}</div>-->
-  </form>
+      <!--<div *ngFor="let item of activityList;">{{item.title}}</div>-->
+    </form>
   </div>
 </div>
