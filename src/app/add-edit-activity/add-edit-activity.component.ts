@@ -2,6 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Category} from '../domain/category';
 import {AddEditActivityService} from './add-edit-activity.service';
 import {AmazingTimePickerService} from 'amazing-time-picker';
+import {MatDatepickerInputEvent} from '@angular/material';
+
+const URL = 'http://localhost:8080/';
 
 @Component({
   selector: 'app-add-edit-activity',
@@ -18,10 +21,6 @@ export class AddEditActivityComponent implements OnInit {
   model: any = {};
   selectedCat: any = [];
   selectedShop: any = [];
-  startTimeH: any = [];
-  startTimeM: any = [];
-  endTimeH: any = [];
-  endTimeM: any = [];
   category: any = [];
   description: any = [];
   showPurchasedList: boolean = false;
@@ -41,11 +40,11 @@ export class AddEditActivityComponent implements OnInit {
     let d = new Date();
     this.selectedStartTime = d.getHours() +":"+d.getMinutes();
     this.selectedEndTime = d.getHours() +":"+d.getMinutes();
-
-
-
     this.selectedStartDate = this.formatDate(new Date());
     this.selectedEndDate = this.formatDate(new Date());
+    this.model.startDate = this.selectedStartDate;
+    this.model.endDate = this.selectedEndDate;
+
     console.log('now  ' + this.formatDate(new Date()));
     console.log('selectedTime  ' +  this.selectedStartTime );
     // console.log('model.category  ' + JSON.stringify(this.category));
@@ -114,14 +113,21 @@ export class AddEditActivityComponent implements OnInit {
     console.log(event.target.value);
     this.selectedEndTime = event.target.value;
   }
+  setStartDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    console.log('Start Date Chosen : ' + event.value);
 
+
+    this.selectedStartDate = this.formatDate(event.value);
+  }
+  setEndDate(type: string, event: MatDatepickerInputEvent<Date>) {
+    console.log('End Date Chosen : ' + event.value);
+    this.selectedEndDate = this.formatDate(event.value);
+  }
   addOrEditActivity() {
     this.model.day = this.day;
     this.model.startDate = this.selectedStartDate + ' ' + this.selectedStartTime;
     this.model.endDate = this.selectedEndDate + ' ' + this.selectedEndTime;
-
     console.log('startDate  ' + this.model.startDate + 'end Date  ' + this.model.endDate );
-    // console.log('e3333 ' + JSON.stringify(this.shopList));
     // console.log('e3333 ' + JSON.stringify(this.shopList));
     this.addEditActivityService.addActivity(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
