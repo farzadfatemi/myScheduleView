@@ -1,11 +1,11 @@
 export interface Activity {
   activityId;
   title;
+  activityCategoryId;
   startDate;
   endDate;
-  actCategoryId;
-  description;
   purchaseId;
   todo;
+  description;
   day;
 }

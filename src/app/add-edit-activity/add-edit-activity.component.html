@@ -1,6 +1,8 @@
 <div class="card store-group">
-  <div *ngIf="showAddEditBox" class="card store-group">
-    <form class="form" (ngSubmit)="submitAddOrEditActivity(); addEditActivityFrom.resetForm()" #addEditActivityFrom="ngForm" >
+  <div   class="card store-group">
+  <!--<div *ngIf="showAddEditBox" class="card store-group">-->
+    <!--<form class="form" (ngSubmit)="addOrEditActivity(); addEditActivityFrom.resetForm()" #addEditActivityFrom="ngForm" >-->
+    <form class="form" (ngSubmit)="addOrEditActivity()">
       <div class="card-body">
         <div class="table-bordered tab  le-responsive">
           <table class="table">
@@ -37,40 +39,58 @@
             <tr>
 
               <th style="text-align: center">
+                <div class="btn-group-sm">
+                  <input type="button" class="btn {{day.toLowerCase()}}-color " value="Start Time" (click)="openStart()">
+                  :
+                  <label for="startTime"></label>
+                  <input  id="startTime" (change)="changeStartTime($event)"  value="{{selectedStartTime}}">
+                </div>
+                <br/>
+                <div class="btn-group-sm">
+                  <input type="button" class="btn {{day.toLowerCase()}}-color " value="End Time" (click)="openEnd()">
+                  :
+                  <label for="endTime"></label>
+                  <input id="endTime" (change)="changeEndTime($event)"  value="{{selectedEndTime}}">
+                </div>
+              </th>
+              <th style="text-align: center">
                 <div class="input-group input-group-sm mb-3">
+<!--
                   Start Time :
 
-                  <mat-select placeholder="Hour" style="width:15%; " required (selectionChange)="selectStartTimeH($event)"
-                              [(ngModel)]="model.startTimeH" name="startTimeH">
+                  <mat-select placeholder="Hour" style="width:15%; " required
+                              (selectionChange)="selectStartTimeH($event)"
+                              [(ngModel)]="startTimeH" name="startTimeH">
                     <mat-option class="ui  " *ngFor="let hour of getNumberArr(12); let hour = index;"
                                 [value]="hour "> {{hour}}
                     </mat-option>
                   </mat-select>
-                  <mat-select  placeholder="Min" style="width:15%; " required (selectionChange)="selectStartTimeM($event)"
-                              [(ngModel)]="model.startTimeM" name="startTimeM">
+                  <mat-select placeholder="Min" style="width:15%; " required
+                              (selectionChange)="selectStartTimeM($event)"
+                              [(ngModel)]="startTimeM" name="startTimeM">
                     <mat-option class="ui  " *ngFor="let min of getNumberArr(60); let min = index;"
                                 [value]="min "> {{min}}
                     </mat-option>
                   </mat-select>
 
 
-                 End Time :
+                  End Time :
 
                   <mat-select placeholder="Hour" style="width:15%; " required (selectionChange)="selectEndTimeH($event)"
-                              [(ngModel)]="model.endTimeH" name="endTimeH">
-                    <mat-option class="ui  " *ngFor="let hour of getNumberArr(12); let hour = index;"
+                              [(ngModel)]="endTimeH" name="endTimeH">
+                    <mat-option class="ui  " *ngFor="let hour of getNumberArr(24); let hour = index;"
                                 [value]="hour "> {{hour}}
                     </mat-option>
                   </mat-select>
 
 
-
-                  <mat-select  placeholder="Min" style="width:15%; " required (selectionChange)="selectEndTimeM($event)"
-                              [(ngModel)]="model.endTimeM" name="endTimeM">
+                  <mat-select placeholder="Min" style="width:15%; " required (selectionChange)="selectEndTimeM($event)"
+                              [(ngModel)]="endTimeM" name="endTimeM">
                     <mat-option class="ui  " *ngFor="let min of getNumberArr(60); let min = index;"
                                 [value]="min "> {{min}}
                     </mat-option>
                   </mat-select>
+-->
 
 
                   <!-- <section class="example-section">
@@ -100,7 +120,7 @@
                   <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
                   <mat-datepicker #endDatePicker></mat-datepicker>
                 </mat-form-field>
-                <div>  </div>
+                <div></div>
                 <mat-form-field>
                   <input matInput [matDatepicker]="startDatePicker" [value]="model.startDate" name="StartDate"
                          (dateChange)="setStartDate('change', $event)" placeholder="Start date">
@@ -114,9 +134,9 @@
               <th class="vertical-align " style=" text-align: center" colspan="2">
 
 
-                <button *ngIf="chosenDay" [value]="model.chosenDay" class="btn {{chosenDay.toLowerCase()}}-color "
+                <button *ngIf="day" [value]="model.day" class="btn {{day.toLowerCase()}}-color "
                         style="width: 100% ">
-                  {{chosenDay}}
+                  {{day}}
                 </button>
               </th>
             </tr>
@@ -155,12 +175,12 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-                <div *ngIf="showPurchasedList">
+                <div [hidden]="!showPurchasedList">
                   <mat-form-field>
-                    <mat-select placeholder="Shopping Id" required (selectionChange)="selectShop($event)"
-                                [(ngModel)]="model.purchaseId" name="category"  >
+                    <mat-select placeholder="Shopping Title" required (selectionChange)="selectShop($event)"
+                                [(ngModel)]="model.purchaseId" name="category">
                       <mat-option class="ui dropdown" *ngFor="let shop of  shopList"
-                                  [(value)]="shop.id">
+                                  [value]="shop.id">
                         <!--<span *ngFor="let product of  shop.product">{{product.name}}</span>-->
                         {{shop.description}}
                       </mat-option>

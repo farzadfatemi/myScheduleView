@@ -24,7 +24,7 @@ export class ActivityComponent implements OnInit {
 
   model: any = {};
   isShowAddEditBox: boolean = false;
-  chosenDay: string = '';
+  day: string = '';
   mondayList: any=[];
   tuesdayList: any=[];
   wednesdayList: any=[];
@@ -35,7 +35,7 @@ export class ActivityComponent implements OnInit {
 
   dayForAdd(isShow:boolean,nameOfTheDay:any){
     this.isShowAddEditBox = isShow;
-    this.chosenDay = nameOfTheDay;
+    this.day = nameOfTheDay;
   }
    addToWeekDaysList(activity:Activity) {
      let day = new Date(activity.startDate);
@@ -135,10 +135,6 @@ export class ActivityComponent implements OnInit {
     return null;
   }
 
-  addActivity() {
-    this.activityService.addActivity(this.model);
-    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
-  }
 
 
 

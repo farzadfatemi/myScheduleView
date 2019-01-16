@@ -33,6 +33,7 @@ import {BranchComponent} from './branch/branch.component';
 import {DialogBoxComponent} from './dialog-box/dialog-box.component';
 import {ActivityComponent} from './activity/activity.component';
 import {AddEditActivityComponent} from './add-edit-activity/add-edit-activity.component';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {AddEditActivityComponent} from './add-edit-activity/add-edit-activity.co
     MatIconModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    AmazingTimePickerModule,
   ],
   exports: [
     MatSnackBarModule

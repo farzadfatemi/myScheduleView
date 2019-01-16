@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MatDatepickerInputEvent} from '@angular/material';
 import {Category} from '../domain/category';
+import {AddEditActivityService} from './add-edit-activity.service';
+import {AmazingTimePickerService} from 'amazing-time-picker';
 
 @Component({
   selector: 'app-add-edit-activity',
@@ -8,7 +9,7 @@ import {Category} from '../domain/category';
   styleUrls: ['./add-edit-activity.component.css']
 })
 export class AddEditActivityComponent implements OnInit {
-  @Input() chosenDay: any;
+  @Input() day: any;
   @Input() showAddEditBox: boolean;
   @Input() actCatList: any;
   @Input() shopList: any;
@@ -17,30 +18,38 @@ export class AddEditActivityComponent implements OnInit {
   model: any = {};
   selectedCat: any = [];
   selectedShop: any = [];
+  startTimeH: any = [];
+  startTimeM: any = [];
+  endTimeH: any = [];
+  endTimeM: any = [];
   category: any = [];
   description: any = [];
   showPurchasedList: boolean = false;
-  fr24to2:any='24-2';
-  fr2to4:any='2-4';
-  fr4to6:any='4-6';
-  fr6to8:any='6-8';
-  fr8to10:any='8-10';
-  fr10to12:any='10-12';
-  fr12to14:any='12-14';
-  fr14to16:any='14-16';
-  fr16to18:any='16-18';
-  fr18to20:any='18-20';
-  fr20to22:any='20-22';
-  fr22to24:any='22-24';
+  selectedStartDate: string = '';
+  selectedEndDate: string = '';
+  selectedStartTime: string = '';
+  selectedEndTime: string = '';
+
+  constructor(
+    private addEditActivityService: AddEditActivityService,
+    private atp: AmazingTimePickerService
+  ) {
+  }
+
   ngOnInit() {
 
-    this.model.startDate = this.formatDate(new Date());
+    let d = new Date();
+    this.selectedStartTime = d.getHours() +":"+d.getMinutes();
+    this.selectedEndTime = d.getHours() +":"+d.getMinutes();
+
+
+
+    this.selectedStartDate = this.formatDate(new Date());
+    this.selectedEndDate = this.formatDate(new Date());
     console.log('now  ' + this.formatDate(new Date()));
-    console.log('model.category  ' + JSON.stringify(this.category));
-    this.model.endDate = this.formatDate(new Date());
-    this.model.startDateTime = this.model.startDate  + this.model.startTimeH +":"+this.model.startTimeM;
-    this.model.endDateTime = this.model.endDate  + this.model.endTimeH +":"+this.model.endTimeM;
-    this.model.chosenDay = this.chosenDay;
+    console.log('selectedTime  ' +  this.selectedStartTime );
+    // console.log('model.category  ' + JSON.stringify(this.category));
+    this.model.day = this.day;
 
   }
 
@@ -56,65 +65,24 @@ export class AddEditActivityComponent implements OnInit {
     return result;
   }
 
-  setStartDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log('Start Date Chosen : ' + event.value);
-
-    this.model.startDateTime =this.model.startDate + " " + this.model.startTimeH +":"+this.model.startTimeM;
-    this.model.startDate = this.formatDate(event.value)  ;
-  }
 
   formatDate(d) {
     return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
   }
 
-  setEndDate(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log('End Date Chosen : ' + event.value);
-    this.model.endDate = this.formatDate(event.value)  ;
-    this.model.endDateTime = this.model.endDate  + this.model.endTimeH +":"+this.model.endTimeM;
-  }
 
   getNumberArr(n: number): any[] {
     // @ts-ignore
     return Array(n + 1).fill().map((x, i) => i);
   }
 
-  submitAddOrEditActivity() {
-    this.model.chosenDay = this.chosenDay;
-    console.log('e3333 ' + JSON.stringify(this.shopList));
-    // this.categoryServices.addCategory(this.model);
-    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
-  }
-  selectStartTimeH(event){
-    console.log('Start Hour : ' + this.model.startTimeH);
 
-    this.model.startDateTime =this.model.startDate + " " + this.model.startTimeH +":"+this.model.startTimeM;
-  }  selectStartTimeM(event){
-    console.log('Start Minutes : ' + this.model.startTimeM);
-
-    this.model.startDateTime =this.model.startDate + " " + this.model.startTimeH +":"+this.model.startTimeM;
-  }  selectEndTimeH(event){
-    console.log('End Hour : ' + this.model.endTimeH);
-    this.model.endDateTime = this.model.endDate  + " " + this.model.endTimeH +":"+this.model.endTimeM;
-  }  selectEndTimeM(event){
-    console.log('End Minutes : ' + this.model.endTimeM);
-    this.model.endDateTime = this.model.endDate  + " " + this.model.endTimeH +":"+this.model.endTimeM;
-  }
   selectCats(event) {
     this.selectedCat = event.source.value;
-    this.showPurchasedList = this.selectedCat ===2;
+    this.showPurchasedList = this.selectedCat === 2;
     console.log('=-=d>' + event.source.value);
-    console.log('=-=w>' +( this.selectedCat));
-    /*
-        if (event.checked) {
-          console.log('=-=e>' + event.checked + ' =-= value>' + event.value);
-          this.selectedCat.push(new FormControl(event.source.value));
-        } else {
-          if (i !== -1) {
-            this.selectedCat.splice(i, 1);
-          }
-
-        }
-        console.log('=-=0>' + JSON.stringify(this.selectedCat));*/
+    console.log('=-=s>' + (this.showPurchasedList));
+    console.log('=-=w>' + (this.selectedCat));
   }
 
   selectShop(event, i) {
@@ -123,14 +91,39 @@ export class AddEditActivityComponent implements OnInit {
 
   }
 
-  selectedBox(event) {
-    // const interests = <FormArray>this.interestFormGroup.get('interests') as FormArray;
-    //
-    // if(event.checked) {
-    //   interests.push(new FormControl(event.source.value))
-    // } else {
-    //   const i = interests.controls.findIndex(x => x.value === event.source.value);
-    //   interests.removeAt(i);
-    // }
+  openStart() {
+    const amazingTimePicker = this.atp.open();
+    amazingTimePicker.afterClose().subscribe(time => {
+      this.selectedStartTime = time;
+      console.log('selectedTime  ' + this.selectedStartTime );
+    });
+  }
+  openEnd() {
+    const amazingTimePicker = this.atp.open();
+    amazingTimePicker.afterClose().subscribe(time => {
+      this.selectedEndTime = time;
+      console.log('selectedTime  ' + this.selectedEndTime );
+    });
+  }
+  changeStartTime(event) {
+    console.log(event.target.value);
+    this.selectedStartTime = event.target.value;
+
+  }
+  changeEndTime(event: any) {
+    console.log(event.target.value);
+    this.selectedEndTime = event.target.value;
+  }
+
+  addOrEditActivity() {
+    this.model.day = this.day;
+    this.model.startDate = this.selectedStartDate + ' ' + this.selectedStartTime;
+    this.model.endDate = this.selectedEndDate + ' ' + this.selectedEndTime;
+
+    console.log('startDate  ' + this.model.startDate + 'end Date  ' + this.model.endDate );
+    // console.log('e3333 ' + JSON.stringify(this.shopList));
+    // console.log('e3333 ' + JSON.stringify(this.shopList));
+    this.addEditActivityService.addActivity(this.model);
+    console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
 }
