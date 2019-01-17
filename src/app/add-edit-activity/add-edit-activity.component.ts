@@ -61,7 +61,7 @@ export class AddEditActivityComponent implements OnInit {
       this.model.description = "";
       this.model.title = "";
       this.model.ativityCategoryId = 1;
-      this.model.purchaseId = 0;
+      // this.model.purchaseId = 1;
 
       console.log('now  ' + this.formatDate(new Date()));
       console.log('selectedTime  ' + this.selectedStartTime);
