@@ -53,21 +53,47 @@
 .wednesday-color {
   background-color: #43ecce;
 }
-
+.wednesday-outline-color {
+  padding: 5px 10px 5px 10px;
+  background-color: #ffffff;
+  border: #43ecce solid 2px;
+  border-radius: 5px;
+}
 .thursday-color {
   background-color: #eb8dec;
 }
-
+.thursday-outline-color {
+  padding: 5px 10px 5px 10px;
+  background-color: #ffffff;
+  border: #eb8dec solid 2px;
+  border-radius: 5px;
+}
 .friday-color {
   background-color: #eceb06;
 }
-
+.friday-outline-color {
+  padding: 5px 10px 5px 10px;
+  background-color: #ffffff;
+  border: #eceb06 solid 2px;
+  border-radius: 5px;
+}
 .saturday-color {
   background-color: #ffb600;
 }
-
+.saturday-outline-color {
+  padding: 5px 10px 5px 10px;
+  background-color: #ffffff;
+  border: #ffb600 solid 2px;
+  border-radius: 5px;
+}
 .sunday-color {
   background-color: #0fec00;
+}
+.sunday-outline-color {
+  padding: 5px 10px 5px 10px;
+  background-color: #ffffff;
+  border: #0fec00 solid 2px;
+  border-radius: 5px;
 }
 .vertical-align{
   vertical-align: middle;

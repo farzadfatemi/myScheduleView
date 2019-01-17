@@ -15,7 +15,7 @@
             <!--<div class="col-auto">v</div>-->
             <!--<div class="col"><hr></div>-->
           <!--</div>-->
-          <div *ngFor="let day of  sundayList ; let indx = index" class=" btn pur-btns  sunday-color  day-style" style="margin-bottom:10px; ">
+          <div *ngFor="let day of  sundayList ; let indx = index" [ngClass]="day.done ? 'sunday-color': 'sunday-outline-color'" class=" btn pur-btns day-style" style="margin-bottom:10px; ">
                   <span class="summary  ">
 
                     <p class="collapse  day-style" id="{{'sundayCo'+indx}}">
@@ -26,9 +26,9 @@
                        aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
 
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+            <a class="is-done" href="#isDone" (click)="isDoneEvent(day)"><i
               class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+            <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
 
@@ -45,20 +45,20 @@
             Saturday  <br/><span style="font-size: small">2018/12/12</span>
           </div>
           <hr/>
-          <div *ngFor="let sat of  saturdayList ; let indx = index" class=" btn pur-btns  saturday-color  day-style" style="margin-bottom:10px; ">
+          <div *ngFor="let day of  saturdayList ; let indx = index" [ngClass]="day.done ? 'saturday-color': 'saturday-outline-color'" class=" btn pur-btns day-style"  style="margin-bottom:10px; ">
                   <span class="summary  ">
 
                     <p class="collapse " id="{{'saturdayCo'+indx}}">
-                      <span class="font-casablanca">{{sat.title}}<hr/>{{ sat.description}}<hr/></span>
+                      <span class="font-casablanca">{{day.title}}<hr/>{{ day.description}}<hr/></span>
                     </p>
 
                     <a style="float: right" class="collapsed" data-toggle="collapse" href="#{{'saturdayCo'+indx}}"
                        aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
 
-            <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+            <a class="is-done" href="#isDone" (click)="isDoneEvent(day)"><i
               class="far fa-check-circle black-icon-color"></i></a>
-            <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+            <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
               class="fas fa-wrench black-icon-color"></i></a>
           </div>
 
@@ -73,7 +73,7 @@
             Friday
           </div>
            <hr/>
-           <div *ngFor="let day of  fridayList ; let indx = index" class=" btn pur-btns  friday-color  day-style" style="margin-bottom:10px; ">
+           <div *ngFor="let day of  fridayList ; let indx = index" [ngClass]="day.done ? 'friday-color': 'friday-outline-color'" class=" btn pur-btns day-style"   style="margin-bottom:10px; ">
                   <span class="summary  ">
 
                     <p class="collapse"  id="{{'fridayCo'+indx}}">
@@ -84,9 +84,9 @@
                        aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
 
-             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a class="is-done" href="#isDone" (click)="isDoneEvent(day)"><i
                class="far fa-check-circle black-icon-color"></i></a>
-             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
 
@@ -101,7 +101,7 @@
             Thursday
           </div>
            <hr/>
-           <div *ngFor="let day of  thursdayList ; let indx = index" class=" btn pur-btns  thursday-color  day-style" style="margin-bottom:10px; ">
+           <div *ngFor="let day of  thursdayList ; let indx = index" [ngClass]="day.done ? 'thursday-color': 'thursday-outline-color'" class=" btn pur-btns day-style"   style="margin-bottom:10px; ">
                   <span class="summary  ">
 
                     <p class="collapse " id="{{'thursdayCo'+indx}}">
@@ -112,9 +112,9 @@
                        aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
 
-             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a class="is-done" href="#isDone" (click)="isDoneEvent(day)"><i
                class="far fa-check-circle black-icon-color"></i></a>
-             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Thursday')"><i class="fas fa-plus-circle" style="color: #eb8dec;"></i></a>
@@ -127,7 +127,7 @@
             Wednesday
           </div>
            <hr/>
-           <div *ngFor="let day of  wednesdayList ; let indx = index" class=" btn pur-btns  wednesday-color  day-style" style="margin-bottom:10px; ">
+           <div *ngFor="let day of  wednesdayList ; let indx = index" [ngClass]="day.done ? 'wednesday-color': 'wednesday-outline-color'" class=" btn pur-btns day-style"  style="margin-bottom:10px; ">
                   <span class="summary  ">
 
                     <p class="collapse " id="{{'wednesdayCo'+indx}}">
@@ -138,9 +138,9 @@
                        aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
 
-             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a class="is-done" href="#isDone" (click)="isDoneEvent(day)"><i
                class="far fa-check-circle black-icon-color"></i></a>
-             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Wednesday')"><i class="fas fa-plus-circle" style="color: #43ecce;"></i></a>
@@ -153,7 +153,7 @@
             Tuesday
           </div>
            <hr/>
-           <div *ngFor="let day of  tuesdayList ; let indx = index" class=" btn pur-btns  tuesday-color  day-style" style="margin-bottom:10px; ">
+           <div *ngFor="let day of  tuesdayList ; let indx = index" [ngClass]="day.done ? 'tuesday-color': 'tuesday-outline-color'" class=" btn pur-btns day-style"   style="margin-bottom:10px; ">
                   <span class="summary  ">
 
                     <p class="collapse " id="{{'tuesdayCo'+indx}}">
@@ -164,9 +164,9 @@
                        aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
 
-             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a class="is-done" href="#isDone" (click)="isDoneEvent(day)"><i
                class="far fa-check-circle black-icon-color"></i></a>
-             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Tuesday')"><i class="fas fa-plus-circle" style="color: #a5a7ec;"></i></a>
@@ -179,7 +179,7 @@
             Monday
           </div>
            <hr/>
-           <div *ngFor="let day of  mondayList ; let indx = index" class=" btn pur-btns  monday-color day-style" style=" margin-bottom:10px; ">
+           <div *ngFor="let day of  mondayList ; let indx = index" [ngClass]="day.done ? 'monday-color': 'monday-outline-color'" class=" btn pur-btns day-style"   style=" margin-bottom:10px; ">
                   <span class="summary  " >
 
                     <p class="collapse  " id="{{'mondayCo'+indx}}">
@@ -190,9 +190,9 @@
                        aria-expanded="false" ><i class="fa black-icon-color"></i></a>
                   </span>
 
-             <a class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a class="is-done" href="#isDone" (click)="isDoneEvent(day)"><i
                class="far fa-check-circle black-icon-color"></i></a>
-             <a style="float: left" class="edit" href="#edit" (click)="editEvent(model.id)"><i
+             <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Monday')"><i class="fas fa-plus-circle" style="color: #00d7f3;"></i></a>
@@ -205,5 +205,5 @@
 
     </div>
   </div>
-  <app-add-edit-activity [actCatList]="actCatList" [shopList]="shopList" [showAddEditBox]="isShowAddEditBox" [day]="day"></app-add-edit-activity>
+  <app-add-edit-activity [actCatList]="actCatList" [shopList]="shopList" [showAddEditBox]="isShowAddEditBox" [day]="day" [activity]="activity" ></app-add-edit-activity>
 </div>

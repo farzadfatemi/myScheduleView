@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Activity} from '../domain/activity';
 import {Category} from '../domain/category';
 
 const URL = 'http://localhost:8080/';
@@ -15,8 +14,10 @@ export class ActivityService {
   getAllActivities (){
     return this.http.get<any>(URL+'allActivities')
       .toPromise()
-      .then(res => <Activity[]>res)
-      .then(data => { return data; });
+      .then(res =>  res  )
+      .then(data => {
+        console.log("============ll>>"+JSON.stringify(data));
+        return data; });
   }
   getAllActivityCat (){
     return this.http.get<any>(URL+'allActivityCat')

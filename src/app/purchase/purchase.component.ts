@@ -57,7 +57,7 @@ export class PurchaseComponent implements OnInit {
       {field: 'price', header: 'Price', width: '25%'},
       {field: 'amount', header: 'Amount', width: '25%'},
       {field: 'unitId', header: 'Unit Id', width: '25%'},
-      {field: 'todo', header: 'Todo', width: '25%'},
+      {field: 'isDone', header: 'Todo', width: '25%'},
       {field: 'description', header: 'Comment', width: '25%'},
       {field: 'date', header: 'Date', width: '25%'}
     ];

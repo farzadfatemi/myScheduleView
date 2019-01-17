@@ -5,7 +5,7 @@ export interface Activity {
   startDate;
   endDate;
   purchaseId;
-  todo;
+  isDone;
   description;
   day;
 }
