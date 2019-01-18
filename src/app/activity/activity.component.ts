@@ -24,7 +24,8 @@ export class ActivityComponent implements OnInit {
   }
 
   model: any = {};
-  isShowAddEditBox: boolean = false;
+  isShowAddBox: boolean = false;
+  isShowEditBox: boolean = false;
   day: string = '';
   activity: Activity;
   mondayList: any = [];
@@ -34,18 +35,20 @@ export class ActivityComponent implements OnInit {
   fridayList: any = [];
   saturdayList: any = [];
   sundayList: any = [];
+  newActivity: boolean = true;
 
-  dayForAdd(isShow: boolean, nameOfTheDay: any) {
-    this.isShowAddEditBox = isShow;
+  dayForAdd(toggleShowBox:boolean, nameOfTheDay: any) {
+    this.isShowAddBox = toggleShowBox;
     this.day = nameOfTheDay;
-    this.activity = null;
+    this.newActivity = true;
+    console.log(" newActivity in activity is :"+ this.newActivity);
   }
 
   addToWeekDaysList(activity: Activity) {
     let day = new Date(activity.startDate);
     console.log('Day of date : ' + day.getDay());
     if (day.getDay() === 1) {
-      activity.day = "monday";
+      activity.day = 'monday';
       this.mondayList.push(activity);
       // console.log('Activity == ' + JSON.stringify(activity));
       // console.log('Add to Monday List ... ');
@@ -54,7 +57,7 @@ export class ActivityComponent implements OnInit {
       //   }
       // );
     } else if (day.getDay() === 2) {
-      activity.day = "tuesday";
+      activity.day = 'tuesday';
       this.tuesdayList.push(activity);
       // console.log('Add to Tuesday List ... ');
       // this.tuesdayList.forEach(activity => {
@@ -62,7 +65,7 @@ export class ActivityComponent implements OnInit {
       //   }
       // );
     } else if (day.getDay() === 3) {
-      activity.day = "wednesday";
+      activity.day = 'wednesday';
       this.wednesdayList.push(activity);
       // console.log('Add to Wednesday List ... ');
       // this.wednesdayList.forEach(activity => {
@@ -70,7 +73,7 @@ export class ActivityComponent implements OnInit {
       //   }
       // );
     } else if (day.getDay() === 4) {
-      activity.day = "thursday";
+      activity.day = 'thursday';
       this.thursdayList.push(activity);
       // console.log('Add to Thursday List ... ');
       // this.thursdayList.forEach(activity => {
@@ -78,7 +81,7 @@ export class ActivityComponent implements OnInit {
       //   }
       // );
     } else if (day.getDay() === 5) {
-      activity.day = "friday";
+      activity.day = 'friday';
       this.fridayList.push(activity);
       // console.log('Add to Friday List ... ');
       // this.fridayList.forEach(activity => {
@@ -86,7 +89,7 @@ export class ActivityComponent implements OnInit {
       //   }
       // );
     } else if (day.getDay() === 6) {
-      activity.day = "saturday";
+      activity.day = 'saturday';
       this.saturdayList.push(activity);
       // console.log('Add to Saturday List ... ');
       // this.saturdayList.forEach(activity => {
@@ -94,7 +97,7 @@ export class ActivityComponent implements OnInit {
       //   }
       // );
     } else if (day.getDay() === 0) {
-      activity.day = "sunday";
+      activity.day = 'sunday';
       this.sundayList.push(activity);
       // console.log('Add to Sunday List ... ');
       // this.sundayList.forEach(activity => {
@@ -135,18 +138,20 @@ export class ActivityComponent implements OnInit {
 
 
   editEvent(event: any) {
-    this.isShowAddEditBox = true;
+    this.isShowEditBox = true;
     this.activity = event;
-
+    this.newActivity = false;
+    console.log("  activity for send to component :"+ JSON.stringify(this.activity));
   }
 
 
   isDoneEvent(event) {
     // console.log('===>' + JSON.stringify(event));
-    this.isShowAddEditBox = true;
+    this.isShowEditBox = true;
     event.done = !event.done;
     // console.log('===> 2 ' + JSON.stringify(event));
     this.activity = event;
+    this.newActivity = false;
   }
 
 }

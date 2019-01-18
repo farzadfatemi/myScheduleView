@@ -35,8 +35,9 @@
 
 
           <span class="add-button" > <a  href="#add"  (click)="dayForAdd(true,'Sunday')"><i class="fas fa-plus-circle" style="color: #5AE050;"></i></a>
-          </span>
-          <!--<img  class="add-button " (click)="showAddEditBox(true)" src="../../assets/images/Add.svg" />-->
+          &nbsp;|&nbsp;
+            <a  href="#minus" (click)="dayForAdd(false,'')"><i class="fas fa-minus-circle" style="color: #f3001d;"></i></a></span>
+          <!--<img  class="add-button " (click)="showEditBox(true)" src="../../assets/images/Add.svg" />-->
         </div>
 
         <!-- /////////        Saturday    /////////////// -->
@@ -63,7 +64,8 @@
           </div>
 
           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Saturday')"><i class="fas fa-plus-circle" style="color: #ffb600;"></i></a>
-          </span>
+         &nbsp;|&nbsp;
+            <a  href="#minus" (click)="dayForAdd(false,'')"><i class="fas fa-minus-circle" style="color: #f3001d;"></i></a></span>
         </div>
 
         <!-- /////////        Friday    /////////////// -->
@@ -91,7 +93,8 @@
            </div>
 
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Friday')"><i class="fas fa-plus-circle" style="color: #eceb06;"></i></a>
-          </span>
+         &nbsp;|&nbsp;
+            <a  href="#minus" (click)="dayForAdd(false,'')"><i class="fas fa-minus-circle" style="color: #f3001d;"></i></a></span>
         </div>
 
 
@@ -118,7 +121,8 @@
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Thursday')"><i class="fas fa-plus-circle" style="color: #eb8dec;"></i></a>
-          </span>
+          &nbsp;|&nbsp;
+            <a  href="#minus" (click)="dayForAdd(false,'')"><i class="fas fa-minus-circle" style="color: #f3001d;"></i></a></span>
         </div>
 
          <!-- /////////        Wednesday    /////////////// -->
@@ -144,7 +148,8 @@
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Wednesday')"><i class="fas fa-plus-circle" style="color: #43ecce;"></i></a>
-          </span>
+          &nbsp;|&nbsp;
+            <a  href="#minus" (click)="dayForAdd(false,'')"><i class="fas fa-minus-circle" style="color: #f3001d;"></i></a></span>
         </div>
 
          <!-- /////////        Tuesday    /////////////// -->
@@ -170,7 +175,8 @@
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
            <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Tuesday')"><i class="fas fa-plus-circle" style="color: #a5a7ec;"></i></a>
-          </span>
+          &nbsp;|&nbsp;
+            <a  href="#minus" (click)="dayForAdd(false,'')"><i class="fas fa-minus-circle" style="color: #f3001d;"></i></a></span>
         </div>
 
          <!-- /////////        Monday    /////////////// -->
@@ -195,8 +201,9 @@
              <a style="float: left" class="edit" href="#edit" (click)="editEvent(day)"><i
                class="fas fa-wrench black-icon-color"></i></a>
            </div>
-           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Monday')"><i class="fas fa-plus-circle" style="color: #00d7f3;"></i></a>
-          </span>
+           <span class="add-button" > <a  href="#add" (click)="dayForAdd(true,'Monday')"><i class="fas fa-plus-circle" style="color: #00d7f3;"></i></a>&nbsp;|&nbsp;
+            <a  href="#minus" (click)="dayForAdd(false,'')"><i class="fas fa-minus-circle" style="color: #f3001d;"></i></a></span>
+
         </div>
 
       </div>
@@ -205,5 +212,11 @@
 
     </div>
   </div>
-  <app-add-edit-activity [actCatList]="actCatList" [shopList]="shopList" [showAddEditBox]="isShowAddEditBox" [day]="day" [activity]="activity" ></app-add-edit-activity>
+  <div *ngIf="newActivity">
+    <app-add-activity [actCatList]="actCatList" [shopList]="shopList" [showAddBox]="isShowAddBox" [day]="day" ></app-add-activity>
+  </div>
+  <div *ngIf="!newActivity">
+    <app-edit-activity [actCatList]="actCatList" [shopList]="shopList" [showEditBox]="isShowEditBox" [day]="day" [activity]="activity"  ></app-edit-activity>
+  </div>
+
 </div>

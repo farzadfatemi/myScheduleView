@@ -1,15 +1,15 @@
 <div class="card store-group">
   <div   class="card store-group">
-  <!--<div *ngIf="showAddEditBox" class="card store-group">-->
-    <!--<form class="form" (ngSubmit)="addOrEditActivity(); addEditActivityFrom.resetForm()" #addEditActivityFrom="ngForm" >-->
-    <form class="form" *ngIf="showAddEditBox" (ngSubmit)="addOrEditActivity()">
+  <!--<div *ngIf="showEditBox" class="card store-group">-->
+    <!--<form class="form" (ngSubmit)="EditActivity(); addEditActivityFrom.resetForm()" #addEditActivityFrom="ngForm" >-->
+    <form class="form" *ngIf="showEditBox" (ngSubmit)="EditActivity()">
       <div class="card-body">
         <div class="table-bordered tab  le-responsive">
           <table class="table">
 
             <thead>
             <tr>
-
+Edittttttttttttt
               <th style="text-align: center">
                 <div class="btn-group-sm">
                   <input type="button" class="btn {{day.toLowerCase()}}-color " value="Start Time" (click)="openStart()">
@@ -17,7 +17,6 @@
                   <label for="startTime"></label>
                   <input  id="startTime" (change)="changeStartTime($event)"  value="{{selectedStartTime}}">
                 </div>
-                <span *ngIf="activity">{{activity.activityId}}</span>
                 <br/>
                 <div class="btn-group-sm">
                   <input type="button" class="btn {{day.toLowerCase()}}-color " value="End Time" (click)="openEnd()">
@@ -27,8 +26,8 @@
                 </div>
               </th>
               <th style="text-align: center">
-                <input type="button"  [value]="model.done ?'انجام شد' : 'انجام نشده'"
-                       [ngClass]="model.done ?  (day.toLowerCase()+'-color'): day.toLowerCase()+'-outline-color'" class="font-casablanca btn pur-btns margin-small"
+                <input type="button"  [value]="model.isDone  ?'انجام شد' : 'انجام نشده'"
+                       [ngClass]="model.isDone ?  (day.toLowerCase()+'-color'): day.toLowerCase()+'-outline-color'" class="font-casablanca btn pur-btns margin-small"
                        (click)="toggleIsDone()" style="width: 100% ">
 
 
@@ -73,7 +72,7 @@
               <td style="text-align: center">
                 <div>
                   <mat-form-field>
-                    <mat-select placeholder="Category" required (selectionChange)="selectCats($event)"  [(value)]="model.activityCategoryId"
+                    <mat-select placeholder="Category" required (selectionChange)="selectCats($event)"
                                 [(ngModel)]="model.activityCategoryId" name="category">
                       <mat-option class="ui dropdown" *ngFor="let category of  actCatList "
                                   [value]="category.categoryId">{{

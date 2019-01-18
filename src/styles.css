@@ -23,8 +23,8 @@
 .add-button{
   max-width: 20px;
   min-width: 20px;
-  display:block;
-  margin: auto auto 10px;
+  display:flex;
+  margin: 0 auto ;
 }
 .monday-color {
   background-color: #00d7f3;

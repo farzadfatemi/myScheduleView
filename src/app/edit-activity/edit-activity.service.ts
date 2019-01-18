@@ -7,7 +7,7 @@ const URL = 'http://localhost:8080/';
 @Injectable({
   providedIn: 'root'
 })
-export class AddEditActivityService {
+export class EditActivityService {
 
   constructor(private http: HttpClient) { }
   addActivity(file) {
