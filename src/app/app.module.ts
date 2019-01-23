@@ -20,6 +20,11 @@ import {CompanyComponent} from './company/company.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {BranchComponent} from './branch/branch.component';
+import {ActivityComponent} from './activity/activity.component';
+import {EditActivityComponent} from './edit-activity/edit-activity.component';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
+import {AddActivityComponent} from './add-activity/add-activity.component';
 import {
   MatCardModule,
   MatCheckboxModule,
@@ -30,12 +35,7 @@ import {
   MatSnackBarModule,
   MatTableModule,
 } from '@angular/material';
-import {BranchComponent} from './branch/branch.component';
 import {DialogBoxComponent} from './dialog-box/dialog-box.component';
-import {ActivityComponent} from './activity/activity.component';
-import {EditActivityComponent} from './edit-activity/edit-activity.component';
-import {AmazingTimePickerModule} from 'amazing-time-picker';
-import {AddActivityComponent} from './add-activity/add-activity.component';
 
 @NgModule({
   declarations: [
@@ -49,10 +49,10 @@ import {AddActivityComponent} from './add-activity/add-activity.component';
     ProductComponent,
     CompanyComponent,
     BranchComponent,
-    DialogBoxComponent,
     ActivityComponent,
     EditActivityComponent,
-    AddActivityComponent
+    AddActivityComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +82,7 @@ import {AddActivityComponent} from './add-activity/add-activity.component';
     MatDialogModule,
     MatSnackBarModule
   ],
+  entryComponents: [DialogBoxComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

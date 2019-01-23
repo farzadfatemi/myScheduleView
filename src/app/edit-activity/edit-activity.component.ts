@@ -30,7 +30,8 @@ export class EditActivityComponent implements OnInit {
   selectedStartTime: string = '';
   selectedEndTime: string = '';
   isDone: boolean = false;
-  test : string;
+  deleteItem: boolean = false;
+  test: string;
 
   constructor(
     private addEditActivityService: EditActivityService,
@@ -41,7 +42,7 @@ export class EditActivityComponent implements OnInit {
 
 
   ngOnInit() {
-    this.test="2";
+    this.test = '2';
     console.log('Startttttt : ' + ((this.activity.startDate != null && (this.activity.startDate !== 'undefined')) ? this.activity.startDate.split(' ')[1].split('.')[0] : ''));
     let d = new Date();
     this.selectedStartTime = this.activity.startDate != null ? this.activity.startDate.split(' ')[1].split('.')[0] : d.getHours() + ':' + d.getMinutes();
@@ -60,7 +61,7 @@ export class EditActivityComponent implements OnInit {
 
   toggleIsDone() {
     this.model.done = !this.model.done;
-    this.model.isDone =this.model.done;
+    this.model.isDone = this.model.done;
   }
 
 
@@ -138,18 +139,22 @@ export class EditActivityComponent implements OnInit {
     this.addEditActivityService.addActivity(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
   }
+
   DeleteActivity(id) {
-      const dialogRef = this.dialog.open(DialogBoxComponent, {
-        width: '250px',
-        // data: {name: this.name, animal: this.animal}
-      });
+    const dialogRef = this.dialog.open(DialogBoxComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.deleteItem = result;
+      console.log(`Dialog result: ${result}`);
+
+      if(result){
+        this.addEditActivityService.deleteActivity(id);
+        console.log('Delete activity by id :  ' + id);
+      }
+
+
 
     });
-
-    console.log('Delete activity by id :  ' + id);
     // this.addEditActivityService.deleteActivity(id);
   }
 }
