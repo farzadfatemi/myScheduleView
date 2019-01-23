@@ -69,8 +69,9 @@
               <td style="text-align: center">
                 <div>
                   <mat-form-field>
-                    <mat-select placeholder="Category" required (selectionChange)="selectCats($event)"  [(ngModel)]="model.activityCategoryId" name="category">
-                      <mat-option class="ui dropdown" *ngFor="let category of  actCatList " name="category"
+                    <mat-select placeholder="Category" required (selectionChange)="selectCats($event)"
+                                [(value)]="this.model.activityCategoryId" name="category" >
+                      <mat-option class="ui dropdown" *ngFor="let category of  actCatList "
                                   [value]="category.categoryId">{{
                         category.name }}
                       </mat-option>
@@ -80,7 +81,7 @@
                 <div [hidden]="!showPurchasedList">
                   <mat-form-field>
                     <mat-select placeholder="Shopping Title" required (selectionChange)="selectShop($event)"
-                                 [(ngModel)]="day.purchaseId" name="category">
+                                [(value)]="this.model.purchaseId" name="category">
                       <mat-option class="ui dropdown" *ngFor="let shop of  shopList"
                                   [value]="shop.id">
                         {{shop.description}}

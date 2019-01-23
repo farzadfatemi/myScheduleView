@@ -1,45 +1,51 @@
 <div class="card store-group">
-  <div   class="card store-group">
-  <!--<div *ngIf="showEditBox" class="card store-group">-->
+  <div class="card store-group">
+    <!--<div *ngIf="showEditBox" class="card store-group">-->
     <!--<form class="form" (ngSubmit)="EditActivity(); addEditActivityFrom.resetForm()" #addEditActivityFrom="ngForm" >-->
     <form class="form" *ngIf="showEditBox" (ngSubmit)="EditActivity()">
       <div class="card-body">
         <div class="table-bordered tab  le-responsive">
           <table class="table">
-
-            <thead>
+            <tbody>
             <tr>
-Edittttttttttttt
-              <th style="text-align: center">
+              <td style="text-align: center">
                 <div class="btn-group-sm">
-                  <input type="button" class="btn {{day.toLowerCase()}}-color " value="Start Time" (click)="openStart()">
-                  :
-                  <label for="startTime"></label>
-                  <input  id="startTime" (change)="changeStartTime($event)"  value="{{selectedStartTime}}">
+                  <button type="submit" *ngIf="day" [value]="model.day"
+                          [ngClass]="( model.done ) ?  (model.day.toLowerCase()+'-color'): model.day.toLowerCase()+'-outline-color'"
+                          class="font-casablanca btn "
+                          style="width: 100% ">Edit
+                  </button>
+                  <hr/>
+                  <input type="button" (click)="DeleteActivity(model.activityId)" class="font-casablanca btn " value="Delete"
+                         style="width: 100% ;background-color:white;border-color: red" id="delete">
                 </div>
-                <br/>
+              </td>
+              <td style="text-align: center">
                 <div class="btn-group-sm">
-                  <input type="button" class="btn {{day.toLowerCase()}}-color " value="End Time" (click)="openEnd()">
-                  :
-                  <label for="endTime"></label>
-                  <input id="endTime" (change)="changeEndTime($event)"  value="{{selectedEndTime}}">
+                  <mat-form-field>
+                    <mat-icon class="icon-hover" (click)="openStart()" matSuffix>access_alarm</mat-icon>
+                    <mat-label>Start Time</mat-label>
+                    <input matInput id="startTime" (change)="changeStartTime($event)" value="{{selectedStartTime}}"
+                           name="startTime">
+                  </mat-form-field>
+                  <hr/>
+                  <mat-form-field>
+
+                    <mat-label>End Time</mat-label>
+                    <input matInput id="endTime" (change)="changeEndTime($event)" value="{{selectedEndTime}}"
+                           name="endTime">
+                    <mat-icon class="icon-hover" (click)="openEnd()" matSuffix>access_alarm</mat-icon>
+                  </mat-form-field>
                 </div>
-              </th>
-              <th style="text-align: center">
-                <input type="button"  [value]="model.isDone  ?'انجام شد' : 'انجام نشده'"
-                       [ngClass]="model.isDone ?  (day.toLowerCase()+'-color'): day.toLowerCase()+'-outline-color'" class="font-casablanca btn pur-btns margin-small"
-                       (click)="toggleIsDone()" style="width: 100% ">
-
-
-              </th>
-              <th style="text-align: center">
+              </td>
+              <td style="text-align: center">
                 <mat-form-field>
                   <input matInput [matDatepicker]="startDatePicker" [value]="selectedStartDate" name="StartDate"
                          (dateChange)="setStartDate('change', $event)" placeholder="Start date">
                   <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
                   <mat-datepicker #startDatePicker></mat-datepicker>
                 </mat-form-field>
-                <div></div>
+                <hr/>
                 <mat-form-field>
 
                   <input matInput [matDatepicker]="endDatePicker" [value]="selectedEndDate" name="EndDate"
@@ -47,20 +53,9 @@ Edittttttttttttt
                   <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
                   <mat-datepicker #endDatePicker></mat-datepicker>
                 </mat-form-field>
-              </th>
-
-              <th class="vertical-align " style=" text-align: center" colspan="2">
+              </td>
 
 
-                <button *ngIf="day" [value]="model.day" class="btn {{day.toLowerCase()}}-color "
-                        style="width: 100% ">
-                  {{day}}
-                </button>
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
               <td>
                 <mat-form-field>
                 <textarea matInput placeholder="Description" id="description" name="Description"
@@ -73,7 +68,7 @@ Edittttttttttttt
                 <div>
                   <mat-form-field>
                     <mat-select placeholder="Category" required (selectionChange)="selectCats($event)"
-                                [(ngModel)]="model.activityCategoryId" name="category">
+                                [(value)]="this.model.activityCategoryId" name="category">
                       <mat-option class="ui dropdown" *ngFor="let category of  actCatList "
                                   [value]="category.categoryId">{{
                         category.name }}
@@ -81,10 +76,11 @@ Edittttttttttttt
                     </mat-select>
                   </mat-form-field>
                 </div>
+                <hr/>
                 <div [hidden]="!showPurchasedList">
                   <mat-form-field>
                     <mat-select placeholder="Shopping Title" required (selectionChange)="selectShop($event)"
-                                [(ngModel)]="model.purchaseId"  [(value)]="day.purchaseId" name="category">
+                                [(value)]="this.model.purchaseId" name="category">
                       <mat-option class="ui dropdown" *ngFor="let shop of  shopList"
                                   [value]="shop.id">
                         {{shop.description}}
@@ -94,6 +90,13 @@ Edittttttttttttt
                 </div>
               </td>
               <td style="text-align: center">
+                <div class="btn-group-sm">
+                  <input type="button" *ngIf="day" [value]="model.day"
+                         [ngClass]="( model.done ) ?  (model.day.toLowerCase()+'-color'): model.day.toLowerCase()+'-outline-color'"
+                         class="font-casablanca btn btn-group-sm margin-small"
+                         (click)="toggleIsDone()" style="width: 100% ">
+                </div>
+                <hr/>
                 <mat-form-field>
                   <mat-label>Activity Title</mat-label>
                   <input matInput [(ngModel)]="model.title" name="Title">
@@ -106,7 +109,7 @@ Edittttttttttttt
           </table>
         </div>
       </div>
-      <button type="submit" class="btn pur-btns margin-small" id="addNewActivity">Add New Cat</button>
+
     </form>
   </div>
 </div>

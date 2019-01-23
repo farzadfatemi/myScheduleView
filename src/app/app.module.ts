@@ -23,11 +23,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {
   MatCardModule,
   MatCheckboxModule,
+  MatDialogModule,
   MatIconModule,
   MatNativeDateModule,
   MatPaginatorModule,
   MatSnackBarModule,
-  MatTableModule
+  MatTableModule,
 } from '@angular/material';
 import {BranchComponent} from './branch/branch.component';
 import {DialogBoxComponent} from './dialog-box/dialog-box.component';
@@ -75,8 +76,10 @@ import {AddActivityComponent} from './add-activity/add-activity.component';
     MatCheckboxModule,
     ReactiveFormsModule,
     AmazingTimePickerModule,
+    MatDialogModule,
   ],
   exports: [
+    MatDialogModule,
     MatSnackBarModule
   ],
   providers: [],

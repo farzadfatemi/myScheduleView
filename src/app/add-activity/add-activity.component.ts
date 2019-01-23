@@ -36,7 +36,7 @@ export class AddActivityComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.model.purchaseId = 0;
     let d = new Date();
     this.selectedStartTime = d.getHours() + ':' + d.getMinutes();
     this.selectedEndTime = d.getHours() + ':' + d.getMinutes();
@@ -122,12 +122,11 @@ export class AddActivityComponent implements OnInit {
   addActivity() {
     this.model.day = this.day;
     this.model.activityCategoryId  = this.selectedCat;
-    this.model.purchaseId = this.selectedShop;
     this.model.startDate = this.selectedStartDate + ' ' + this.selectedStartTime;
     this.model.endDate = this.selectedEndDate + ' ' + this.selectedEndTime;
     console.log('startDate  ' + this.model.startDate + 'end Date  ' + this.model.endDate);
     console.log('isDone  ' + this.model.isDone);
-    console.log('d;one  ' + this.model.done);
+    console.log('done  ' + this.model.done);
     // console.log('e3333 ' + JSON.stringify(this.shopList));
     this.addActivityService.addActivity(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));

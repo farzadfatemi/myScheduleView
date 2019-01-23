@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {EditActivityService} from './edit-activity.service';
 import {AmazingTimePickerService} from 'amazing-time-picker';
-import {MatDatepickerInputEvent} from '@angular/material';
-import {Activity} from '../domain/activity';
+import {MatDatepickerInputEvent, MatDialog} from '@angular/material';
+import {DialogBoxComponent} from '../dialog-box/dialog-box.component';
 
-const URL = 'http://localhost:8080/';
 
 @Component({
   selector: 'app-edit-activity',
@@ -16,11 +15,11 @@ export class EditActivityComponent implements OnInit {
   @Input() showEditBox: boolean;
   @Input() actCatList: any;
   @Input() shopList: any;
-  @Input() activity: any = [];
+  @Input() activity: any;
   @Input() newActivity: boolean;
 
 
-  model: Activity ;
+  model: any;
   selectedCat: any = [];
   selectedShop: any = [];
   category: any = [];
@@ -30,46 +29,38 @@ export class EditActivityComponent implements OnInit {
   selectedEndDate: string = '';
   selectedStartTime: string = '';
   selectedEndTime: string = '';
-  currentActivity: Activity;
+  isDone: boolean = false;
+  test : string;
+
   constructor(
     private addEditActivityService: EditActivityService,
-    private atp: AmazingTimePickerService
+    private atp: AmazingTimePickerService,
+    public dialog: MatDialog,
   ) {
-  }
-
-  ngOnChanges() {
-    console.log("into ngOnCHange and this.newActivity is " + this.newActivity);
-
-      console.log("Current Activity = "+JSON.stringify(this.activity));
-      this.model = this.activity;
-      console.log('Startttttt : ' + ((this.activity.startDate != null && (this.activity.startDate !=='undefined'))? this.activity.startDate.split(' ')[1].split('.')[0] : ''));
-      // console.log('this.activity : ' + JSON.stringify(this.activity));
-
-      this.selectedStartTime = this.activity.startDate != null ? this.activity.startDate.split(' ')[1].split('.')[0] : '';
-      this.selectedEndTime = this.activity.endDate != null ? this.activity.endDate.split(' ')[1].split('.')[0] : '';
-      this.selectedStartDate = this.activity.startDate != null ? this.activity.startDate.split(' ')[0] : '';
-      this.selectedEndDate = this.activity.endDate != null ? this.activity.endDate.split(' ')[0] : '';
-      this.showPurchasedList = this.activity.activityCategoryId === 2;
-      this.day = this.activity.day;
-
   }
 
 
   ngOnInit() {
-
+    this.test="2";
+    console.log('Startttttt : ' + ((this.activity.startDate != null && (this.activity.startDate !== 'undefined')) ? this.activity.startDate.split(' ')[1].split('.')[0] : ''));
     let d = new Date();
-    this.currentActivity = this.activity;
-    this.selectedStartTime = d.getHours() + ':' + d.getMinutes();
-    this.selectedEndTime = d.getHours() + ':' + d.getMinutes();
-    this.selectedStartDate = this.formatDate(new Date());
-    this.selectedEndDate = this.formatDate(new Date());
-    console.log('now  ' + this.formatDate(new Date()));
-    console.log('selectedTime  ' + this.selectedStartTime);
+    this.selectedStartTime = this.activity.startDate != null ? this.activity.startDate.split(' ')[1].split('.')[0] : d.getHours() + ':' + d.getMinutes();
+    this.selectedEndTime = this.activity.endDate != null ? this.activity.endDate.split(' ')[1].split('.')[0] : d.getHours() + ':' + d.getMinutes();
+    this.selectedStartDate = this.activity.startDate != null ? this.activity.startDate.split(' ')[0] : this.formatDate(new Date());
+    this.selectedEndDate = this.activity.endDate != null ? this.activity.endDate.split(' ')[0] : this.formatDate(new Date());
+    this.showPurchasedList = this.activity.activityCategoryId === 2;
+
+    this.day = this.activity.day;
+    this.model = this.activity;
+    console.log('activity.activityCategoryId  ' + this.model.activityCategoryId);
+    // console.log('now  ' + this.formatDate(new Date()));
+    // console.log('selectedTime  ' + this.selectedStartTime);
 
   }
 
   toggleIsDone() {
-    this.model.isDone = !this.model.isDone;
+    this.model.done = !this.model.done;
+    this.model.isDone =this.model.done;
   }
 
 
@@ -146,5 +137,19 @@ export class EditActivityComponent implements OnInit {
     // console.log('e3333 ' + JSON.stringify(this.shopList));
     this.addEditActivityService.addActivity(this.model);
     console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.model));
+  }
+  DeleteActivity(id) {
+      const dialogRef = this.dialog.open(DialogBoxComponent, {
+        width: '250px',
+        // data: {name: this.name, animal: this.animal}
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
+
+    console.log('Delete activity by id :  ' + id);
+    // this.addEditActivityService.deleteActivity(id);
   }
 }
