@@ -16,7 +16,7 @@ export class ActivityService {
       .toPromise()
       .then(res =>  res  )
       .then(data => {
-        console.log("============ll>>"+JSON.stringify(data));
+        // console.log("============ll>>"+JSON.stringify(data));
         return data; });
   }
   getAllActivityCat (){

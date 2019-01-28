@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
       <div class="btn-group-sm col-12   ">
-        <button type="button" class="btn pur-btns shop-button margin-small" id="outOfList1">Bunnings</button>
+        <button type="button" class="btn pur-btns shop-button btn-dark margin-small" id="outOfList1"> Bunnings </button>
         <button type="button" class="btn pur-btns shop-button btn-primary margin-small  " id="outOfList2">Dominos
         </button>
         <button type="button" class="btn pur-btns shop-button btn-secondary margin-small  " id="outOfList3">Briscos
@@ -76,7 +76,7 @@
               <select class="dropdown-style" #productItem (change)="productChangeEv(productItem.value)" id="productItem"
                       required [(ngModel)]="model.productId" name="category">
                 <option [ngValue]="undefined" disabled hidden selected> Product</option>
-                <option class="ui dropdown" *ngFor="let product of productList" [(ngValue)]="product.productId">{{
+                <option class="ui dropdown" *ngFor="let product of productList" [value]="product.productId">{{
                   product.name }}
                 </option>
               </select>

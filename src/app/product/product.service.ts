@@ -14,7 +14,9 @@ export class ProductService {
     return this.http.get<any>(URL+'allProducts')
       .toPromise()
       .then(res => <Product[]>res)
-      .then(data => { return data; });
+      .then(data => {
+        console.log("All Products : "+ JSON.stringify(data));
+        return data; });
   }
   addPruduct(file) {
     // console.log( JSON.stringify(file));

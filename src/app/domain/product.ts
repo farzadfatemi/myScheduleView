@@ -4,12 +4,12 @@ export interface Product {
     description;
     companyId;
     categoryId;
-    prod;
-    exp;
+    prodDate;
+    expDate;
     weight;
     color;
     height;
     length;
-    wide;
+    width;
     warranty;
 }

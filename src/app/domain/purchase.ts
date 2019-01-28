@@ -9,5 +9,5 @@ export interface Purchase {
   todo;
   description;
   date;
-  product;
+  productId;
 }

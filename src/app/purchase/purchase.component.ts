@@ -15,8 +15,6 @@ import {Company} from '../domain/company';
 import {CompanyService} from '../company/company.service';
 
 
-const URL = 'http://localhost:8080/';
-
 @Component({
   selector: 'app-purchase',
   templateUrl: './purchase.component.html',
@@ -48,47 +46,10 @@ export class PurchaseComponent implements OnInit {
 
   ngOnInit() {
 
-    this.cols = [
-      {field: 'id', header: 'Purchase Id', width: '25%'},
-      {field: 'productId', header: 'product Id', width: '15%'},
-      {field: 'sellerId', header: 'Seller Id', width: '35%'},
-      {field: 'categoryId', header: 'Category Id', width: '25%'},
-      {field: 'companyId', header: 'Company Id', width: '25%'},
-      {field: 'price', header: 'Price', width: '25%'},
-      {field: 'amount', header: 'Amount', width: '25%'},
-      {field: 'unitId', header: 'Unit Id', width: '25%'},
-      {field: 'isDone', header: 'Todo', width: '25%'},
-      {field: 'description', header: 'Comment', width: '25%'},
-      {field: 'date', header: 'Date', width: '25%'}
-    ];
-    this.selectedColumns = this.cols;
-    this.purchaseService.getAllPurchases().then(purchaseList => {
-      this.purchaseList = purchaseList;
-      // this.purchaseList.sort((val1, val2)=> {return <any>new Date(val2.date) - <any>new Date(val1.date)});
-      this.purchaseList.sort((val1, val2) => {
-        return (val2.id) - (val1.id);
-      });
-
-    });
-    this.unitServices.getAllUnits().then(unitsList => {
-      this.unitList = unitsList;
-    });
-    this.sellerServices.getAllSellers().then(sellerList => {
-      this.sellerList = sellerList;
-    });
-    this.categoryServices.getAllCategories().then(categoryList => {
-      this.categoryList = categoryList;
-    });
-    this.productServices.getAllProducts().then(productList => {
-      this.productList = productList;
-    });
-   this.companyServices.getAllCompanies().then(companyList => {
-      this.companyList = companyList;
-    });
-
     // alert(this.purchaseList);
     $(document).ready(function () {
       const animationEnd = (function (el) {
+        // alert("animationEnd");
         const animations = {
           'animation': 'animationend',
           'OAnimation': 'oAnimationEnd',
@@ -103,9 +64,14 @@ export class PurchaseComponent implements OnInit {
         }
       })(document.createElement('div'));
 
-
+      $( "p" ).click(function() {
+        $( this ).slideUp();
+      });
+      $( "#outOfList1" ).click(function() {
+        // alert( "Handler for .click() called." );
+      });
       $('[id^=outOfList]').click(function () {
-        // alert($(this).attr('id'));
+        // alert("2");
         $('#' + $(this).attr('id')).addClass('animated rubberBand faster').animate({'opacity': 'hide'}, 500).one(animationEnd, function () {
           $('#' + $(this).attr('id')).removeClass('animated rubberBand faster');
         });
@@ -116,6 +82,7 @@ export class PurchaseComponent implements OnInit {
       });
 
       $('[id^=intoList]').click(function () {
+        // alert("2");
         $('#' + $(this).attr('id').replace('intoList', 'outOfList')).addClass('animated bounceInRight').animate({'opacity': 'show'}, 500).one(animationEnd, function () {
           $('#' + $(this).attr('id').replace('intoList', 'outOfList')).removeClass('animated bounceInRight');
         });
@@ -136,6 +103,48 @@ export class PurchaseComponent implements OnInit {
       });
 
 
+    });
+
+
+
+    this.cols = [
+      {field: 'id', header: 'Purchase Id', width: '25%'},
+      {field: 'productId', header: 'product Id', width: '15%'},
+      {field: 'sellerId', header: 'Seller Id', width: '35%'},
+      {field: 'categoryId', header: 'Category Id', width: '25%'},
+      {field: 'companyId', header: 'Company Id', width: '25%'},
+      {field: 'price', header: 'Price', width: '25%'},
+      {field: 'amount', header: 'Amount', width: '25%'},
+      {field: 'unitId', header: 'Unit Id', width: '25%'},
+      {field: 'isDone', header: 'Todo', width: '25%'},
+      {field: 'description', header: 'Comment', width: '25%'},
+      {field: 'date', header: 'Date', width: '25%'}
+    ];
+    this.selectedColumns = this.cols;
+    this.purchaseService.getAllPurchases().then(purchaseList => {
+      this.purchaseList = purchaseList;
+
+      // this.purchaseList.sort((val1, val2)=> {return <any>new Date(val2.date) - <any>new Date(val1.date)});
+      this.purchaseList.sort((val1, val2) => {
+        return (val2.id) - (val1.id);
+      });
+      // console.log("All Purchases : "+ JSON.stringify(this.purchaseList));
+
+    });
+    this.unitServices.getAllUnits().then(unitsList => {
+      this.unitList = unitsList;
+    });
+    this.sellerServices.getAllSellers().then(sellerList => {
+      this.sellerList = sellerList;
+    });
+    this.categoryServices.getAllCategories().then(categoryList => {
+      this.categoryList = categoryList;
+    });
+    this.productServices.getAllProducts().then(productList => {
+      this.productList = productList;
+    });
+   this.companyServices.getAllCompanies().then(companyList => {
+      this.companyList = companyList;
     });
 
 
@@ -176,7 +185,7 @@ export class PurchaseComponent implements OnInit {
       name: 'New Purchase',
       description: 'adding New Purchase',
       date: '2018-10-19',
-      product:[]
+      productId:'1'
     };
     let newP = [...this.purchaseList];
     newP.push(newPurchase);

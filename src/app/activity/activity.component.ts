@@ -41,12 +41,12 @@ export class ActivityComponent implements OnInit {
     this.isShowAddBox = toggleShowBox;
     this.day = nameOfTheDay;
     this.newActivity = true;
-    console.log(" newActivity in activity is :"+ this.newActivity);
+    // console.log(" newActivity in activity is :"+ this.newActivity);
   }
 
   addToWeekDaysList(activity: Activity) {
     let day = new Date(activity.startDate);
-    console.log('Day of date : ' + day.getDay());
+    // console.log('Day of date : ' + day.getDay());
     if (day.getDay() === 1) {
       activity.day = 'monday';
       this.mondayList.push(activity);
@@ -117,7 +117,7 @@ export class ActivityComponent implements OnInit {
         activityList.forEach(activity => {
 
           if (activity.startDate != null) {
-            console.log('Activity ' + JSON.stringify(activity));
+            // console.log('Activity ' + JSON.stringify(activity));
 
             this.addToWeekDaysList(activity);
 
